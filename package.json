@@ -1,0 +1,35 @@
+{
+	"name": "gamesalad",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"css2js": "node css-to-js.mjs",
+		"preview": "vite preview",
+		"prod": "rd /s /q dist 2>nul & vite build && vite preview",
+		"styles": "node css-to-js.mjs",
+		"prebuild": "pnpm styles",
+		"predev": "pnpm styles"
+	},
+	"dependencies": {
+		"@capacitor/android": "7.0.1",
+		"@capacitor/app": "7.0.0",
+		"@capacitor/core": "7.0.1",
+		"@capacitor/haptics": "7.0.0",
+		"@capacitor/keyboard": "7.0.0",
+		"@capacitor/local-notifications": "latest",
+		"@capacitor/preferences": "latest",
+		"@capacitor/status-bar": "7.0.0",
+		"canvas-confetti": "latest",
+		"lodash": "^4.17.21",
+		"postcss": "^8.5.1"
+	},
+	"devDependencies": {
+		"@capacitor/cli": "^7.0.1",
+		"rimraf": "^6.0.1",
+		"vite": "latest",
+		"vite-plugin-static-copy": "^2.2.0"
+	}
+}

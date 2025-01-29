@@ -1,0 +1,19 @@
+{
+    "name": "GameSalad",
+    "short_name": "GameSalad",
+    "description": "Video Game Word Puzzle",
+    "theme_color": "#262626",
+    "background_color": "#262626",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "./",
+    "start_url": "./index.html",
+    "icons": [
+        {
+            "src": "./images/icon.png",
+            "sizes": "any",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ]
+}

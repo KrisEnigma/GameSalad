@@ -1,0 +1,74 @@
+/* Theme: Elden Ring */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@500;700&display=swap');
+
+:root[data-theme='eldenring'] {
+    /* Fuentes */
+    --font-toolbar-family: 'Cinzel', serif;
+    --font-title-family: 'Cinzel', serif;
+    --font-cell-family: 'Cormorant', serif;
+
+    /* Colores */
+    --color-bg: linear-gradient(135deg, #0f0e0a 0%, #2b2615 100%);
+    --color-cell: #2a2a2a;
+    --color-modal: #1f1f1f;
+    --color-button: #a58c00;
+    --color-letters: #ffebc2;
+    --color-title: #ffebc2;
+    --color-selected: #a58c00;
+    --color-hover: #634700;
+    --color-line: #ffc125;
+    --color-ui: #dac083;
+    --color-words: #ffebc2;
+    --color-menu: #ffebc2;
+
+    /* Efectos */
+    --cell-radius: 15%;
+    --border-light: 2px solid rgb(255 215 0 / 30%);
+    --shadow-opacity: 0.6;
+
+    /* Animaciones */
+    --found-bg: radial-gradient(circle, #ffd700 0%, #daa520 100%);
+    --found-scale: 1.12;
+    --found-shadow: 0 0 45px rgb(255 215 0 / 60%),
+        0 0 80px rgb(218 165 32 / 50%);
+    --unused-scale: 0.9;
+    --unused-opacity: 0.25;
+    --animation-duration-found: 900ms;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --confetti-colors: #c3b38e, #6e6e6e, #2f2f2f, #e1e1c4;
+}
+
+@keyframes eldenring-found {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    20% {
+        transform: scale(1.2);
+        filter: brightness(2.5);
+        box-shadow:
+            0 0 50px #ffd700,
+            0 0 100px #daa520;
+    }
+
+    40% {
+        transform: scale(0.95) rotate(1deg);
+        filter: brightness(0.8);
+    }
+
+    60% {
+        transform: scale(1.1) rotate(-1deg);
+        filter: brightness(1.6);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+}
+
+:root[data-theme='eldenring'] .found-temp {
+    animation-name: eldenring-found !important;
+}

@@ -1,0 +1,95 @@
+/* Theme: Zelda BOTW */
+@import url('https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+:root[data-theme='zelda-botw'] {
+    /* Fuentes */
+    --font-toolbar-family: 'Cardo', serif;
+    --font-title-family: 'Cardo', serif;
+    --font-cell-family: 'Noto Sans', sans-serif;
+
+    /* Colores - Paleta Sheikah mejorada */
+    --color-bg: linear-gradient(135deg, #0f1922 0%, #1a2f3d 50%, #243b4d 100%);
+    --color-cell: linear-gradient(145deg, rgb(38 67 87), rgb(29 53 67));
+    --color-modal: linear-gradient(
+        180deg,
+        rgb(22 40 52 / 98%) 0%,
+        rgb(15 25 34 / 95%) 100%
+    );
+    --color-button: linear-gradient(to bottom right, #5ccce0, #45b7ce);
+    --color-letters: #e8f1ff;
+    --color-title: #e8f1ff;
+    --color-selected: #25a5bc;
+    --color-hover: rgb(85 145 159 / 80%);
+    --color-line: cyan;
+    --color-ui: #7cd3e6;
+    --color-words: #e8f1ff;
+    --color-menu: #e8f1ff;
+
+    /* Efectos mejorados */
+    --cell-radius: 3px;
+    --border-light: 1px solid rgb(92 204 224 / 20%);
+    --shadow-opacity: 0.6;
+    --glow-effect: 0 0 20px rgb(69 183 206 / 20%);
+
+    /* Animaciones mejoradas */
+    --found-bg: radial-gradient(
+        circle,
+        rgb(92 204 224 / 100%) 0%,
+        rgb(69 183 206 / 90%) 50%,
+        rgb(44 149 171 / 80%) 100%
+    );
+    --found-scale: 1.15;
+    --found-shadow: 0 0 25px rgb(92 204 224 / 70%),
+        0 0 45px rgb(69 183 206 / 50%), inset 0 0 20px rgb(124 211 230 / 40%);
+    --unused-scale: 0.92;
+    --unused-opacity: 0.15;
+    --animation-duration-found: 800ms;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --confetti-colors: #45b7ce, #e2e9f3, #2c95ab, #7cd3e6;
+}
+
+/* Modificar comportamiento de mark */
+:root[data-theme='zelda-botw'] .mark {
+    transition: all 0.2s ease;
+}
+
+:root[data-theme='zelda-botw'] .cell {
+    box-shadow:
+        var(--glow-effect),
+        inset 0 1px 1px rgb(255 255 255 / 10%),
+        inset 0 -1px 1px rgb(0 0 0 / 10%);
+}
+
+/* Actualizar animación para que sea más similar a los efectos del juego */
+@keyframes zelda-found {
+    0% {
+        transform: scale(1);
+        filter: brightness(1) blur(0);
+    }
+
+    30% {
+        transform: scale(1.15) rotate(1deg);
+        filter: brightness(2.5) blur(2px);
+        box-shadow:
+            0 0 35px rgb(92 204 224 / 80%),
+            0 0 65px rgb(69 183 206 / 60%),
+            inset 0 0 20px rgb(124 211 230 / 40%);
+    }
+
+    60% {
+        transform: scale(0.95) rotate(-1deg);
+        filter: brightness(0.95) blur(0);
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        filter: brightness(1) blur(0);
+    }
+}
+
+:root[data-theme='zelda-botw'] .found-temp {
+    animation-name: zelda-found !important;
+    background: var(--found-bg);
+    border-color: rgb(124 211 230 / 40%);
+}

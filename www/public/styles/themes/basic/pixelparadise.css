@@ -1,0 +1,91 @@
+/* Theme: Paradise */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root[data-theme='pixelparadise'] {
+    /* Fuentes */
+    --font-toolbar-family: 'Press Start 2P', cursive;
+    --font-title-family: 'Press Start 2P', cursive;
+    --font-cell-family: 'VT323', monospace;
+
+    /* Colores */
+    --color-bg: #6b5b95;
+    --color-cell: #92a8d1;
+    --color-modal: rgb(107 91 149 / 95%);
+    --color-button: #ff6f61;
+    --color-letters: #f7cac9;
+    --color-title: #f7cac9;
+    --color-selected: #88b04b;
+    --color-hover: #ff6f61;
+    --color-line: #f7cac9;
+    --color-ui: #f7cac9;
+    --color-words: #f7cac9;
+    --color-menu: #fff;
+
+    /* Efectos */
+    --shadow-opacity: 0.4;
+    --border-light: 2px solid #f7cac9;
+
+    /* Efectos especiales */
+    --effect-color-1: rgb(255 111 97 / 20%);
+    --effect-color-2: rgb(136 176 75 / 10%);
+    --glow-radius: 15px;
+    --glow-color: rgb(247 202 201 / 30%);
+
+    /* Animaciones */
+    --found-bg: linear-gradient(45deg, #ff6f61, #88b04b);
+    --found-scale: 1.2;
+    --found-shadow: 0 0 20px rgb(247 202 201 / 60%);
+    --unused-scale: 0.85;
+    --unused-opacity: 0.2;
+    --confetti-colors: #ff6f61, #88b04b, #92a8d1, #f7cac9;
+}
+
+:root[data-theme='pixelparadise'] .board {
+    background: linear-gradient(
+        45deg,
+        rgb(107 91 149 / 80%),
+        rgb(146 168 209 / 40%)
+    );
+    image-rendering: pixelated;
+}
+
+:root[data-theme='pixelparadise'] .title {
+    text-shadow: 2px 2px 0 #ff6f61;
+    letter-spacing: 1px;
+    image-rendering: pixelated;
+}
+
+:root[data-theme='pixelparadise'] .found-temp {
+    animation: pixel-found 0.5s steps(5);
+}
+
+@keyframes pixel-found {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(var(--found-scale));
+        background: var(--found-bg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+:root[data-theme='pixelparadise'] .mark.selected {
+    animation: pixel-selected 1s steps(4) infinite;
+}
+
+@keyframes pixel-selected {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}

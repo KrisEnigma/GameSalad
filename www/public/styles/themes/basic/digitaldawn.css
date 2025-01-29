@@ -1,0 +1,117 @@
+/* Theme: Dawn */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
+
+:root[data-theme='digitaldawn'] {
+    /* Fuentes */
+    --font-toolbar-family: 'Orbitron', sans-serif;
+    --font-title-family: 'Rajdhani', sans-serif;
+    --font-cell-family: 'Space Grotesk', sans-serif;
+
+    /* Colores */
+    --color-bg: #0a0a1a;
+    --color-cell: #1a1a2a;
+    --color-modal: rgb(10 10 26 / 95%);
+    --color-button: #8a2be2;
+    --color-letters: #fff;
+    --color-title: #fff;
+    --color-selected: #ff6347;
+    --color-hover: #ff6347;
+    --color-line: #00bfff;
+    --color-ui: #00bfff;
+    --color-words: #fff;
+    --color-menu: #fff;
+
+    /* Efectos */
+    --cell-radius: 8px;
+    --shadow-opacity: 0.6;
+    --border-light: 1px solid rgb(0 191 255 / 30%);
+
+    /* Efectos especiales */
+    --effect-color-1: rgb(255 99 71 / 10%);
+    --effect-color-2: rgb(0 191 255 / 10%);
+    --glow-radius: 25px;
+    --glow-color: rgb(138 43 226 / 40%);
+
+    /* Animaciones */
+    --found-bg: linear-gradient(135deg, #ff6347, #8a2be2);
+    --found-scale: 1.1;
+    --found-shadow: 0 0 40px rgb(0 191 255 / 50%);
+    --unused-scale: 0.9;
+    --unused-opacity: 0.15;
+    --confetti-colors: #ff6347, #ffd700, #00bfff, #8a2be2;
+}
+
+:root[data-theme='digitaldawn'] .board {
+    background: linear-gradient(
+        135deg,
+        rgb(10 10 26 / 95%) 0%,
+        rgb(138 43 226 / 10%) 100%
+    );
+}
+
+:root[data-theme='digitaldawn'] .cell {
+    background: linear-gradient(
+        145deg,
+        rgb(26 26 42 / 100%) 0%,
+        rgb(26 26 42 / 80%) 100%
+    );
+    box-shadow: 0 0 20px rgb(0 191 255 / 10%);
+}
+
+:root[data-theme='digitaldawn'] .title {
+    text-shadow:
+        0 0 10px rgb(0 191 255 / 50%),
+        0 0 20px rgb(138 43 226 / 30%);
+}
+
+:root[data-theme='digitaldawn'] .toolbar {
+    filter: drop-shadow(0 0 10px rgb(0 191 255 / 40%));
+}
+
+@keyframes dawn-found {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    50% {
+        transform: scale(var(--found-scale));
+        filter: brightness(1.5);
+        box-shadow:
+            0 0 30px rgb(255 99 71 / 60%),
+            0 0 50px rgb(0 191 255 / 40%);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+:root[data-theme='digitaldawn'] .found-temp {
+    animation: dawn-found 0.7s ease-in-out;
+}
+
+:root[data-theme='digitaldawn'] .mark.selected {
+    animation: dawn-selected 2s infinite;
+}
+
+@keyframes dawn-selected {
+    0% {
+        background: #ff6347;
+    }
+
+    33% {
+        background: #ffd700;
+    }
+
+    66% {
+        background: #00bfff;
+    }
+
+    100% {
+        background: #ff6347;
+    }
+}

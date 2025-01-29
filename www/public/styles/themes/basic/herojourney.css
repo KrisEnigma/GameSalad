@@ -1,0 +1,108 @@
+/* Theme: Hero */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Metamorphous&display=swap');
+
+:root[data-theme='herojourney'] {
+    /* Fuentes */
+    --font-toolbar-family: 'MedievalSharp', cursive;
+    --font-title-family: 'Cinzel', serif;
+    --font-cell-family: 'Metamorphous', cursive;
+
+    /* Colores */
+    --color-bg: #1a1a1a;
+    --color-cell: #2a2a2a;
+    --color-modal: rgb(26 26 26 / 95%);
+    --color-button: #8b0000;
+    --color-letters: #d3d3d3;
+    --color-title: #ffd700;
+    --color-selected: #aa9000;
+    --color-hover: #32cd32;
+    --color-line: #1e90ff;
+    --color-ui: #ffd700;
+    --color-words: #fff;
+    --color-menu: #fff;
+
+    /* Efectos */
+    --cell-radius: 4px;
+    --shadow-opacity: 0.5;
+    --border-light: 2px solid rgb(255 215 0 / 30%);
+
+    /* Efectos especiales */
+    --effect-color-1: rgb(139 0 0 / 20%);
+    --effect-color-2: rgb(255 215 0 / 10%);
+    --glow-radius: 20px;
+    --glow-color: rgb(50 205 50 / 30%);
+
+    /* Animaciones */
+    --found-bg: linear-gradient(45deg, #8b0000, #ffd700);
+    --found-scale: 1.15;
+    --found-shadow: 0 0 30px rgb(30 144 255 / 60%);
+    --unused-scale: 0.85;
+    --unused-opacity: 0.2;
+    --confetti-colors: #8b0000, #ffd700, #32cd32, #1e90ff;
+}
+
+:root[data-theme='herojourney'] .board {
+    background: radial-gradient(
+        circle at center,
+        rgb(139 0 0 / 20%) 0%,
+        rgb(26 26 26 / 90%) 70%
+    );
+    border: 3px solid rgb(255 215 0 / 30%);
+}
+
+:root[data-theme='herojourney'] .cell {
+    border: var(--border-light);
+    box-shadow: 0 0 15px rgb(30 144 255 / 20%);
+    background: linear-gradient(
+        135deg,
+        rgb(42 42 42 / 100%) 0%,
+        rgb(42 42 42 / 80%) 100%
+    );
+}
+
+:root[data-theme='herojourney'] .title {
+    text-shadow: 2px 2px 4px rgb(139 0 0 / 60%);
+    letter-spacing: 2px;
+}
+
+:root[data-theme='herojourney'] .toolbar {
+    filter: drop-shadow(1px 1px 2px rgb(139 0 0 / 40%));
+}
+
+@keyframes hero-found {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(var(--found-scale));
+        box-shadow: 0 0 30px #ffd700;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+:root[data-theme='herojourney'] .found-temp {
+    animation: hero-found 0.8s ease-out;
+}
+
+:root[data-theme='herojourney'] .mark.selected {
+    animation: hero-selected 1.5s infinite;
+}
+
+@keyframes hero-selected {
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px #ffd700;
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px #32cd32;
+    }
+}

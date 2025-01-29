@@ -1,0 +1,80 @@
+/* Theme: Pac-Man */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root[data-theme='pacman'] {
+    --font-toolbar-family: 'Press Start 2P', monospace;
+    --font-title-family: 'Press Start 2P', monospace;
+    --font-cell-family: 'VT323', monospace;
+
+    /* Colores */
+    --color-bg: #000;
+    --color-cell: #2121de;
+    --color-modal: rgb(0 0 64 / 95%);
+    --color-button: #2121de;
+    --color-letters: #ffd800;
+    --color-title: #ffd800;
+    --color-selected: #f00;
+    --color-hover: rgb(145 0 0);
+    --color-line: #0ff;
+    --color-ui: #ffb897;
+    --color-words: #ffd800;
+    --color-menu: #0ff;
+
+    /* Efectos */
+    --cell-radius: 4px;
+    --border-light: 1px solid #2121ff;
+    --line-cap: round;
+    --line-dash: 1 15;
+    --line-animation: pacman-dots 0.5s linear infinite;
+
+    /* Animaciones */
+    --found-bg: linear-gradient(45deg, #ffd700, #ff7f00);
+    --found-scale: 1.15;
+    --found-shadow: 0 0 20px rgb(255 215 0 / 60%);
+    --unused-scale: 0.85;
+    --unused-opacity: 0.3;
+    --animation-duration-found: 500ms;
+    --animation-timing: cubic-bezier(0.36, 0, 0.66, 1);
+    --confetti-colors: #ffda00, #00008b, #f00, #fff;
+}
+
+:root[data-theme='pacman'] .cell {
+    border: 1px solid #2121ff;
+    box-shadow: 0 0 10px rgb(33 33 255 / 30%);
+}
+
+@keyframes pacman-dots {
+    to {
+        stroke-dashoffset: -16;
+    }
+}
+
+@keyframes pacman-found {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2) rotate(-15deg);
+    }
+
+    50% {
+        transform: scale(0.8) rotate(15deg);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+:root[data-theme='pacman'] .found-temp {
+    animation: pacman-found var(--animation-duration-found)
+        var(--animation-timing);
+    background: linear-gradient(45deg, #ffd700, #ff7f00);
+    box-shadow: 0 0 20px rgb(255 215 0 / 60%);
+}

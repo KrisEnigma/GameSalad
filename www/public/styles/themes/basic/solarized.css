@@ -1,0 +1,101 @@
+/* Theme: Solarized */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&display=swap');
+
+:root[data-theme='solarized'] {
+    /* Fuentes más apropiadas para un tema tipo terminal */
+    --font-toolbar-family: 'Source Code Pro', monospace;
+    --font-title-family: 'Fira Code', monospace;
+    --font-cell-family: 'IBM Plex Mono', monospace;
+    --color-bg: #002b36;
+    --color-cell: #073642;
+    --color-modal: rgb(0 43 54 / 95%);
+    --color-button: #073642;
+    --color-letters: #b9c3c3;
+    --color-title: #b9c3c3;
+    --color-selected: #859900;
+    --color-hover: #687800;
+    --color-line: #cb4b16;
+    --color-ui: #2aa198;
+    --color-words: #b9c3c3;
+    --color-menu: #b9c3c3;
+
+    /* Efectos de terminal */
+    --shadow-opacity: 0.4;
+    --border-light: 1px solid #094754;
+
+    /* Efectos especiales */
+    --effect-color-1: rgb(133 153 0 / 10%);
+    --effect-color-2: rgb(203 75 22 / 10%);
+    --glow-radius: 15px;
+    --glow-color: rgb(133 153 0 / 20%);
+
+    /* Animaciones */
+    --found-bg: linear-gradient(45deg, #859900, #2aa198);
+
+    /* green to cyan */
+    --found-scale: 1.05;
+    --unused-scale: 0.95;
+    --unused-opacity: 0.25;
+    --confetti-colors: #859900, #2aa198, #268bd2, #6c71c4;
+}
+
+:root[data-theme='solarized'] .board {
+    background: #001f27;
+    box-shadow:
+        inset 0 0 20px rgb(0 0 0 / 30%),
+        inset 0 0 60px rgb(7 54 66 / 50%);
+}
+
+:root[data-theme='solarized'] .cell {
+    border: 1px solid #094754;
+    background: linear-gradient(135deg, #073642, #002b36);
+    box-shadow:
+        inset 0 0 10px rgb(0 0 0 / 20%),
+        0 0 2px rgb(133 153 0 / 20%);
+}
+
+:root[data-theme='solarized'] .title {
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgb(147 161 161 / 30%);
+}
+
+:root[data-theme='solarized'] .toolbar {
+    filter: drop-shadow(0 0 8px rgb(42 161 152 / 40%));
+}
+
+@keyframes solarized-found {
+    0%,
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+        filter: brightness(1.2);
+        box-shadow:
+            0 0 20px rgb(133 153 0 / 40%),
+            0 0 40px rgb(42 161 152 / 30%);
+    }
+}
+
+:root[data-theme='solarized'] .found-temp {
+    animation-name: solarized-found !important;
+}
+
+:root[data-theme='solarized'] .mark.selected {
+    animation: solarized-cursor 2s ease infinite;
+}
+
+@keyframes solarized-cursor {
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgb(133 153 0);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgb(203 75 22);
+    }
+}

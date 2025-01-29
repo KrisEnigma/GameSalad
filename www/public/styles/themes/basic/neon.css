@@ -1,0 +1,39 @@
+/* Theme: Neon */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap');
+
+:root[data-theme='neon'] {
+    --cell-radius: min(8px, 1.5vw);
+
+    /* Fuentes */
+    --font-toolbar-family: 'Orbitron', sans-serif;
+    --font-title-family: 'Orbitron', sans-serif;
+    --font-cell-family: 'Rajdhani', sans-serif;
+    --font-cell-weight: 700;
+
+    /* Colores */
+    --color-bg: #000;
+    --color-cell: #1a1a1a;
+    --color-modal: rgb(0 0 0 / 95%);
+    --color-button: linear-gradient(145deg, #1a1a1a, #000);
+    --color-letters: #0f0;
+    --color-title: #f0f;
+    --color-words: #fff;
+    --color-menu: #0ff;
+    --color-ui: #0ff;
+    --color-selected: #f0f;
+    --color-hover: rgb(255 0 255 / 80%);
+    --color-line: #0f0;
+
+    /* Efectos */
+    --effect-color-1: rgb(0 255 255 / 10%);
+    --effect-color-2: rgb(255 0 255 / 10%);
+    --glow-radius: 30px;
+    --glow-color: rgb(0 255 255 / 30%);
+    --border-light: 1px solid rgb(0 255 255 / 20%);
+
+    /* Animaciones */
+    --found-bg: linear-gradient(45deg, #0ff, #f0f);
+    --found-scale: 1.2;
+    --found-shadow: 0 0 30px rgb(0 255 255 / 80%);
+}

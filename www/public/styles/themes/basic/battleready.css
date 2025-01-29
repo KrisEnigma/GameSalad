@@ -1,0 +1,106 @@
+/* Theme: Battle */
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap');
+
+:root[data-theme='battleready'] {
+    /* Fuentes */
+    --font-toolbar-family: 'Black Ops One', cursive;
+    --font-title-family: 'Staatliches', cursive;
+    --font-cell-family: 'Quantico', sans-serif;
+
+    /* Colores */
+    --color-bg: linear-gradient(135deg, #2f2f2f, #8b4513);
+    --color-cell: #2a2a2a;
+    --color-modal: rgb(42 42 42 / 95%);
+    --color-button: linear-gradient(145deg, #dc143c, #228b22);
+    --color-letters: #ffd700;
+    --color-title: #ffd700;
+    --color-selected: #dc143c;
+    --color-hover: rgb(220 20 60 / 80%);
+    --color-line: #1e90ff;
+    --color-ui: #ffd700;
+    --color-words: #fff;
+    --color-menu: #ffd700;
+
+    /* Efectos */
+    --cell-radius: 4px;
+    --shadow-opacity: 0.5;
+    --border-light: 2px solid rgb(255 215 0 / 20%);
+
+    /* Efectos especiales */
+    --effect-color-1: rgb(139 69 19 / 20%);
+    --effect-color-2: rgb(34 139 34 / 20%);
+    --glow-radius: 15px;
+    --glow-color: rgb(220 20 60 / 30%);
+
+    /* Animaciones */
+    --found-bg: linear-gradient(45deg, #dc143c, #ffd700);
+    --found-scale: 1.15;
+    --found-shadow: 0 0 25px rgb(30 144 255 / 50%);
+    --unused-scale: 0.85;
+    --unused-opacity: 0.25;
+    --confetti-colors: #dc143c, #ffd700, #228b22, #1e90ff;
+}
+
+:root[data-theme='battleready'] .cell {
+    border: 2px solid rgb(255 215 0 / 20%);
+    box-shadow:
+        inset 0 0 10px rgb(220 20 60 / 20%),
+        0 0 15px rgb(30 144 255 / 20%);
+    background: linear-gradient(
+        135deg,
+        rgb(42 42 42 / 95%),
+        rgb(42 42 42 / 85%)
+    );
+}
+
+:root[data-theme='battleready'] .title {
+    text-shadow:
+        2px 2px 0 #dc143c,
+        -2px -2px 0 #228b22;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes battle-found {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.15) rotate(-2deg);
+    }
+
+    75% {
+        transform: scale(1.15) rotate(2deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+:root[data-theme='battleready'] .found-temp {
+    animation: battle-found 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+:root[data-theme='battleready'] .mark.selected {
+    background: #dc143c;
+    animation: battle-pulse 1.5s infinite;
+}
+
+@keyframes battle-pulse {
+    0%,
+    100% {
+        box-shadow:
+            0 0 15px #dc143c,
+            0 0 30px #ffd700;
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px #228b22,
+            0 0 40px #1e90ff;
+    }
+}

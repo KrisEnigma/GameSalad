@@ -1,0 +1,70 @@
+/* Theme: Dark Souls */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+
+:root[data-theme='darksouls'] {
+    /* Fuentes */
+    --font-toolbar-family: 'Cinzel', serif;
+    --font-title-family: 'Cinzel', serif;
+    --font-cell-family: 'Marcellus', serif;
+
+    /* Colores */
+    --color-bg: linear-gradient(135deg, #0c0c0c 0%, #221e1b 100%);
+    --color-cell: linear-gradient(135deg, #2b261f, #0f0b09);
+    --color-modal: rgb(13 13 13 / 95%);
+    --color-button: #bb6f10;
+    --color-letters: #e4d6a7;
+    --color-title: #e4d6a7;
+    --color-selected: #e19038;
+    --color-hover: #ffa533;
+    --color-line: #ff4500;
+    --color-ui: #bb6f10;
+    --color-words: #e4d6a7;
+    --color-menu: #e4d6a7;
+
+    /* Efectos */
+    --cell-radius: min(8px, 2vw);
+    --border-light: 1px solid rgb(255 140 0 / 30%);
+    --shadow-opacity: 0.85;
+
+    /* Animaciones */
+    --found-bg: radial-gradient(circle, #ff8c00 0%, #b35a00 100%);
+    --found-scale: 1.1;
+    --found-shadow: 0 0 30px rgb(255 140 0 / 60%), 0 0 60px rgb(255 69 0 / 40%);
+    --found-brightness: 2.2;
+    --found-blur: 4px;
+    --unused-scale: 0.9;
+    --unused-opacity: 0.15;
+    --animation-duration-found: 700ms;
+    --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --confetti-colors: #4f4f4f, #dbb82c, #9c9c9c, #000;
+}
+
+@keyframes darksouls-found {
+    0% {
+        transform: scale(1);
+        filter: brightness(1) blur(0);
+    }
+
+    40% {
+        transform: scale(1.2);
+        filter: brightness(2.2) blur(4px);
+        box-shadow:
+            0 0 50px rgb(255 140 0 / 80%),
+            0 0 100px rgb(255 69 0 / 60%);
+    }
+
+    70% {
+        transform: scale(0.9);
+        filter: brightness(0.8) blur(0);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: brightness(1) blur(0);
+    }
+}
+
+:root[data-theme='darksouls'] .found-temp {
+    animation-name: darksouls-found !important;
+}

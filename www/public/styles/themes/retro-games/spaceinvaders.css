@@ -1,0 +1,112 @@
+/* Theme: Space Invaders */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root[data-theme='spaceinvaders'] {
+    --font-toolbar-family: 'Press Start 2P', monospace;
+    --font-title-family: 'Press Start 2P', monospace;
+    --font-cell-family: 'VT323', monospace;
+
+    /* Colores */
+    --color-bg: #000;
+    --color-cell: #111;
+    --color-modal: rgb(0 0 0 / 90%);
+    --color-button: #f00;
+    --color-letters: #fff;
+    --color-title: #fff;
+    --color-selected: #f00;
+    --color-hover: #0f0;
+    --color-line: #0f0;
+    --color-ui: #0f0;
+    --color-words: #fff;
+    --color-menu: #fff;
+
+    /* Efectos */
+    --border-light: 1px solid #0f0;
+
+    /* Animaciones */
+    --found-bg: linear-gradient(45deg, #f00, #ff0);
+    --found-scale: 1.2;
+    --found-shadow: 0 0 20px rgb(255 0 0 / 70%);
+    --unused-scale: 0.8;
+    --unused-opacity: 0.15;
+    --animation-duration-found: 600ms;
+    --confetti-colors: #0f0, #f00, #ff0, #fff;
+}
+
+:root[data-theme='spaceinvaders'] body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(2px 2px at 20px 30px, #fff, transparent 70%),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent 70%),
+        radial-gradient(3px 3px at 50px 160px, #fff, transparent 70%),
+        radial-gradient(2px 2px at 80px 120px, #fff, transparent 70%);
+    background-repeat: repeat;
+    background-size: 150px 150px;
+    animation: space-stars 12s linear infinite;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+:root[data-theme='spaceinvaders'] .toolbar {
+    filter: drop-shadow(0 0 10px rgb(0 255 0 / 100%));
+}
+
+:root[data-theme='spaceinvaders'] .cell,
+:root[data-theme='spaceinvaders'] .word {
+    box-shadow: inset 0 0 10px rgb(0 255 0 / 60%);
+}
+
+@keyframes space-stars {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 200px 200px;
+    }
+}
+
+@keyframes invader-found {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    25% {
+        transform: translateY(-15px) scale(1.2);
+    }
+
+    50% {
+        transform: translateY(5px) scale(0.8);
+    }
+
+    75% {
+        transform: translateY(-5px) scale(1.1);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+:root[data-theme='spaceinvaders'] .found-temp {
+    animation: invader-found var(--animation-duration-found) steps(4);
+    background: linear-gradient(45deg, #f00, #ff0);
+    box-shadow: 0 0 20px rgb(255 0 0 / 70%);
+}
+
+:root[data-theme='spaceinvaders'] .mark.selected {
+    animation: invader-selected 1s steps(2) infinite;
+}
+
+@keyframes invader-selected {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
