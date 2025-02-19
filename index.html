@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
+    <base href="/GameSalad/" />
     <title>Game Salad</title>
 
     <!-- Security & Mobile -->
@@ -30,13 +31,118 @@
     <link rel="apple-touch-icon" href="assets/icon.png" sizes="180x180" />
     <link rel="manifest" href="manifest.json" />
 
-    <!-- Critical CSS -->
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="styles/fonts.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/themes.css" />
 
-    <!-- Critical JS -->
+    <!-- Critical JS -->
+    <script type="module" src="game/game.js"></script>
 
-    <!-- Service Worker Registration -->
-    <script type="module" crossorigin src="./assets/index.BxD-vIHG.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index.C7Edlurm.css">
+    <!-- Service Worker Registration -->
+    <script type="module">
+      // Register service worker
+      if ("serviceWorker" in navigator) {
+        const base = document.querySelector('base')?.getAttribute('href') || '/GameSalad/';
+        navigator.serviceWorker
+          .register(new URL('sw.js', base).href, {
+            type: "classic",
+            scope: base
+          })
+          .then((registration) => {
+            console.log("[SW] Registration successful:", registration.scope);
+          })
+          .catch((error) => {
+            console.error("[SW] Registration failed:", error);
+          });
+      }
+
+      import { N as NativeServices } from "./core/platform.js";
+
+      let progressBar,
+        progressPercentage,
+        targetProgress = 0,
+        currentProgress = 0;
+      const startTime = performance.now();
+      const emittedEvents = new Set();
+
+      function updateProgress(progress) {
+        targetProgress = Math.min(1, targetProgress + progress);
+        requestAnimationFrame(updateProgressDisplay);
+      }
+
+      function updateProgressDisplay() {
+        if (!progressBar || !progressPercentage) return;
+        const diff = targetProgress - currentProgress;
+        if (Math.abs(diff) > 0.001) {
+          currentProgress += diff * 0.1;
+          progressBar.style.transform = `scaleX(${currentProgress})`;
+          progressPercentage.textContent = `${Math.round(
+            currentProgress * 100
+          )}%`;
+
+          if (currentProgress >= 0.999) {
+            const overlay = document.querySelector(".js-loading-overlay");
+            if (overlay) {
+              overlay.classList.add("fade-out");
+              overlay.addEventListener(
+                "transitionend",
+                () => {
+                  overlay.remove();
+                  document.body.classList.remove("js-loading");
+                },
+                { once: true }
+              );
+            }
+          } else {
+            requestAnimationFrame(updateProgressDisplay);
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          await NativeServices.initialize();
+          progressBar = document.querySelector(".progress-bar");
+          progressPercentage = document.querySelector(".progress-percentage");
+          updateProgress(0.75);
+
+          // Escuchar eventos y actualizar progreso
+          const events = {
+            "resources-ready": 0.2,
+            themechange: 0.2,
+            "initialization-complete": 0.2,
+            "sw-ready": 0.2,
+            "title-adjusted": 0.2,
+          };
+
+          Object.entries(events).forEach(([event, weight]) => {
+            document.addEventListener(event, () => {
+              if (!emittedEvents.has(event)) {
+                console.log(`[GS_EVENT] ${event} triggered`);
+                emittedEvents.add(event);
+                updateProgress(weight);
+              }
+            });
+          });
+
+          const loadTime = performance.now() - startTime;
+          console.log(`⚡ Load time: ${loadTime.toFixed(2)}ms`);
+
+          // Asegurar que initialization-complete se emita al menos una vez
+          if (!emittedEvents.has("initialization-complete")) {
+            document.dispatchEvent(new Event("initialization-complete"));
+          }
+        } catch (error) {
+          console.error("Initialization error:", error);
+          const overlay = document.querySelector(".js-loading-overlay");
+          if (overlay) {
+            overlay.classList.add("fade-out");
+            setTimeout(() => overlay.remove(), 500);
+          }
+        }
+      });
+    </script>
   </head>
   <body class="js-loading">
     <div class="js-loading-overlay">
