@@ -1,282 +1,114 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <title>Game Salad</title>
-    <link rel="icon" href="assets/images/icon_tr.png" type="image/x-icon" sizes="32x32">
-    <link rel="apple-touch-icon" href="assets/images/icon.png" sizes="180x180">
-    <meta name="description" content="Video Game Word Puzzle">
-    <meta property="og:title" content="Game Salad">
-    <meta property="og:description" content="Video Game Word Puzzle">
-    <meta name="theme-color" content="#262626">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <link rel="manifest" href="assets/manifest.json">
 
-    <!-- Early font preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Security & Mobile -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * file: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *; img-src * data: content: file:; script-src * file: 'unsafe-eval' 'unsafe-inline'; connect-src * file:;"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
-    <!-- Critical fonts preload -->
-    <link rel="preload" as="style"
-        href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=JetBrains+Mono:wght@700&display=swap">
+    <!-- PWA -->
+    <link
+      rel="icon"
+      href="./assets/icon_tr.png"
+      type="image/x-icon"
+      sizes="32x32"
+    />
+    <link rel="apple-touch-icon" href="./assets/icon.png" sizes="180x180" />
+    <link rel="manifest" href="./manifest.json" />
 
-    <!-- Non-blocking font loading -->
-    <!-- Grupo 1: Fuentes principales (tema por defecto) -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=JetBrains+Mono:wght@700&display=swap"
-        media="print" onload="this.media='all'">
+    <!-- Critical CSS -->
 
-    <!-- Grupo 2: Fuentes alternativas (otros temas) -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Audiowide&family=Black+Ops+One&family=Cardo:wght@400;700&family=Chakra+Petch:wght@400;700&family=Cinzel:wght@500;700&family=Cormorant:wght@500;700&family=Crimson+Pro:wght@500&family=DM+Sans:wght@500;700&family=DotGothic16&family=Exo+2:wght@700&family=Fira+Code:wght@500;700&family=Goldman&family=IBM+Plex+Mono:wght@500;700&family=Inconsolata:wght@400;700&family=Inter:wght@500;700&family=Marcellus&family=MedievalSharp&family=Metamorphous&family=Monoton&family=Noto+Sans+JP:wght@500;700&family=Old+Standard+TT:wght@400;700&family=Orbitron:wght@400;700&family=Oswald:wght@100;200;400&family=Outfit:wght@700&family=Permanent+Marker&family=Philosopher:wght@700&family=Pixelify+Sans&family=Playfair+Display:wght@400;700&family=Press+Start+2P&family=Quantico:wght@700&family=Quicksand:wght@400;700&family=Rajdhani:wght@500;700&family=Righteous&family=Roboto+Mono:wght@700&family=Rubik+Glitch&family=Share+Tech+Mono&family=Silkscreen:wght@700&family=Source+Code+Pro:wght@700&family=Space+Grotesk:wght@400;600&family=Space+Mono:wght@700&family=Staatliches&family=Syncopate:wght@400;700&family=Syne+Mono&family=Teko:wght@600&family=Tomorrow:wght@500&family=VT323&&display=swap" media="print" onload="this.media='all'">
+    <!-- Critical JS -->
 
-    <!-- Preload main JavaScript -->
-    <link rel="modulepreload" href="./assets/js/game.js" as="script">
-
-    <!-- Loading overlay styles -->
-    <style>
-        .js-loading-overlay {
-            position: fixed;
-            inset: 0;
-            background: #121212;
-            display: grid !important;
-            place-items: center !important;
-            z-index: 99999;
-            padding: 20px;
-        }
-
-        .js-loading-overlay.fade-out {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.1s ease-out;
-        }
-
-        .progress-container {
-            position: relative;
-            width: min(280px, 70vw);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .progress {
-            position: relative;
-            width: 100%;
-            height: 8px;
-            background: #2a2a2a;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, .2), 0 0 10px rgba(52, 152, 219, .3);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-            transform-origin: left;
-            transform: scaleX(0);
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(52, 152, 219, .5), 0 0 40px rgba(46, 204, 113, .3);
-            transition: transform 0.2s ease-out;
-        }
-
-        .progress-percentage {
-            color: #fff;
-            font-family: system-ui, -apple-system, sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            transition: opacity 0.2s ease-out;
-        }
-    </style>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(async registrations => {
-                try {
-                    await Promise.all(registrations.map(registration => registration.unregister()));
-                } catch (error) {
-                    console.error('Error removing Service Workers:', error);
-                }
-            });
-        }
-    </script>
-    
-    <!-- Cargar styles.css antes del script principal -->
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <script>
-        let progressBar, progressPercentage, targetProgress = 0, currentProgress = 0;
-        const startTime = performance.now();
-
-        function updateProgress(progress) {
-            targetProgress = Math.min(0.95, targetProgress + progress);
-            requestAnimationFrame(updateProgressDisplay);
-        }
-
-        function updateProgressDisplay() {
-            const diff = targetProgress - currentProgress;
-            if (Math.abs(diff) > 0.001) {
-                currentProgress += diff * 0.1;
-                progressBar.style.transform = `scaleX(${currentProgress})`;
-                progressPercentage.textContent = `${Math.round(currentProgress * 100)}%`;
-                progressBar.parentElement.setAttribute('aria-valuenow', Math.round(currentProgress * 100));
-                requestAnimationFrame(updateProgressDisplay);
-            }
-        }
-
-        function finishLoading() {
-            targetProgress = 1;
-            requestAnimationFrame(updateProgressDisplay);
-            
-            // Usar timeout para asegurar que la animación termine
-            setTimeout(() => {
-                const overlay = document.querySelector('.js-loading-overlay');
-                if (overlay) {
-                    overlay.classList.add('fade-out');
-                    overlay.addEventListener('transitionend', () => {
-                        overlay.style.display = 'none';
-                    }, { once: true });
-                }
-                document.body.classList.remove('js-loading');
-            }, 400);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            progressBar = document.querySelector('.progress-bar');
-            progressPercentage = document.querySelector('.progress-percentage');
-
-            const progressEvents = {
-                'resources-ready': 0.3,
-                'themechange': 0.3,
-                'initialization-complete': 0.2,
-                'sw-ready': 0.1,
-                'title-adjusted': 0.1
-            };
-
-            Object.entries(progressEvents).forEach(([event, value]) => {
-                document.addEventListener(event, () => updateProgress(value));
-            });
-
-            document.addEventListener('title-adjusted', (e) => {
-                if (e.detail?.final) {
-                    finishLoading();
-                }
-            });
-
-            const loadTime = performance.now() - startTime;
-            const timeoutDelay = Math.max(3000 - loadTime, 1000);
-            setTimeout(finishLoading, timeoutDelay);
-        });
-
-        window.addEventListener('error', (event) => {
-            console.error('Error global:', event.error);
-            finishLoading();
-        });
-
-        window.addEventListener('unhandledrejection', (event) => {
-            console.error('Promesa rechazada:', event.reason);
-            finishLoading();
-        });
-    </script>
-  <script type="module" crossorigin src="./assets/js/main.js"></script>
-</head>
-
-<body>
-    <noscript>
-        <style>
-            .js-loading-overlay {
-                display: none !important;
-            }
-        </style>
-        <div style="text-align: center; padding: 20px; color: white;">
-            This game requires JavaScript to work. Please enable JavaScript to play.
+    <!-- Service Worker Registration -->
+    <script type="module" crossorigin src="/assets/index-B9k5xVMY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-e2Gblrbu.css">
+  </head>
+  <body class="js-loading">
+    <div class="js-loading-overlay">
+      <div class="progress-container">
+        <div class="progress">
+          <div class="progress-bar"></div>
         </div>
-    </noscript>
-
-    <div class="js-loading-overlay" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <div class="progress-container">
-            <div class="progress">
-                <div class="progress-bar"></div>
-            </div>
-            <div class="progress-percentage">0%</div>
-        </div>
+        <div class="progress-percentage">0%</div>
+      </div>
     </div>
 
-    <div class="toolbar">
-        <button class="menu" aria-label="Open menu">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4 18L20 18 M4 12L20 12 M4 6L20 6" stroke-width="2" stroke-linecap="round" />
-            </svg>
-        </button>
-        <div class="level-number"></div>
-        <div class="timer"></div>
-    </div>
+    <header class="toolbar">
+      <button class="menu" aria-label="Open Menu">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M4 18L20 18 M4 12L20 12 M4 6L20 6"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <div class="level-number"></div>
+      <div class="timer">
+        <span class="minutes">00</span><span class="colon">:</span
+        ><span class="seconds">00</span>
+      </div>
+    </header>
 
-    <div class="game-container">
-        <div class="title-container">
-            <h1 class="title"></h1>
+    <main class="game-container">
+      <div class="title-container">
+        <h1 class="title"></h1>
+      </div>
+      <div class="board"></div>
+      <div class="word-list"></div>
+    </main>
+
+    <div class="modal-overlay" id="modal" hidden>
+      <div class="modal-content">
+        <h2>Menu</h2>
+        <div class="menu-options">
+          <button id="theme-button">Change Theme</button>
+          <button id="reset-game">Restart Level</button>
+          <button id="vibration-toggle">Enable Vibration</button>
+          <button id="test-notification">Test Notification</button>
         </div>
-        <div class="board"></div>
-        <div class="word-list"></div>
+      </div>
     </div>
 
-    <div class="modal-overlay" id="modal" role="dialog" aria-labelledby="modal-title">
-        <div class="modal-content">
-            <h2 id="modal-title">Menu</h2>
-            <div class="menu-options">
-                <button id="theme-button" aria-label="Change Theme">Change Theme</button>
-                <button id="reset-game" aria-label="Restart Level">Restart Level</button>
-                <button id="vibration-toggle" aria-label="Toggle Vibration">Toggle Vibration</button>
-                <button id="test-notification" aria-label="Test Notification">Test Notification</button>
-            </div>
+    <div class="modal-overlay" id="theme-modal" hidden>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="back-button" aria-label="Back to Menu">
+            <div class="arrow-left"></div>
+          </button>
+          <h2>Themes</h2>
         </div>
-    </div>
-
-    <div id="theme-modal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="back-button">
-                    <div class="arrow-left"></div>
-                </button>
-                <h2>Temas</h2>
-            </div>
-            <div class="theme-grid">
-                <div class="theme-placeholder">Loading themes...</div>
-            </div>
+        <div class="theme-grid">
+          <div class="theme-placeholder">Loading themes...</div>
         </div>
+      </div>
     </div>
 
-    <div class="modal-overlay" id="theme-modal" role="dialog" aria-labelledby="theme-modal-title">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="back-button" aria-label="Back">
-                    <div class="arrow-left"></div>
-                </button>
-                <h2 id="theme-modal-title">Themes</h2>
-            </div>
-            <div class="theme-grid">
-                <div class="theme-placeholder">Loading themes...</div>
-            </div>
+    <div class="modal-overlay" id="victory-modal" hidden>
+      <canvas id="confetti-canvas"></canvas>
+      <div class="modal-content">
+        <h2>Level Complete!</h2>
+        <p class="victory-time">Time: <span id="final-time"></span></p>
+        <div class="menu-options">
+          <button id="restart-level">Restart Level</button>
+          <button id="next-level">Next Level</button>
         </div>
+      </div>
     </div>
-
-    <div class="modal-overlay" id="victory-modal" role="dialog" aria-labelledby="victory-modal-title">
-        <canvas id="confetti-canvas"></canvas>
-        <div class="modal-content">
-            <h2 id="victory-modal-title">Level Complete!</h2>
-            <p class="victory-time">Time: <span id="final-time"></span></p>
-            <div class="menu-options">
-                <button id="restart-level" aria-label="Restart Level">Restart Level</button>
-                <button id="next-level" aria-label="Next Level">Next Level</button>
-            </div>
-        </div>
-    </div>
-</body>
-
-</body></html>
+  </body>
 </html>

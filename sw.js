@@ -1,52 +1,46 @@
-/* global clients */
+/* eslint-env serviceworker */
 
-self.addEventListener('install', () => {
-    self.skipWaiting();
-    console.log('📱 Notification SW instalado');
+const SW_VERSION = "2.1.0";
+
+self.addEventListener("install", (event) => {
+  self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
-    event.waitUntil(self.clients.claim());
-    console.log('📱 Notification SW activado');
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((cacheNames) => {
+        // Limpiar cualquier caché antigua
+        return Promise.all(cacheNames.map((name) => caches.delete(name)));
+      })
+      .then(() => self.clients.claim())
+  );
 });
 
-self.addEventListener('notificationclick', (event) => {
-    event.notification.close();
-
-    // Usar la URL almacenada en la notificación o construir la URL correcta
-    const urlToOpen = event.notification.data?.url || `${self.registration.scope}index.html`;
-
-    // Abrir o enfocar la ventana existente
-    event.waitUntil(
-        clients.matchAll({
-            type: 'window',
-            includeUncontrolled: true
-        }).then((clientList) => {
-            for (const client of clientList) {
-                if (client.url === urlToOpen && 'focus' in client) {
-                    return client.focus();
-                }
-            }
-            return clients.openWindow(urlToOpen);
-        })
-    );
+// Handle push notifications
+self.addEventListener("push", (event) => {
+  const data = event.data?.json() || {};
+  event.waitUntil(
+    self.registration.showNotification(data.title || "Game Salad", {
+      body: data.body || "New update available!",
+      icon: "/assets/icon_tr.png",
+      badge: "/assets/icon.png",
+      vibrate: [200, 100, 200],
+      data: { url: data.url || "/" },
+    })
+  );
 });
 
-self.addEventListener('push', (event) => {
-    if (!event.data) return;
-
-    const data = event.data.json();
-    const options = {
-        body: data.body,
-        icon: '/assets/images/icon.png',
-        badge: '/assets/images/icon.png',
-        vibrate: [200, 100, 200],
-        data: {
-            url: self.location.origin
-        }
-    };
-
-    event.waitUntil(
-        self.registration.showNotification(data.title, options)
-    );
+// Handle notification clicks
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients.matchAll({ type: "window" }).then((clients) => {
+      const client = clients.find((c) => c.url === event.notification.data.url);
+      return client
+        ? client.focus()
+        : clients.openWindow(event.notification.data.url);
+    })
+  );
 });
