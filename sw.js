@@ -1,6 +1,7 @@
 /* eslint-env serviceworker */
 
 const SW_VERSION = "2.1.0";
+const BASE_PATH = self.registration.scope;
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
@@ -24,10 +25,10 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title || "Game Salad", {
       body: data.body || "New update available!",
-      icon: "/assets/icon_tr.png",
-      badge: "/assets/icon.png",
+      icon: new URL("assets/icon_tr.png", BASE_PATH).href,
+      badge: new URL("assets/icon.png", BASE_PATH).href,
       vibrate: [200, 100, 200],
-      data: { url: data.url || "/" },
+      data: { url: data.url || BASE_PATH },
     })
   );
 });
