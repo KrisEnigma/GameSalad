@@ -1,7 +1,6 @@
 /* eslint-env serviceworker */
 
 const SW_VERSION = "2.1.0";
-const BASE_PATH = '/GameSalad/';
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
@@ -25,10 +24,10 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title || "Game Salad", {
       body: data.body || "New update available!",
-      icon: `${BASE_PATH}assets/icon_tr.png`,
-      badge: `${BASE_PATH}assets/icon.png`,
+      icon: "./assets/icon_tr.png",
+      badge: "./assets/icon.png",
       vibrate: [200, 100, 200],
-      data: { url: data.url || BASE_PATH },
+      data: { url: data.url || "./" },
     })
   );
 });
