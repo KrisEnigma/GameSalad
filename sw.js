@@ -24,10 +24,10 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title || "Game Salad", {
       body: data.body || "New update available!",
-      icon: "/assets/icon_tr.png",
-      badge: "/assets/icon.png",
+      icon: "./assets/icon_tr.png",
+      badge: "./assets/icon.png",
       vibrate: [200, 100, 200],
-      data: { url: data.url || "/" },
+      data: { url: data.url || "./" },
     })
   );
 });
