@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <base href="/GameSalad/" />
+    <title>Game Salad</title>
+
+    <!-- Security & Mobile -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * file: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *; img-src * data: content: file:; script-src * file: 'unsafe-eval' 'unsafe-inline'; connect-src * file:;"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <!-- PWA -->
+    <link
+      rel="icon"
+      href="./assets/icon_tr.png"
+      type="image/x-icon"
+      sizes="32x32"
+    />
+    <link rel="apple-touch-icon" href="./assets/icon.png" sizes="180x180" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <!-- Critical CSS -->
+
+    <!-- Critical JS -->
+
+    <!-- Service Worker Registration -->
+    <script type="module" crossorigin src="./assets/index.BGo8kVzJ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.C7Edlurm.css">
+  </head>
+  <body class="js-loading">
+    <div class="js-loading-overlay">
+      <div class="progress-container">
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <div class="progress-percentage">0%</div>
+      </div>
+    </div>
+
+    <header class="toolbar">
+      <button class="menu" aria-label="Open Menu">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M4 18L20 18 M4 12L20 12 M4 6L20 6"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+      <div class="level-number"></div>
+      <div class="timer">
+        <span class="minutes">00</span><span class="colon">:</span
+        ><span class="seconds">00</span>
+      </div>
+    </header>
+
+    <main class="game-container">
+      <div class="title-container">
+        <h1 class="title"></h1>
+      </div>
+      <div class="board"></div>
+      <div class="word-list"></div>
+    </main>
+
+    <div class="modal-overlay" id="modal" hidden>
+      <div class="modal-content">
+        <h2>Menu</h2>
+        <div class="menu-options">
+          <button id="theme-button">Change Theme</button>
+          <button id="reset-game">Restart Level</button>
+          <button id="vibration-toggle">Enable Vibration</button>
+          <button id="test-notification">Test Notification</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="theme-modal" hidden>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="back-button" aria-label="Back to Menu">
+            <div class="arrow-left"></div>
+          </button>
+          <h2>Themes</h2>
+        </div>
+        <div class="theme-grid">
+          <div class="theme-placeholder">Loading themes...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="victory-modal" hidden>
+      <canvas id="confetti-canvas"></canvas>
+      <div class="modal-content">
+        <h2>Level Complete!</h2>
+        <p class="victory-time">Time: <span id="final-time"></span></p>
+        <div class="menu-options">
+          <button id="restart-level">Restart Level</button>
+          <button id="next-level">Next Level</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
