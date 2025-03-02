@@ -3,7 +3,7 @@
   font-family: Rubik;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/rubik-v20-latin-500.woff2") format("woff2");
+  src: url("../fonts/rubik-v20-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -11,7 +11,7 @@
   font-family: Rubik;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/rubik-v20-latin-700.woff2") format("woff2");
+  src: url("../fonts/rubik-v20-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -20,7 +20,7 @@
   font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/jetbrains-mono-v20-latin-700.woff2") format("woff2");
+  src: url("../fonts/jetbrains-mono-v20-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -29,7 +29,7 @@
   font-family: "Press Start 2P";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/press-start-2p-v15-latin-regular.woff2") format("woff2");
+  src: url("../fonts/press-start-2p-v15-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -37,7 +37,7 @@
   font-family: "VT323";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/vt323-v17-latin-regular.woff2") format("woff2");
+  src: url("../fonts/vt323-v17-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -45,7 +45,7 @@
   font-family: "Pixelify Sans";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/pixelify-sans-v1-latin-regular.woff2") format("woff2");
+  src: url("../fonts/pixelify-sans-v1-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -53,7 +53,7 @@
   font-family: Silkscreen;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/silkscreen-v1-latin-700.woff2") format("woff2");
+  src: url("../fonts/silkscreen-v1-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -61,7 +61,7 @@
   font-family: "Space Mono";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/space-mono-v12-latin-700.woff2") format("woff2");
+  src: url("../fonts/space-mono-v12-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -69,7 +69,7 @@
   font-family: "Source Code Pro";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/source-code-pro-v22-latin-700.woff2") format("woff2");
+  src: url("../fonts/source-code-pro-v22-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -77,7 +77,7 @@
   font-family: "Fira Code";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/fira-code-v21-latin-500.woff2") format("woff2");
+  src: url("../fonts/fira-code-v21-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -85,7 +85,7 @@
   font-family: "Fira Code";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/fira-code-v21-latin-700.woff2") format("woff2");
+  src: url("../fonts/fira-code-v21-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -93,7 +93,7 @@
   font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/ibm-plex-mono-v19-latin-500.woff2") format("woff2");
+  src: url("../fonts/ibm-plex-mono-v19-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -101,7 +101,7 @@
   font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/ibm-plex-mono-v19-latin-700.woff2") format("woff2");
+  src: url("../fonts/ibm-plex-mono-v19-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -110,7 +110,7 @@
   font-family: "Black Ops One";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/black-ops-one-v20-latin-regular.woff2") format("woff2");
+  src: url("../fonts/black-ops-one-v20-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -118,7 +118,7 @@
   font-family: "Permanent Marker";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/permanent-marker-v16-latin-regular.woff2") format("woff2");
+  src: url("../fonts/permanent-marker-v16-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -126,7 +126,7 @@
   font-family: Righteous;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/righteous-v13-latin-regular.woff2") format("woff2");
+  src: url("../fonts/righteous-v13-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -135,7 +135,7 @@
   font-family: Orbitron;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/orbitron-v29-latin-regular.woff2") format("woff2");
+  src: url("../fonts/orbitron-v29-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -143,7 +143,7 @@
   font-family: Orbitron;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/orbitron-v29-latin-700.woff2") format("woff2");
+  src: url("../fonts/orbitron-v29-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -151,7 +151,7 @@
   font-family: Cinzel;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/cinzel-v19-latin-500.woff2") format("woff2");
+  src: url("../fonts/cinzel-v19-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -159,7 +159,7 @@
   font-family: Cinzel;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/cinzel-v19-latin-700.woff2") format("woff2");
+  src: url("../fonts/cinzel-v19-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -168,7 +168,7 @@
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/playfair-display-v30-latin-regular.woff2") format("woff2");
+  src: url("../fonts/playfair-display-v30-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -176,7 +176,7 @@
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/playfair-display-v30-latin-700.woff2") format("woff2");
+  src: url("../fonts/playfair-display-v30-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -185,7 +185,7 @@
   font-family: Alegreya;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/alegreya-v35-latin-500.woff2") format("woff2");
+  src: url("../fonts/alegreya-v35-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -193,7 +193,7 @@
   font-family: Alegreya;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/alegreya-v35-latin-700.woff2") format("woff2");
+  src: url("../fonts/alegreya-v35-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -201,7 +201,7 @@
   font-family: Audiowide;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/audiowide-v16-latin-regular.woff2") format("woff2");
+  src: url("../fonts/audiowide-v16-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -209,7 +209,7 @@
   font-family: "Black Ops One";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/black-ops-one-v20-latin-regular.woff2") format("woff2");
+  src: url("../fonts/black-ops-one-v20-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -217,7 +217,7 @@
   font-family: Cardo;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/cardo-v19-latin-regular.woff2") format("woff2");
+  src: url("../fonts/cardo-v19-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -225,7 +225,7 @@
   font-family: Cardo;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/cardo-v19-latin-700.woff2") format("woff2");
+  src: url("../fonts/cardo-v19-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -233,7 +233,7 @@
   font-family: "Chakra Petch";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/chakra-petch-v9-latin-regular.woff2") format("woff2");
+  src: url("../fonts/chakra-petch-v9-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -241,7 +241,7 @@
   font-family: "Chakra Petch";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/chakra-petch-v9-latin-700.woff2") format("woff2");
+  src: url("../fonts/chakra-petch-v9-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -249,7 +249,7 @@
   font-family: Cinzel;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/cinzel-v19-latin-500.woff2") format("woff2");
+  src: url("../fonts/cinzel-v19-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -257,7 +257,7 @@
   font-family: Cinzel;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/cinzel-v19-latin-700.woff2") format("woff2");
+  src: url("../fonts/cinzel-v19-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -265,7 +265,7 @@
   font-family: Cormorant;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/cormorant-v21-latin-500.woff2") format("woff2");
+  src: url("../fonts/cormorant-v21-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -273,7 +273,7 @@
   font-family: Cormorant;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/cormorant-v21-latin-700.woff2") format("woff2");
+  src: url("../fonts/cormorant-v21-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -281,7 +281,7 @@
   font-family: "Crimson Pro";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/crimson-pro-v23-latin-500.woff2") format("woff2");
+  src: url("../fonts/crimson-pro-v23-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -289,7 +289,7 @@
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/dm-sans-v11-latin-500.woff2") format("woff2");
+  src: url("../fonts/dm-sans-v11-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -297,7 +297,7 @@
   font-family: "DM Sans";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/dm-sans-v11-latin-700.woff2") format("woff2");
+  src: url("../fonts/dm-sans-v11-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -305,7 +305,7 @@
   font-family: "DotGothic16";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/dotgothic16-v15-latin-regular.woff2") format("woff2");
+  src: url("../fonts/dotgothic16-v15-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -313,7 +313,7 @@
   font-family: "Exo 2";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/exo-2-v20-latin-700.woff2") format("woff2");
+  src: url("../fonts/exo-2-v20-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -321,7 +321,7 @@
   font-family: "Fira Code";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/fira-code-v21-latin-500.woff2") format("woff2");
+  src: url("../fonts/fira-code-v21-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -329,7 +329,7 @@
   font-family: "Fira Code";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/fira-code-v21-latin-700.woff2") format("woff2");
+  src: url("../fonts/fira-code-v21-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -337,7 +337,7 @@
   font-family: Goldman;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/goldman-v16-latin-regular.woff2") format("woff2");
+  src: url("../fonts/goldman-v16-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -345,7 +345,7 @@
   font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/ibm-plex-mono-v19-latin-500.woff2") format("woff2");
+  src: url("../fonts/ibm-plex-mono-v19-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -353,7 +353,7 @@
   font-family: "IBM Plex Mono";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/ibm-plex-mono-v19-latin-700.woff2") format("woff2");
+  src: url("../fonts/ibm-plex-mono-v19-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -361,7 +361,7 @@
   font-family: Inconsolata;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/inconsolata-v31-latin-regular.woff2") format("woff2");
+  src: url("../fonts/inconsolata-v31-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -369,7 +369,7 @@
   font-family: Inconsolata;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/inconsolata-v31-latin-700.woff2") format("woff2");
+  src: url("../fonts/inconsolata-v31-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -377,7 +377,7 @@
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/inter-v12-latin-500.woff2") format("woff2");
+  src: url("../fonts/inter-v12-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -385,7 +385,7 @@
   font-family: Inter;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/inter-v12-latin-700.woff2") format("woff2");
+  src: url("../fonts/inter-v12-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -393,7 +393,7 @@
   font-family: "JetBrains Mono";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/jetbrains-mono-v20-latin-700.woff2") format("woff2");
+  src: url("../fonts/jetbrains-mono-v20-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -401,7 +401,7 @@
   font-family: Marcellus;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/marcellus-v13-latin-regular.woff2") format("woff2");
+  src: url("../fonts/marcellus-v13-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -409,7 +409,7 @@
   font-family: MedievalSharp;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/medievalsharp-v24-latin-regular.woff2") format("woff2");
+  src: url("../fonts/medievalsharp-v24-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -417,7 +417,7 @@
   font-family: Metamorphous;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/metamorphous-v18-latin-regular.woff2") format("woff2");
+  src: url("../fonts/metamorphous-v18-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -425,7 +425,7 @@
   font-family: Monoton;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/monoton-v15-latin-regular.woff2") format("woff2");
+  src: url("../fonts/monoton-v15-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -433,7 +433,7 @@
   font-family: "Noto Sans JP";
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/noto-sans-jp-v52-latin-500.woff2") format("woff2");
+  src: url("../fonts/noto-sans-jp-v52-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -441,7 +441,7 @@
   font-family: "Noto Sans JP";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/noto-sans-jp-v52-latin-700.woff2") format("woff2");
+  src: url("../fonts/noto-sans-jp-v52-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -449,7 +449,7 @@
   font-family: "Old Standard TT";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/old-standard-tt-v18-latin-regular.woff2") format("woff2");
+  src: url("../fonts/old-standard-tt-v18-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -457,7 +457,7 @@
   font-family: "Old Standard TT";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/old-standard-tt-v18-latin-700.woff2") format("woff2");
+  src: url("../fonts/old-standard-tt-v18-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -465,7 +465,7 @@
   font-family: Orbitron;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/orbitron-v29-latin-regular.woff2") format("woff2");
+  src: url("../fonts/orbitron-v29-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -473,7 +473,7 @@
   font-family: Orbitron;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/orbitron-v29-latin-700.woff2") format("woff2");
+  src: url("../fonts/orbitron-v29-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -481,7 +481,7 @@
   font-family: Oswald;
   font-style: normal;
   font-weight: 200;
-  src: url("/fonts/oswald-v49-latin-200.woff2") format("woff2");
+  src: url("../fonts/oswald-v49-latin-200.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -489,7 +489,7 @@
   font-family: Oswald;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/oswald-v49-latin-regular.woff2") format("woff2");
+  src: url("../fonts/oswald-v49-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -497,7 +497,7 @@
   font-family: Outfit;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/outfit-v11-latin-700.woff2") format("woff2");
+  src: url("../fonts/outfit-v11-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -505,7 +505,7 @@
   font-family: "Permanent Marker";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/permanent-marker-v16-latin-regular.woff2") format("woff2");
+  src: url("../fonts/permanent-marker-v16-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -513,7 +513,7 @@
   font-family: Philosopher;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/philosopher-v19-latin-700.woff2") format("woff2");
+  src: url("../fonts/philosopher-v19-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -521,7 +521,7 @@
   font-family: "Pixelify Sans";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/pixelify-sans-v1-latin-regular.woff2") format("woff2");
+  src: url("../fonts/pixelify-sans-v1-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -529,7 +529,7 @@
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/playfair-display-v30-latin-regular.woff2") format("woff2");
+  src: url("../fonts/playfair-display-v30-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -537,7 +537,7 @@
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/playfair-display-v30-latin-700.woff2") format("woff2");
+  src: url("../fonts/playfair-display-v30-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -545,7 +545,7 @@
   font-family: "Press Start 2P";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/press-start-2p-v15-latin-regular.woff2") format("woff2");
+  src: url("../fonts/press-start-2p-v15-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -553,7 +553,7 @@
   font-family: Quantico;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/quantico-v15-latin-700.woff2") format("woff2");
+  src: url("../fonts/quantico-v15-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -561,7 +561,7 @@
   font-family: Quicksand;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/quicksand-v30-latin-regular.woff2") format("woff2");
+  src: url("../fonts/quicksand-v30-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -569,7 +569,7 @@
   font-family: Quicksand;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/quicksand-v30-latin-700.woff2") format("woff2");
+  src: url("../fonts/quicksand-v30-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -577,7 +577,7 @@
   font-family: Rajdhani;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/rajdhani-v15-latin-500.woff2") format("woff2");
+  src: url("../fonts/rajdhani-v15-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -585,7 +585,7 @@
   font-family: Rajdhani;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/rajdhani-v15-latin-700.woff2") format("woff2");
+  src: url("../fonts/rajdhani-v15-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -593,7 +593,7 @@
   font-family: Righteous;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/righteous-v13-latin-regular.woff2") format("woff2");
+  src: url("../fonts/righteous-v13-latin-regular.woff2");
   font-display: swap;
 }
 
@@ -601,7 +601,7 @@
   font-family: "Roboto Mono";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/roboto-mono-v22-latin-700.woff2") format("woff2");
+  src: url("../fonts/roboto-mono-v22-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -609,7 +609,7 @@
   font-family: Rubik;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/rubik-v20-latin-500.woff2") format("woff2");
+  src: url("../fonts/rubik-v20-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -617,7 +617,7 @@
   font-family: Rubik;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/rubik-v20-latin-700.woff2") format("woff2");
+  src: url("../fonts/rubik-v20-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -625,7 +625,7 @@
   font-family: "Rubik Glitch";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/rubik-glitch-v1-latin-regular.woff2") format("woff2");
+  src: url("../fonts/rubik-glitch-v1-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -633,7 +633,7 @@
   font-family: "Share Tech Mono";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/share-tech-mono-v15-latin-regular.woff2") format("woff2");
+  src: url("../fonts/share-tech-mono-v15-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -641,7 +641,7 @@
   font-family: Silkscreen;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/silkscreen-v1-latin-700.woff2") format("woff2");
+  src: url("../fonts/silkscreen-v1-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -649,7 +649,7 @@
   font-family: "Source Code Pro";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/source-code-pro-v22-latin-700.woff2") format("woff2");
+  src: url("../fonts/source-code-pro-v22-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -657,7 +657,7 @@
   font-family: "Space Grotesk";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/space-grotesk-v15-latin-regular.woff2") format("woff2");
+  src: url("../fonts/space-grotesk-v15-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -665,7 +665,7 @@
   font-family: "Space Grotesk";
   font-style: normal;
   font-weight: 600;
-  src: url("/fonts/space-grotesk-v15-latin-600.woff2") format("woff2");
+  src: url("../fonts/space-grotesk-v15-latin-600.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -673,7 +673,7 @@
   font-family: "Space Mono";
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/space-mono-v12-latin-700.woff2") format("woff2");
+  src: url("../fonts/space-mono-v12-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -681,7 +681,7 @@
   font-family: Staatliches;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/staatliches-v11-latin-regular.woff2") format("woff2");
+  src: url("../fonts/staatliches-v11-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -689,7 +689,7 @@
   font-family: Syncopate;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/syncopate-v19-latin-regular.woff2") format("woff2");
+  src: url("../fonts/syncopate-v19-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -697,7 +697,7 @@
   font-family: Syncopate;
   font-style: normal;
   font-weight: 700;
-  src: url("/fonts/syncopate-v19-latin-700.woff2") format("woff2");
+  src: url("../fonts/syncopate-v19-latin-700.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -705,7 +705,7 @@
   font-family: "Syne Mono";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/syne-mono-v15-latin-regular.woff2") format("woff2");
+  src: url("../fonts/syne-mono-v15-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -713,7 +713,7 @@
   font-family: Teko;
   font-style: normal;
   font-weight: 600;
-  src: url("/fonts/teko-v15-latin-600.woff2") format("woff2");
+  src: url("../fonts/teko-v15-latin-600.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -721,7 +721,7 @@
   font-family: Tomorrow;
   font-style: normal;
   font-weight: 500;
-  src: url("/fonts/tomorrow-v15-latin-500.woff2") format("woff2");
+  src: url("../fonts/tomorrow-v15-latin-500.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -729,6 +729,6 @@
   font-family: "VT323";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/vt323-v17-latin-regular.woff2") format("woff2");
+  src: url("../fonts/vt323-v17-latin-regular.woff2") format("woff2");
   font-display: swap;
 }
