@@ -8,6 +8,54 @@
     />
     <title>Game Salad</title>
 
+    <!-- Prevenir flash blanco -->
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      html {
+        background: #121212;
+      }
+
+      body {
+        background: #121212;
+        opacity: 0;
+      }
+
+      body.ready {
+        opacity: 1;
+        background: var(--color-bg);
+        transition: opacity 0.3s ease-out;
+      }
+
+      @font-face {
+        font-family: "Rubik";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url("fonts/rubik-v20-latin-500.woff2") format("woff2");
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Dar tiempo a que los estilos se apliquen
+        requestAnimationFrame(() => {
+          document.body.classList.add("ready");
+        });
+      });
+    </script>
+
+    <!-- Critical Fonts -->
+    <link
+      rel="preload"
+      href="./fonts/rubik-v20-latin-500.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <!-- Security & Mobile -->
     <meta
       http-equiv="Content-Security-Policy"
@@ -30,26 +78,26 @@
     <link rel="apple-touch-icon" href="./assets/icon.png" sizes="180x180" />
     <link rel="manifest" href="./manifest.json" />
 
-    <!-- Critical CSS -->
+    <!-- Critical CSS -->
+    <link
+      rel="stylesheet"
+      href="./assets/fonts.Ct5qFZqH.css"
+      media="print"
+      onload="this.media='all'"
+    />
 
     <!-- Critical JS -->
-
-    <!-- Service Worker Registration -->
-    <script type="module" crossorigin src="./assets/index.Bz2wzkNk.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index.Bg67nD2R.css">
+    <script type="module" crossorigin src="./assets/index.D554z7-_.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.izEK5e-n.css">
   </head>
-  <body class="js-loading">
-    <div class="js-loading-overlay">
-      <div class="progress-container">
-        <div class="progress">
-          <div class="progress-bar"></div>
-        </div>
-        <div class="progress-percentage">0%</div>
-      </div>
-    </div>
-
+  <body>
     <header class="toolbar">
-      <button class="menu" aria-label="Open Menu">
+      <button
+        class="menu"
+        aria-label="Open Menu"
+        touch-action="none"
+        style="touch-action: none"
+      >
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M4 18L20 18 M4 12L20 12 M4 6L20 6"
@@ -73,22 +121,34 @@
       <div class="word-list"></div>
     </main>
 
-    <div class="modal-overlay" id="modal" hidden>
-      <div class="modal-content">
+    <div class="modal-overlay" id="modal" hidden touch-action="none">
+      <div class="modal-content" touch-action="pan-x pan-y">
         <h2>Menu</h2>
         <div class="menu-options">
-          <button id="theme-button">Change Theme</button>
-          <button id="reset-game">Restart Level</button>
-          <button id="vibration-toggle">Enable Vibration</button>
-          <button id="test-notification">Test Notification</button>
+          <button id="theme-button" touch-action="manipulation">
+            Change Theme
+          </button>
+          <button id="reset-game" touch-action="manipulation">
+            Restart Level
+          </button>
+          <button id="vibration-toggle" touch-action="manipulation">
+            Enable Vibration
+          </button>
+          <button id="test-notification" touch-action="manipulation">
+            Test Notification
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="modal-overlay" id="theme-modal" hidden>
+    <div class="modal-overlay" id="theme-modal" hidden touch-action="none">
       <div class="modal-content">
         <div class="modal-header">
-          <button class="back-button" aria-label="Back to Menu">
+          <button
+            class="back-button"
+            aria-label="Back to Menu"
+            touch-action="manipulation"
+          >
             <div class="arrow-left"></div>
           </button>
           <h2>Themes</h2>
@@ -99,14 +159,18 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="victory-modal" hidden>
+    <div class="modal-overlay" id="victory-modal" hidden touch-action="none">
       <canvas id="confetti-canvas"></canvas>
-      <div class="modal-content">
+      <div class="modal-content" touch-action="pan-x pan-y">
         <h2>Level Complete!</h2>
         <p class="victory-time">Time: <span id="final-time"></span></p>
         <div class="menu-options">
-          <button id="restart-level">Restart Level</button>
-          <button id="next-level">Next Level</button>
+          <button id="restart-level" touch-action="manipulation">
+            Restart Level
+          </button>
+          <button id="next-level" touch-action="manipulation">
+            Next Level
+          </button>
         </div>
       </div>
     </div>
