@@ -15,6 +15,14 @@ self.addEventListener("activate", (event) => {
         // Limpiar cualquier caché antigua
         return Promise.all(cacheNames.map((name) => caches.delete(name)));
       })
+      .then(() => {
+        // Notificar a los clientes que se ha limpiado el caché
+        return self.clients.matchAll().then((clients) => {
+          clients.forEach(client => {
+            client.postMessage({ type: 'CACHE_CLEARED', reload: true });
+          });
+        });
+      })
       .then(() => self.clients.claim())
   );
 });
