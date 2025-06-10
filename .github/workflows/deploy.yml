@@ -1,0 +1,41 @@
+name: Deploy GameSalad to krisenigma.com
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout GameSalad repository
+      uses: actions/checkout@v4
+      with:
+        path: GameSalad
+
+    - name: Checkout deployment repository
+      uses: actions/checkout@v4
+      with:
+        repository: KrisEnigma/krisenigma.com
+        path: deployment
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+    - name: Build GameSalad project
+      run: |
+        cd GameSalad
+        npm install || true
+        npm run build
+
+    - name: Replace gamesalad folder in deployment (force)
+      run: |
+        cd deployment
+        rm -rf gamesalad
+        mkdir -p gamesalad
+        cp -r ../GameSalad/dist/* ./gamesalad/
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add gamesalad
+        git commit -m "🚀 Force deploy GameSalad - $(date '+%Y-%m-%d %H:%M:%S')" || true
+        git push origin HEAD:main --force
