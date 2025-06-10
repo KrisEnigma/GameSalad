@@ -1,61 +1,50 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { readFileSync } from 'fs';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+/* eslint-disable no-undef */
+import { defineConfig } from "vite";
+import fs from "fs";
+import path from "path";
 
 export default defineConfig({
-  root: 'www',
+  base: "",
+  appType: "spa",
+  root: path.resolve(__dirname, "src"),
+  publicDir: path.resolve(__dirname, "public"),
   build: {
-    outDir: '../dist',
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'www/index.html')
-      },
+      external: (id) => id.includes("tests"),
       output: {
-        entryFileNames: 'src/js/[name].js',
-        chunkFileNames: 'src/js/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('/');
-          const fileName = info[info.length - 1];
-          const [name, ext] = fileName.split('.');
-
-          if (assetInfo.source && assetInfo.source.toString().includes('public/')) {
-            return assetInfo.name.replace('public/', '');
-          }
-
-          if (ext === 'css') {
-            return `public/styles/${name}.${ext}`;
-          }
-          if (/\.(png|jpe?g|gif|svg|webp)$/i.test(ext)) {
-            return `public/assets/images/${name}.${ext}`;
-          }
-          return `assets/${name}.${ext}`;
-        }
-      }
-    }
-  },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, 'www/src')
-    }
+        assetFileNames: "assets/[name].[hash][extname]",
+        chunkFileNames: "assets/[name].[hash].js",
+        entryFileNames: "assets/[name].[hash].js",
+      },
+    },
+    sourcemap: true,
+    assetsDir: "assets",
+    copyPublicDir: true,
   },
   server: {
     port: 3000,
-    host: true,
-    open: true,
     https: {
-      key: readFileSync('./ssl/key.pem'),
-      cert: readFileSync('./ssl/cert.pem'),
+      key: fs.readFileSync(path.resolve(__dirname, "ssl/key.pem")),
+      cert: fs.readFileSync(path.resolve(__dirname, "ssl/cert.pem")),
     },
-    headers: {
-      'Service-Worker-Allowed': '/',
-      'Access-Control-Allow-Origin': '*'
-    }
+    hmr: true,
   },
-  publicDir: 'public'
+  preview: {
+    port: 8080,
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, "ssl/key.pem")),
+      cert: fs.readFileSync(path.resolve(__dirname, "ssl/cert.pem")),
+    },
+  },
+  // TypeScript configuration
+  optimizeDeps: {
+    esbuildOptions: {
+      target: "es2020",
+    },
+  },
+  esbuild: {
+    target: "es2020",
+  },
 });

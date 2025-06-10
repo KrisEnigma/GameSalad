@@ -1,0 +1,3873 @@
+[data-theme="8bitadventure"] {
+  /* Metadata del tema */
+  --theme-name: "8-Bit";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Press Start 2P", cursive;
+  --font-title-family: "Press Start 2P", cursive;
+  --font-cell-family: "DotGothic16", sans-serif;
+
+  /* Colores */
+  --color-bg: #581845;
+  --color-cell: #900c3f;
+  --color-modal: rgb(88 24 69 / 0.95);
+  --color-button: #ff5733;
+  --color-letters: #fc0;
+  --color-title: #fc0;
+  --color-selected: #ff5733;
+  --color-hover: #c70039;
+  --color-line: #fc0;
+  --color-ui: #fc0;
+  --color-words: #fc0;
+  --color-menu: #fc0;
+
+  /* Efectos */
+  --cell-border: 2px solid #ff5733;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 87 51 / 0.2);
+  --effect-color-2: rgb(255 204 0 / 0.1);
+  --glow-radius: 12px;
+  --glow-color: rgb(199 0 57 / 0.4);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff5733, #fc0);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 25px rgb(255 87 51 / 0.5);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.15;
+  --confetti-colors: #fc0, #ff5733, #c70039, #900c3f;
+  --cell-radius: 4px;
+}
+
+[data-theme="8bitadventure"] .board {
+  image-rendering: pixelated;
+  background: repeating-linear-gradient(
+    45deg,
+    #581845,
+    #581845 10px,
+    #4a1339 10px,
+    #4a1339 20px
+  );
+  border: 4px solid #ff5733;
+}
+
+[data-theme="8bitadventure"] .cell {
+  align-items: baseline;
+  image-rendering: pixelated;
+  background: #900c3f;
+  border: 2px solid #ff5733;
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="8bitadventure"] .title {
+  text-shadow: 2px 2px 0 #ff5733, 4px 4px 0 #c70039;
+  image-rendering: pixelated;
+}
+
+[data-theme="8bitadventure"] .found-temp {
+  animation: bit8-found 0.6s steps(6);
+}
+
+@keyframes bit8-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    background: var(--found-bg);
+    filter: brightness(1.5);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="8bitadventure"] .mark.selected {
+  animation: bit8-selected 0.8s steps(4) infinite;
+}
+
+@keyframes bit8-selected {
+  0% {
+    background: #ff5733;
+  }
+
+  33% {
+    background: #c70039;
+  }
+
+  66% {
+    background: #900c3f;
+  }
+
+  100% {
+    background: #ff5733;
+  }
+}
+
+[data-theme="arcade"] {
+  --theme-name: "Arcade";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "VT323", monospace;
+  --font-title-family: "Press Start 2P", cursive;
+  --font-cell-family: "Pixelify Sans", sans-serif;
+
+  /* Colores */
+  --color-bg: #1a1a2e;
+  --color-cell: #2a2a3e;
+  --color-modal: rgb(26 26 46 / 0.95);
+  --color-button: #2a2a3e;
+  --color-letters: #ffd700;
+  --color-title: #ffd700;
+  --color-selected: #8a2be2;
+  --color-hover: rgb(138 43 226 / 0.8);
+  --color-line: #00bfff;
+  --color-ui: #ff69b4;
+  --color-words: #fff;
+  --color-menu: #ffd700;
+
+  /* Efectos */
+  --cell-border: 2px solid #ffd700;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 105 180 / 0.1);
+  --effect-color-2: rgb(0 191 255 / 0.1);
+  --glow-radius: 12px;
+  --glow-color: rgb(255 215 0 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff6347, #8a2be2);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 20px rgb(255 105 180 / 0.5);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.3;
+  --confetti-colors: #ffd700, #ff6347, #8a2be2, #ff69b4;
+  --cell-radius: 6px;
+}
+
+[data-theme="arcade"] .board {
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a2e,
+    #1a1a2e 10px,
+    #2a2a3e 10px,
+    #2a2a3e 20px
+  );
+}
+
+[data-theme="arcade"] .cell {
+  image-rendering: pixelated;
+  border: 2px solid #ffd700;
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="arcade"] .title {
+  line-height: 1.5;
+  text-shadow: 2px 2px 0 #ff6347, 4px 4px 0 #8a2be2;
+}
+
+[data-theme="arcade"] .toolbar {
+  filter: drop-shadow(2px 2px 0 #8a2be2);
+}
+
+@keyframes arcade-found {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+
+  75% {
+    transform: scale(1.15) rotate(5deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+[data-theme="arcade"] .found-temp {
+  animation-name: arcade-found !important;
+}
+
+[data-theme="arcade"] .mark.selected {
+  border: 2px solid #ffd700;
+  animation: arcade-blink 1s steps(2) infinite;
+}
+
+@keyframes arcade-blink {
+  0%,
+  100% {
+    border-color: #ffd700;
+    opacity: 1;
+  }
+
+  50% {
+    border-color: #ff69b4;
+    opacity: 0.7;
+  }
+}
+
+[data-theme="battleready"] {
+  --theme-name: "Battle";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Black Ops One", cursive;
+  --font-title-family: "Staatliches", cursive;
+  --font-cell-family: "Quantico", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #2f2f2f, #8b4513);
+  --color-cell: #2a2a2a;
+  --color-modal: rgb(42 42 42 / 0.95);
+  --color-button: linear-gradient(145deg, #dc143c, #228b22);
+  --color-letters: #ffd700;
+  --color-title: #ffd700;
+  --color-selected: #dc143c;
+  --color-hover: rgb(220 20 60 / 0.8);
+  --color-line: #1e90ff;
+  --color-ui: #ffd700;
+  --color-words: #fff;
+  --color-menu: #ffd700;
+
+  /* Efectos */
+  --cell-radius: 4px;
+  --cell-border: 2px solid rgb(255 215 0 / 0.2);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(139 69 19 / 0.2);
+  --effect-color-2: rgb(34 139 34 / 0.2);
+  --glow-radius: 15px;
+  --glow-color: rgb(220 20 60 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #dc143c, #ffd700);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 25px rgb(30 144 255 / 0.5);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.25;
+  --confetti-colors: #dc143c, #ffd700, #228b22, #1e90ff;
+}
+
+[data-theme="battleready"] .cell {
+  background: linear-gradient(
+    135deg,
+    rgb(42 42 42 / 0.95),
+    rgb(42 42 42 / 0.85)
+  );
+  border: 2px solid rgb(255 215 0 / 0.2);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="battleready"] .title {
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #dc143c, -2px -2px 0 #228b22;
+}
+
+@keyframes battle-found {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.15) rotate(-2deg);
+  }
+
+  75% {
+    transform: scale(1.15) rotate(2deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+[data-theme="battleready"] .found-temp {
+  animation: battle-found 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+[data-theme="battleready"] .mark.selected {
+  background: #dc143c;
+  animation: battle-pulse 1.5s infinite;
+}
+
+@keyframes battle-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 15px #dc143c, 0 0 30px #ffd700;
+  }
+
+  50% {
+    box-shadow: 0 0 20px #228b22, 0 0 40px #1e90ff;
+  }
+}
+
+[data-theme="classicconsole"] {
+  --theme-name: "Classic";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "IBM Plex Mono", monospace;
+  --font-title-family: "IBM Plex Mono", monospace;
+  --font-cell-family: "Inconsolata", monospace;
+
+  /* Colores */
+  --color-bg: #2c3e50;
+  --color-cell: rgb(74 144 226 / 0.15);
+  --color-modal: rgb(44 62 80 / 0.95);
+  --color-button: #4a90e2;
+  --color-letters: #50e3c2;
+  --color-title: #50e3c2;
+  --color-selected: #f5a623;
+  --color-hover: #7fc43b;
+  --color-line: #d0021b;
+  --color-ui: #7fc43b;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-border: 1px solid rgb(74 144 226 / 0.3);
+  --cell-radius: 0px;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(74 144 226 / 0.1);
+  --effect-color-2: rgb(80 227 194 / 0.1);
+  --glow-radius: 15px;
+  --glow-color: rgb(245 166 35 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #4a90e2, #50e3c2);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 30px rgb(208 2 27 / 0.5);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.2;
+  --confetti-colors: #4a90e2, #50e3c2, #f5a623, #b8e986;
+}
+
+[data-theme="classicconsole"] .board {
+  border: 2px solid #4a90e2;
+}
+
+[data-theme="classicconsole"] .cell {
+  background: linear-gradient(
+    135deg,
+    rgb(52 73 94 / 1) 0%,
+    rgb(52 73 94 / 0.9) 100%
+  );
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="classicconsole"] .title {
+  text-shadow: 2px 2px 4px rgb(74 144 226 / 0.4);
+}
+
+@keyframes console-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgb(245 166 35 / 0.6), 0 0 40px rgb(184 233 134 / 0.4);
+    filter: brightness(1.3) hue-rotate(45deg);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="classicconsole"] .found-temp {
+  animation: console-found 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="classicconsole"] .mark.selected {
+  animation: console-selected 2s infinite;
+}
+
+@keyframes console-selected {
+  0% {
+    background: #4a90e2;
+  }
+
+  33% {
+    background: #50e3c2;
+  }
+
+  66% {
+    background: #f5a623;
+  }
+
+  100% {
+    background: #4a90e2;
+  }
+}
+
+[data-theme="cyberpunk"] {
+  --theme-name: "Cyberpunk";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Share Tech Mono", monospace;
+  --font-title-family: "Orbitron", sans-serif;
+  --font-cell-family: "Rajdhani", sans-serif;
+
+  /* Colores */
+  --color-bg: #1e1e1e;
+  --color-cell: #2a2a2a;
+  --color-modal: linear-gradient(
+    180deg,
+    rgb(30 30 30 / 0.95),
+    rgb(255 69 0 / 0.1)
+  );
+  --color-button: linear-gradient(145deg, #2a2a2a, #ff4500);
+  --color-letters: #0f0;
+  --color-title: #0f0;
+  --color-selected: #f0f;
+  --color-hover: rgb(255 0 255 / 0.8);
+  --color-line: #0ff;
+  --color-ui: #f0f;
+  --color-words: #0f0;
+  --color-menu: #0ff;
+
+  /* Efectos */
+  --cell-radius: 2px;
+  --cell-border: 1px solid #0f0;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(0 255 0 / 0.15);
+  --effect-color-2: rgb(255 69 0 / 0.15);
+  --glow-radius: 20px;
+  --glow-color: rgb(0 255 0 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #f0f, #0ff);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 30px rgb(0 255 255 / 0.6);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.2;
+  --confetti-colors: #0f0, #f0f, #0ff, #ff4500;
+}
+
+[data-theme="cyberpunk"] .board {
+  background: linear-gradient(rgb(30 30 30 / 0.8), rgb(42 42 42 / 0.8));
+}
+
+[data-theme="cyberpunk"] .cell {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  border: 1px solid rgb(0 255 0 / 0.2);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="cyberpunk"] .title {
+  text-shadow: 0 0 10px rgb(0 255 0 / 0.7), 0 0 20px rgb(0 255 0 / 0.5);
+}
+
+@keyframes cyberpunk-found {
+  0% {
+    filter: hue-rotate(0deg);
+    transform: scale(1) skew(0deg);
+  }
+
+  50% {
+    box-shadow: 0 0 30px #f0f, 0 0 60px #0ff;
+    filter: hue-rotate(90deg);
+    transform: scale(1.1) skew(-5deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+    transform: scale(1) skew(0deg);
+  }
+}
+
+[data-theme="cyberpunk"] .found-temp {
+  animation-name: cyberpunk-found !important;
+}
+
+[data-theme="cyberpunk"] .mark.selected {
+  box-shadow: 0 0 20px #f0f, 0 0 40px #0ff;
+  animation: cyberpunk-glow 2s infinite;
+}
+
+@keyframes cyberpunk-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #f0f, 0 0 40px #0ff;
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px #0f0, 0 0 50px #ff4500;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Tema dark con estilos extendidos */
+[data-theme="dark"] {
+  --theme-name: "Dark";
+  --theme-category: "basic";
+  --cell-radius: min(8px, 1.5vw);
+
+  /* Fuentes */
+  --font-toolbar-family: "JetBrains Mono", monospace;
+  --font-title-family: "Rubik", sans-serif;
+  --font-cell-family: "Rubik", sans-serif;
+  --font-cell-weight: 700;
+
+  /* Colores complejos */
+  --color-bg: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+  --color-cell: linear-gradient(145deg, #1e1e1e, #2d2d2d);
+  --color-modal: rgb(23 23 23 / 0.95);
+  --color-button: linear-gradient(145deg, #2d2d2d, #232323);
+  --color-letters: #fff;
+  --color-title: #3498db;
+  --color-words: #fff;
+  --color-menu: #fff;
+  --color-ui: #3498db;
+  --color-selected: #3498db;
+  --color-hover: rgb(52 152 219 / 0.8);
+  --color-line: #2ecc71;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(52 152 219 / 0.05);
+  --effect-color-2: rgb(46 204 113 / 0.05);
+  --blend-before: overlay;
+  --glow-radius: 25px;
+  --glow-color: rgb(52 152 219 / 0.2);
+
+  /* Animaciones personalizadas */
+  --found-bg: linear-gradient(45deg, #3498db, #2ecc71);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 30px rgb(52 152 219 / 0.6);
+  --unused-scale: 0.8;
+  --unused-opacity: 0.3;
+  --confetti-colors: #ffd700, #ff3939, #4169e1, #ff69b4;
+}
+
+/* Estilos específicos del tema dark */
+[data-theme="dark"] .board {
+  background: linear-gradient(rgb(18 18 18 / 0.7), rgb(26 26 26 / 0.7));
+}
+
+[data-theme="dark"] .cell {
+  font-weight: var(--font-cell-weight);
+  border: 1px solid rgb(255 255 255 / 0.05);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="dark"] .title {
+  color: transparent;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  background-clip: text;
+}
+
+[data-theme="dark"] .toolbar {
+  filter: drop-shadow(3px 3px 2px rgb(52 152 219 / 0.4));
+}
+
+@keyframes dark-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgb(45 125 210 / 0.6);
+    filter: brightness(1.5);
+    transform: scale(1.1);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="dark"] .found-temp {
+  animation: dark-found 0.8s ease-in-out !important;
+}
+
+[data-theme="digitaldawn"] {
+  --theme-name: "Dawn";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Orbitron", sans-serif;
+  --font-title-family: "Rajdhani", sans-serif;
+  --font-cell-family: "Space Grotesk", sans-serif;
+
+  /* Colores */
+  --color-bg: #0a0a1a;
+  --color-cell: #1a1a2a;
+  --color-modal: rgb(10 10 26 / 0.95);
+  --color-button: #8a2be2;
+  --color-letters: #fff;
+  --color-title: #fff;
+  --color-selected: #ff6347;
+  --color-hover: #ff6347;
+  --color-line: #00bfff;
+  --color-ui: #00bfff;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-radius: 8px;
+  --cell-border: 1px solid rgb(0 191 255 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 99 71 / 0.1);
+  --effect-color-2: rgb(0 191 255 / 0.1);
+  --glow-radius: 25px;
+  --glow-color: rgb(138 43 226 / 0.4);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(135deg, #ff6347, #8a2be2);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 40px rgb(0 191 255 / 0.5);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.15;
+  --confetti-colors: #ff6347, #ffd700, #00bfff, #8a2be2;
+}
+
+[data-theme="digitaldawn"] .board {
+  background: linear-gradient(
+    135deg,
+    rgb(10 10 26 / 0.95) 0%,
+    rgb(138 43 226 / 0.1) 100%
+  );
+}
+
+[data-theme="digitaldawn"] .cell {
+  background: linear-gradient(
+    145deg,
+    rgb(26 26 42 / 1) 0%,
+    rgb(26 26 42 / 0.8) 100%
+  );
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="digitaldawn"] .title {
+  text-shadow: 0 0 10px rgb(0 191 255 / 0.5), 0 0 20px rgb(138 43 226 / 0.3);
+}
+
+[data-theme="digitaldawn"] .toolbar {
+  filter: drop-shadow(0 0 10px rgb(0 191 255 / 0.4));
+}
+
+@keyframes dawn-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgb(255 99 71 / 0.6), 0 0 50px rgb(0 191 255 / 0.4);
+    filter: brightness(1.5);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="digitaldawn"] .found-temp {
+  animation: dawn-found 0.7s ease-in-out;
+}
+
+[data-theme="digitaldawn"] .mark.selected {
+  animation: dawn-selected 2s infinite;
+}
+
+@keyframes dawn-selected {
+  0% {
+    background: #ff6347;
+  }
+
+  33% {
+    background: #ffd700;
+  }
+
+  66% {
+    background: #00bfff;
+  }
+
+  100% {
+    background: #ff6347;
+  }
+}
+
+[data-theme="dreams"] {
+  --theme-name: "Dreams";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Syne Mono", monospace;
+  --font-title-family: "Chakra Petch", sans-serif;
+  --font-cell-family: "Righteous", cursive;
+
+  /* Colores */
+  --color-bg: #2f4f4f;
+  --color-cell: #3a5f5f;
+  --color-modal: rgb(47 79 79 / 0.95);
+  --color-button: #3a5f5f;
+  --color-letters: #00ff7f;
+  --color-title: #00ff7f;
+  --color-selected: #ff1493;
+  --color-hover: rgb(255 20 147 / 0.8);
+  --color-line: #1e90ff;
+  --color-ui: #ff1493;
+  --color-words: #fff;
+  --color-menu: #00ff7f;
+
+  /* Efectos */
+  --cell-radius: 4px;
+  --cell-border: 1px solid rgb(0 255 127 / 0.2);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 140 0 / 0.1);
+  --effect-color-2: rgb(30 144 255 / 0.1);
+  --glow-radius: 20px;
+  --glow-color: rgb(0 255 127 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff1493, #1e90ff);
+  --found-scale: 1.12;
+  --found-shadow: 0 0 25px rgb(255 20 147 / 0.5);
+  --unused-scale: 0.88;
+  --unused-opacity: 0.25;
+  --confetti-colors: #ff1493, #00ff7f, #1e90ff, #ff8c00;
+}
+
+[data-theme="dreams"] .board {
+  background: linear-gradient(rgb(47 79 79 / 0.8), rgb(58 95 95 / 0.8));
+}
+
+[data-theme="dreams"] .cell {
+  border: 1px solid rgb(0 255 127 / 0.2);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="dreams"] .title {
+  text-shadow: 0 0 12px rgb(0 255 127 / 0.6), 0 0 24px rgb(30 144 255 / 0.4);
+}
+
+[data-theme="dreams"] .toolbar {
+  filter: drop-shadow(0 0 12px rgb(30 144 255 / 0.5));
+}
+
+@keyframes dreams-found {
+  0% {
+    filter: saturate(1);
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    box-shadow: 0 0 30px #ff1493, 0 0 50px #1e90ff;
+    filter: saturate(1.5);
+    transform: scale(1.12) rotate(5deg);
+  }
+
+  100% {
+    filter: saturate(1);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+[data-theme="dreams"] .found-temp {
+  animation-name: dreams-found !important;
+}
+
+[data-theme="dreams"] .mark.selected {
+  box-shadow: 0 0 15px #ff1493, 0 0 30px #1e90ff;
+  animation: dreams-pulse 2s ease infinite;
+}
+
+@keyframes dreams-pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+[data-theme="elementalfury"] {
+  --theme-name: "Elemental";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Righteous", cursive;
+  --font-title-family: "Permanent Marker", cursive;
+  --font-cell-family: "Rubik", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #1e90ff, #ff4500);
+  --color-cell: #2f4f4f;
+  --color-modal: rgb(47 79 79 / 0.95);
+  --color-button: linear-gradient(145deg, #32cd32, #ff4500);
+  --color-letters: #ffd700;
+  --color-title: #ffd700;
+  --color-selected: #8b008b;
+  --color-hover: rgb(139 0 139 / 0.8);
+  --color-line: #32cd32;
+  --color-ui: #32cd32;
+  --color-words: #ffd700;
+  --color-menu: #ffd700;
+
+  /* Efectos */
+  --cell-radius: 8px;
+  --cell-border: 2px solid rgb(255 215 0 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(30 144 255 / 0.2);
+  --effect-color-2: rgb(255 69 0 / 0.2);
+  --glow-radius: 25px;
+  --glow-color: rgb(50 205 50 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff4500, #1e90ff);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 30px rgb(139 0 139 / 0.6);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.2;
+  --confetti-colors: #ff4500, #1e90ff, #32cd32, #ffd700;
+}
+
+[data-theme="elementalfury"] .cell {
+  border: 2px solid rgb(255 215 0 / 0.3);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="elementalfury"] .title {
+  background: linear-gradient(to right, #ff4500 25%, #32cd32 75%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgb(30 144 255));
+}
+
+[data-theme="elementalfury"] .toolbar {
+  filter: drop-shadow(2px 2px 4px rgb(139 0 139 / 0.4));
+}
+
+@keyframes fury-found {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    box-shadow: 0 0 30px #ff4500, 0 0 60px #1e90ff;
+    transform: scale(1.15) rotate(5deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+[data-theme="elementalfury"] .found-temp {
+  animation-name: fury-found !important;
+}
+
+[data-theme="elementalfury"] .mark.selected {
+  background: #8b008b;
+  animation: elemental-pulse 2s infinite;
+}
+
+@keyframes elemental-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #ff4500, 0 0 40px #1e90ff;
+  }
+
+  50% {
+    box-shadow: 0 0 30px #32cd32, 0 0 50px #ffd700;
+  }
+}
+
+[data-theme="fantasy"] {
+  --theme-name: "Fantasy";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "MedievalSharp", cursive;
+  --font-title-family: "Cinzel", serif;
+  --font-cell-family: "Alegreya", serif;
+
+  /* Colores */
+  --color-bg: #8b4513;
+  --color-cell: #a0522d;
+  --color-modal: rgb(139 69 19 / 0.95);
+  --color-button: #a0522d;
+  --color-letters: #f0e68c;
+  --color-title: #f0e68c;
+  --color-selected: #ff4500;
+  --color-hover: rgb(255 69 0 / 0.8);
+  --color-line: #6a5acd;
+  --color-ui: #f0e68c;
+  --color-words: #f0e68c;
+  --color-menu: #ffd700;
+
+  /* Efectos */
+  --cell-radius: 8px;
+  --cell-border: 2px solid rgb(240 230 140 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 69 0 / 0.1);
+  --effect-color-2: rgb(106 90 205 / 0.1);
+  --glow-radius: 18px;
+  --glow-color: rgb(240 230 140 / 0.25);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ffd700, #ff4500);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 20px rgb(255 215 0 / 0.4);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.3;
+  --confetti-colors: #ffd700, #ff4500, #6a5acd, #f0e68c;
+}
+
+[data-theme="fantasy"] .board {
+  background: linear-gradient(rgb(139 69 19 / 0.8), rgb(160 82 45 / 0.8));
+}
+
+[data-theme="fantasy"] .cell {
+  border: 2px solid rgb(240 230 140 / 0.3);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="fantasy"] .title {
+  text-shadow: 2px 2px 4px rgb(139 69 19 / 0.8), 0 0 15px rgb(240 230 140 / 0.5);
+}
+
+[data-theme="fantasy"] .toolbar {
+  filter: drop-shadow(2px 2px 4px rgb(139 69 19 / 0.6));
+}
+
+@keyframes fantasy-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 25px #ffd700, 0 0 40px #ff4500;
+    filter: brightness(1.3);
+    transform: scale(1.1) rotate(3deg);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="fantasy"] .found-temp {
+  animation-name: fantasy-found !important;
+}
+
+[data-theme="fantasy"] .mark.selected {
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 20px rgb(255 215 0 / 0.5);
+  animation: fantasy-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes fantasy-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 15px #ffd700;
+  }
+
+  50% {
+    box-shadow: 0 0 25px #ff4500;
+  }
+}
+
+[data-theme="forest"] {
+  --theme-name: "Forest";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Philosopher", serif;
+  --font-title-family: "Cormorant", serif;
+  --font-cell-family: "Crimson Pro", serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #2f4f4f 0%, #228b22 200%);
+  --color-cell: linear-gradient(145deg, #2f4f4f, #3a5f5f);
+  --color-modal: rgb(47 79 79 / 0.95);
+  --color-button: linear-gradient(145deg, #2f4f4f, #228b22);
+  --color-letters: #d3d3d3;
+  --color-title: #d3d3d3;
+  --color-selected: #8b0000;
+  --color-hover: rgb(139 0 0 / 0.8);
+  --color-line: #a0522d;
+  --color-ui: #a0522d;
+  --color-words: #d3d3d3;
+  --color-menu: #d3d3d3;
+
+  /* Efectos */
+  --cell-radius: 6px;
+  --cell-border: 1px solid rgb(211 211 211 / 0.2);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(34 139 34 / 0.15);
+  --effect-color-2: rgb(139 0 0 / 0.15);
+  --glow-radius: 20px;
+  --glow-color: rgb(211 211 211 / 0.2);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #228b22, #a0522d);
+  --found-scale: 1.08;
+  --found-shadow: 0 0 22px rgb(34 139 34 / 0.45);
+  --unused-scale: 0.92;
+  --unused-opacity: 0.28;
+  --confetti-colors: #228b22, #8b0000, #a0522d, #d3d3d3;
+}
+
+[data-theme="forest"] .board {
+  background: linear-gradient(rgb(47 79 79 / 0.85), rgb(58 95 95 / 0.85));
+}
+
+[data-theme="forest"] .cell {
+  background: linear-gradient(135deg, #2f4f4f, #228b22);
+  border: 1px solid rgb(211 211 211 / 0.2);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="forest"] .title {
+  text-shadow: 2px 2px 0 #228b22, 4px 4px 0 #8b0000;
+}
+
+[data-theme="forest"] .toolbar {
+  filter: drop-shadow(1px 1px 3px rgb(34 139 34 / 0.5));
+}
+
+@keyframes forest-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgb(34 139 34 / 0.6), 0 0 40px rgb(139 0 0 / 0.4);
+    filter: brightness(1.3);
+    transform: scale(1.08);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="forest"] .found-temp {
+  animation-name: forest-found !important;
+}
+
+[data-theme="forest"] .mark.selected {
+  background: rgb(34 139 34 / 0.8);
+  box-shadow: 0 0 18px rgb(34 139 34 / 0.4);
+  animation: forest-pulse 2s ease-in-out infinite;
+}
+
+@keyframes forest-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 18px rgb(34 139 34 / 0.4);
+    opacity: 0.8;
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgb(139 0 0 / 0.5);
+    opacity: 1;
+  }
+}
+
+[data-theme="gameoverglow"] {
+  --theme-name: "Game Over";
+  --theme-category: "basic";
+  --font-toolbar-family: "Audiowide", cursive;
+  --font-title-family: "Audiowide", cursive;
+  --font-cell-family: "Syncopate", sans-serif;
+  --color-bg: #210958;
+  --color-cell: rgb(0 206 209 / 0.15);
+  --color-modal: rgb(0 0 0 / 0.95);
+  --color-button: #ff1493;
+  --color-letters: #adff2f;
+  --color-title: #00ced1;
+  --color-selected: #ff4500;
+  --color-hover: #00ced1;
+  --color-line: #ff1493;
+  --color-ui: #adff2f;
+  --color-words: #f0e68c;
+  --color-menu: #ffd700;
+
+  /* Efectos */
+  --cell-radius: 4px;
+  --cell-border: 1px solid rgb(0 206 209 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 20 147 / 0.1);
+  --effect-color-2: rgb(173 255 47 / 0.1);
+  --glow-radius: 25px;
+  --glow-color: rgb(0 206 209 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff1493, #ff4500);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 20px rgb(255 20 147 / 0.6), 0 0 40px rgb(0 206 209 / 0.4);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.15;
+  --confetti-colors: #ff1493, #ff4500, #adff2f, #00ced1;
+}
+
+[data-theme="gameoverglow"] .cell {
+  background: linear-gradient(
+    135deg,
+    rgb(45 45 45 / 1) 0%,
+    rgb(45 45 45 / 0.8) 100%
+  );
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="gameoverglow"] .title {
+  text-shadow: 0 0 10px rgb(0 206 209 / 0.8), 0 0 20px rgb(255 20 147 / 0.4);
+}
+
+@keyframes glow-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgb(255 20 147 / 0.8), 0 0 80px rgb(173 255 47 / 0.6);
+    filter: brightness(1.5);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="gameoverglow"] .found-temp {
+  animation: glow-found 0.8s ease-in-out;
+}
+
+[data-theme="gameoverglow"] .mark.selected {
+  box-shadow: 0 0 20px rgb(0 206 209 / 0.6);
+  animation: glow-pulse 1.5s infinite;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    background: #ff4500;
+    box-shadow: 0 0 30px rgb(255 69 0 / 0.6);
+  }
+
+  50% {
+    background: #ff1493;
+    box-shadow: 0 0 40px rgb(255 20 147 / 0.8);
+  }
+}
+
+[data-theme="glitcheffect"] {
+  --theme-name: "Glitch";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Share Tech Mono", monospace;
+  --font-title-family: "Rubik Glitch", cursive;
+  --font-cell-family: "Teko", sans-serif;
+
+  /* Colores */
+  --color-bg: #1e1e1e;
+  --color-cell: #2a2a2a;
+  --color-modal: rgb(30 30 30 / 0.95);
+  --color-button: linear-gradient(145deg, #f0f, #0ff);
+  --color-letters: #0ff;
+  --color-title: #0ff;
+  --color-selected: #f0f;
+  --color-hover: rgb(255 53 0 / 0.8);
+  --color-line: #ff3700;
+  --color-ui: #f0f;
+  --color-words: #fff;
+  --color-menu: #0ff;
+
+  /* Efectos */
+  --cell-radius: 2px;
+  --cell-border: 1px solid rgb(0 255 255 / 0.2);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 0 255 / 0.1);
+  --effect-color-2: rgb(0 255 255 / 0.1);
+  --glow-radius: 15px;
+  --glow-color: rgb(255 53 0 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #f0f, #0ff);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 30px rgb(255 55 0 / 0.6);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.2;
+  --confetti-colors: #f0f, #0ff, #ff3500, #ff3700;
+}
+
+[data-theme="glitcheffect"] body::before {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: repeating-linear-gradient(
+    transparent 0%,
+    rgb(0 255 255 / 0.1) 0.5%,
+    transparent 1%
+  );
+  animation: scan-lines 8s linear infinite;
+}
+
+[data-theme="glitcheffect"] .board {
+  overflow: hidden;
+  background: transparent;
+}
+
+[data-theme="glitcheffect"] .cell {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(0 255 255 / 0.2);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="glitcheffect"] .title {
+  text-shadow: 2px 0 #f0f, -2px 0 #ff3500;
+  animation: glitch-title 3s infinite;
+}
+
+[data-theme="glitcheffect"] .text::after {
+  color: var(--color-title);
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  animation: glitch-text 2s infinite reverse;
+}
+
+@keyframes scan-lines {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes glitch-bg {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes glitch-title {
+  0%,
+  100% {
+    filter: none;
+    transform: none;
+  }
+
+  92% {
+    transform: skew(2deg);
+  }
+
+  94% {
+    transform: skew(-2deg);
+  }
+
+  96% {
+    filter: hue-rotate(90deg);
+    transform: none;
+  }
+
+  98% {
+    filter: hue-rotate(-90deg);
+    transform: none;
+  }
+}
+
+@keyframes glitch-text {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: none;
+  }
+
+  92% {
+    opacity: 0.8;
+    transform: translate(2px, -2px);
+  }
+
+  94% {
+    opacity: 0.8;
+    transform: translate(-2px, 2px);
+  }
+
+  96% {
+    opacity: 0;
+    transform: none;
+  }
+
+  98% {
+    opacity: 0.8;
+    transform: none;
+  }
+}
+
+[data-theme="glitcheffect"] .found-temp {
+  animation: glitch-found 0.6s steps(2, end);
+}
+
+@keyframes glitch-found {
+  0% {
+    filter: none;
+    transform: scale(1);
+  }
+
+  25% {
+    filter: hue-rotate(90deg);
+    transform: scale(1.1) skew(10deg);
+  }
+
+  50% {
+    filter: hue-rotate(-90deg);
+    transform: scale(1.1) skew(-10deg);
+  }
+
+  75% {
+    filter: invert(1);
+    transform: scale(0.9);
+  }
+
+  100% {
+    filter: none;
+    transform: scale(1);
+  }
+}
+
+[data-theme="glitcheffect"] .mark.selected {
+  animation: glitch-selected 1s steps(2, end) infinite;
+}
+
+@keyframes glitch-selected {
+  0%,
+  100% {
+    background: #f0f;
+    transform: none;
+  }
+
+  25% {
+    background: #0ff;
+    transform: translate(2px, -2px);
+  }
+
+  50% {
+    background: #ff3500;
+    transform: translate(-2px, 2px);
+  }
+
+  75% {
+    background: #ff3700;
+    transform: none;
+  }
+}
+
+[data-theme="herojourney"] {
+  --theme-name: "Hero";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "MedievalSharp", cursive;
+  --font-title-family: "Cinzel", serif;
+  --font-cell-family: "Metamorphous", cursive;
+
+  /* Colores */
+  --color-bg: #1a1a1a;
+  --color-cell: #2a2a2a;
+  --color-modal: rgb(26 26 26 / 0.95);
+  --color-button: #8b0000;
+  --color-letters: #d3d3d3;
+  --color-title: #ffd700;
+  --color-selected: #aa9000;
+  --color-hover: #32cd32;
+  --color-line: #1e90ff;
+  --color-ui: #ffd700;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-radius: 4px;
+  --cell-border: 2px solid rgb(255 215 0 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(139 0 0 / 0.2);
+  --effect-color-2: rgb(255 215 0 / 0.1);
+  --glow-radius: 20px;
+  --glow-color: rgb(50 205 50 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #8b0000, #ffd700);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 30px rgb(30 144 255 / 0.6);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.2;
+  --confetti-colors: #8b0000, #ffd700, #32cd32, #1e90ff;
+}
+
+[data-theme="herojourney"] .board {
+  background: radial-gradient(
+    circle at center,
+    rgb(139 0 0 / 0.2) 0%,
+    rgb(26 26 26 / 0.9) 70%
+  );
+  border: 3px solid rgb(255 215 0 / 0.3);
+}
+
+[data-theme="herojourney"] .cell {
+  background: linear-gradient(
+    135deg,
+    rgb(42 42 42 / 1) 0%,
+    rgb(42 42 42 / 0.8) 100%
+  );
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="herojourney"] .title {
+  text-shadow: 2px 2px 4px rgb(139 0 0 / 0.6);
+}
+
+[data-theme="herojourney"] .toolbar {
+  filter: drop-shadow(1px 1px 2px rgb(139 0 0 / 0.4));
+}
+
+@keyframes hero-found {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px #ffd700;
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+[data-theme="herojourney"] .found-temp {
+  animation: hero-found 0.8s ease-out;
+}
+
+[data-theme="herojourney"] .mark.selected {
+  animation: hero-selected 1.5s infinite;
+}
+
+@keyframes hero-selected {
+  0%,
+  100% {
+    box-shadow: 0 0 15px #ffd700;
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 25px #32cd32;
+    transform: scale(1.1);
+  }
+}
+
+[data-theme="light"] {
+  --theme-name: "Light";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Space Mono", monospace;
+  --font-title-family: "Outfit", sans-serif;
+  --font-cell-family: "DM Sans", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  --color-cell: linear-gradient(145deg, #e9ecef, #dee2e6);
+  --color-modal: #f0f0f0;
+  --color-button: #e0e0e0;
+  --color-letters: #000;
+  --color-title: #1971c2;
+  --color-selected: #228be6;
+  --color-hover: rgb(34 139 230 / 0.8);
+  --color-line: #1e5899;
+  --color-ui: #1864ab;
+  --color-words: #000;
+  --color-menu: #000;
+
+  /* Efectos */
+  --cell-border: 1px solid rgb(0 0 0 / 0.08);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, var(--color-selected), #4b9ced);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 16px rgb(45 125 210 / 0.25);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.4;
+  --confetti-colors: #ffaf00, #fe5840, #00d779, #58f;
+}
+
+/* Efectos especiales para Light */
+[data-theme="light"] .board {
+  background: linear-gradient(rgb(248 249 250 / 0.7), rgb(233 236 239 / 0.7));
+}
+
+[data-theme="light"] .cell {
+  border: 1px solid rgb(0 0 0 / 0.08);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="light"] .mark.selected {
+  box-shadow: 0 0 15px rgb(34 139 230 / 0.4);
+}
+
+[data-theme="light"] .title {
+  text-shadow: 1px 1px 2px rgb(0 0 0 / 0.1);
+}
+
+@keyframes light-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgb(45 125 210 / 0.4);
+    filter: brightness(1.3);
+    transform: scale(1.15);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="light"] .found-temp {
+  animation-name: light-found !important;
+}
+
+[data-theme="mint"] {
+  --theme-name: "Mint";
+  --theme-category: "basic";
+  --cell-radius: min(12px, 2vw);
+
+  /* Fuentes */
+  --font-toolbar-family: "DM Sans", sans-serif;
+  --font-title-family: "DM Sans", sans-serif;
+  --font-cell-family: "DM Sans", sans-serif;
+  --font-cell-weight: 700;
+
+  /* Colores */
+  --color-bg: #f0f9f6;
+  --color-cell: #fff;
+  --color-modal: rgb(255 255 255 / 0.95);
+  --color-button: linear-gradient(145deg, #fff, #e6f3ee);
+  --color-letters: #2d3436;
+  --color-title: #00b894;
+  --color-words: #2d3436;
+  --color-menu: #2d3436;
+  --color-ui: #00b894;
+  --color-selected: #00b894;
+  --color-hover: rgb(0 184 148 / 0.8);
+  --color-line: #00b894;
+
+  /* Efectos */
+  --effect-color-1: rgb(0 184 148 / 0.05);
+  --effect-color-2: rgb(0 206 201 / 0.05);
+  --glow-radius: 20px;
+  --glow-color: rgb(0 184 148 / 0.2);
+  --cell-border: 1px solid rgb(0 184 148 / 0.1);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #00b894, #00cec9);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 30px rgb(0 184 148 / 0.6);
+}
+
+[data-theme="mysticshadows"] {
+  --theme-name: "Mystic";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Orbitron", sans-serif;
+  --font-title-family: "Cinzel", serif;
+  --font-cell-family: "Space Grotesk", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #4b0082, #2f4f4f);
+  --color-cell: #2f4f4f;
+  --color-modal: rgb(47 79 79 / 0.95);
+  --color-button: linear-gradient(145deg, #4b0082, #8a2be2);
+  --color-letters: #0ff;
+  --color-title: #0ff;
+  --color-selected: #ff1493;
+  --color-hover: rgb(255 20 147 / 0.8);
+  --color-line: #8a2be2;
+  --color-ui: #ff1493;
+  --color-words: #fff;
+  --color-menu: #0ff;
+
+  /* Efectos */
+  --cell-radius: 12px;
+  --cell-border: 1px solid rgb(0 255 255 / 0.2);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(75 0 130 / 0.2);
+  --effect-color-2: rgb(138 43 226 / 0.2);
+  --glow-radius: 30px;
+  --glow-color: rgb(0 255 255 / 0.25);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #8a2be2, #ff1493);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 40px rgb(0 255 255 / 0.5);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.15;
+  --confetti-colors: #4b0082, #8a2be2, #0ff, #ff1493;
+}
+
+[data-theme="mysticshadows"] .cell {
+  border: 1px solid rgb(0 255 255 / 0.2);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="mysticshadows"] .title {
+  color: transparent;
+  text-shadow: 0 0 20px rgb(138 43 226 / 0.5);
+  background: linear-gradient(to right, #0ff, #ff1493);
+  background-clip: text;
+}
+
+[data-theme="mysticshadows"] .toolbar {
+  filter: drop-shadow(0 0 10px rgba(0 255 255 / 0.5));
+}
+
+@keyframes mystic-found {
+  0% {
+    filter: hue-rotate(0deg);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 40px #4b0082, 0 0 80px #8a2be2;
+    filter: hue-rotate(180deg);
+    transform: scale(1.1);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+    transform: scale(1);
+  }
+}
+
+[data-theme="mysticshadows"] .found-temp {
+  animation-name: mystic-found !important;
+}
+
+[data-theme="mysticshadows"] .mark.selected {
+  animation: shadow-wave 3s ease infinite;
+}
+
+@keyframes shadow-wave {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #4b0082, 0 0 40px #8a2be2;
+  }
+
+  50% {
+    box-shadow: 0 0 30px #0ff, 0 0 60px #ff1493;
+  }
+}
+
+[data-theme="neon"] {
+  --theme-name: "Neon";
+  --theme-category: "basic";
+  --cell-radius: min(8px, 1.5vw);
+
+  /* Fuentes */
+  --font-toolbar-family: "Orbitron", sans-serif;
+  --font-title-family: "Orbitron", sans-serif;
+  --font-cell-family: "Rajdhani", sans-serif;
+  --font-cell-weight: 700;
+
+  /* Colores */
+  --color-bg: #000;
+  --color-cell: #1a1a1a;
+  --color-modal: rgb(0 0 0 / 0.95);
+  --color-button: linear-gradient(145deg, #1a1a1a, #000);
+  --color-letters: #0f0;
+  --color-title: #f0f;
+  --color-words: #fff;
+  --color-menu: #0ff;
+  --color-ui: #0ff;
+  --color-selected: #f0f;
+  --color-hover: rgb(255 0 255 / 0.8);
+  --color-line: #0f0;
+
+  /* Efectos */
+  --effect-color-1: rgb(0 255 255 / 0.1);
+  --effect-color-2: rgb(255 0 255 / 0.1);
+  --glow-radius: 30px;
+  --glow-color: rgb(0 255 255 / 0.3);
+  --cell-border: 1px solid rgb(0 255 255 / 0.2);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #0ff, #f0f);
+  --found-scale: 1.2;
+  --found-shadow: 0 0 30px rgb(0 255 255 / 0.8);
+}
+
+[data-theme="neonnostalgia"] {
+  --theme-name: "Nostalgia";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Monoton", cursive;
+  --font-title-family: "Monoton", cursive;
+  --font-cell-family: "Chakra Petch", sans-serif;
+
+  /* Colores */
+  --color-bg: #360000;
+  --color-cell: rgb(0 163 224 / 0.15);
+  --color-modal: rgb(0 0 0 / 0.95);
+  --color-button: #360000;
+  --color-letters: #fbb03b;
+  --color-title: #fbb03b;
+  --color-selected: #f15a29;
+  --color-hover: #00a3e0;
+  --color-line: #d5006d;
+  --color-ui: #f15a29;
+  --color-words: #fff;
+  --color-menu: #fbb03b;
+
+  /* Efectos */
+  --cell-border: 2px solid rgb(251 176 59 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(57 181 74 / 0.1);
+  --effect-color-2: rgb(0 163 224 / 0.1);
+  --glow-radius: 30px;
+  --glow-color: rgb(213 0 109 / 0.4);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #39b54a, #00a3e0);
+  --found-scale: 1.2;
+  --found-shadow: 0 0 20px rgb(213 0 109 / 0.6), 0 0 40px rgb(251 176 59 / 0.4);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.2;
+  --confetti-colors: #39b54a, #00a3e0, #f15a29, #fbb03b, #d5006d;
+  --cell-radius: 8px;
+}
+
+[data-theme="neonnostalgia"] .board {
+  background: transparent;
+  border: 3px solid rgb(213 0 109 / 0.3);
+  box-shadow: 0 0 50px rgb(0 163 224 / 0.2);
+}
+
+[data-theme="neonnostalgia"] .cell {
+  background: linear-gradient(
+    135deg,
+    rgb(42 42 42 / 1) 0%,
+    rgb(42 42 42 / 0.8) 100%
+  );
+  border: 2px solid rgb(251 176 59 / 0.2);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="neonnostalgia"] .title {
+  text-shadow: 0 0 5px rgb(251 176 59 / 0.8), 0 0 10px rgb(241 90 41 / 0.6),
+    0 0 20px rgb(213 0 109 / 0.4);
+}
+
+@keyframes neon-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgb(57 181 74 / 0.6), 0 0 60px rgb(0 163 224 / 0.4);
+    filter: brightness(1.5);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="neonnostalgia"] .found-temp {
+  animation: neon-found 0.8s ease-in-out;
+}
+
+[data-theme="neonnostalgia"] .mark.selected {
+  animation: neon-pulse 2s infinite;
+}
+
+@keyframes neon-pulse {
+  0%,
+  100% {
+    background: #00a3e0;
+    box-shadow: 0 0 20px rgb(0 163 224 / 0.6);
+  }
+
+  50% {
+    background: #f15a29;
+    box-shadow: 0 0 30px rgb(241 90 41 / 0.6);
+  }
+}
+
+[data-theme="odyssey"] {
+  --theme-name: "Odyssey";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Audiowide", cursive;
+  --font-title-family: "Exo 2", sans-serif;
+  --font-cell-family: "Tomorrow", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #1e1e1e, #8a2be2 200%);
+  --color-cell: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+  --color-modal: linear-gradient(
+    180deg,
+    rgb(30 30 30 / 0.95),
+    rgb(138 43 226 / 0.1)
+  );
+  --color-button: linear-gradient(145deg, #2a2a2a, #ff4500);
+  --color-letters: #00bfff;
+  --color-title: #00bfff;
+  --color-selected: #ff4500;
+  --color-hover: rgb(255 215 0 / 0.8);
+  --color-line: #ff4500;
+  --color-ui: #ff4500;
+  --color-words: #fff;
+  --color-menu: #00bfff;
+
+  /* Efectos */
+  --cell-radius: 5px;
+  --cell-border: 1px solid rgb(0 191 255 / 0.2);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(0 191 255 / 0.15);
+  --effect-color-2: rgb(255 69 0 / 0.15);
+  --glow-radius: 22px;
+  --glow-color: rgb(138 43 226 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #8a2be2, #ff4500);
+  --found-scale: 1.12;
+  --found-shadow: 0 0 30px rgb(138 43 226 / 0.5);
+  --unused-scale: 0.88;
+  --unused-opacity: 0.25;
+  --confetti-colors: #00bfff, #ff4500, #ffd700, #8a2be2;
+}
+
+[data-theme="odyssey"] .board {
+  background: linear-gradient(rgb(30 30 30 / 0.85), rgb(42 42 42 / 0.85));
+}
+
+[data-theme="odyssey"] .cell {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  border: 1px solid rgb(0 191 255 / 0.2);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="odyssey"] .title {
+  color: transparent;
+  text-shadow: 0 0 15px rgb(0 191 255 / 0.5), 0 0 30px rgb(138 43 226 / 0.3);
+  background: linear-gradient(to right, #00bfff, #8a2be2);
+  background-clip: text;
+}
+
+[data-theme="odyssey"] .toolbar {
+  filter: drop-shadow(0 0 10px rgb(255 69 0 / 0.5));
+}
+
+@keyframes odyssey-found {
+  0% {
+    filter: hue-rotate(0deg);
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    box-shadow: 0 0 35px rgb(138 43 226 / 0.6), 0 0 55px rgb(255 69 0 / 0.4);
+    filter: hue-rotate(180deg);
+    transform: scale(1.12) rotate(3deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+[data-theme="odyssey"] .found-temp {
+  animation-name: odyssey-found !important;
+}
+
+[data-theme="odyssey"] .mark.selected {
+  box-shadow: 0 0 20px #8a2be2, 0 0 40px #ff4500;
+  animation: odyssey-glow 2.5s ease infinite;
+}
+
+@keyframes odyssey-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #ffd700, 0 0 40px #ff4500;
+    filter: brightness(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px #00bfff, 0 0 60px #8a2be2;
+    filter: brightness(1.3);
+  }
+}
+
+[data-theme="pixel"] {
+  --theme-name: "Pixel";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Silkscreen", cursive;
+  --font-title-family: "Press Start 2P", cursive;
+  --font-cell-family: "DotGothic16", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #1a1a1a, #8a2be2 200%);
+  --color-cell: #2a2a2a;
+  --color-modal: rgb(26 26 26 / 0.95);
+  --color-button: linear-gradient(145deg, #2a2a2a, #8a2be2);
+  --color-letters: #0ff;
+  --color-title: #0ff;
+  --color-selected: #ff69b4;
+  --color-hover: rgb(255 105 180 / 0.8);
+  --color-line: #ffd700;
+  --color-ui: #ff69b4;
+  --color-words: #0ff;
+  --color-menu: #0ff;
+  --cell-radius: 0;
+
+  /* Efectos */
+  --cell-border: 2px solid rgb(0 255 255 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 105 180 / 0.1);
+  --effect-color-2: rgb(138 43 226 / 0.1);
+  --glow-radius: 15px;
+  --glow-color: rgb(0 255 255 / 0.25);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff69b4, #8a2be2);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 25px rgb(255 105 180 / 0.5);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.3;
+  --confetti-colors: #ff69b4, #0ff, #ffd700, #ff6347;
+}
+
+[data-theme="pixel"] .board {
+  image-rendering: pixelated;
+  background-color: #1a1a1a;
+  background-image: linear-gradient(
+      45deg,
+      transparent 25%,
+      rgb(255 99 71 / 0.1) 25%
+    ),
+    linear-gradient(-45deg, transparent 25%, rgb(255 99 71 / 0.1) 25%),
+    linear-gradient(45deg, rgb(255 99 71 / 0.1) 75%, transparent 75%),
+    linear-gradient(-45deg, rgb(255 99 71 / 0.1) 75%, transparent 75%);
+  background-size: 20px 20px;
+}
+
+[data-theme="pixel"] .cell {
+  align-items: baseline;
+  image-rendering: pixelated;
+  border: 2px solid rgb(0 255 255 / 0.3);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="pixel"] .title {
+  line-height: 1.5;
+  text-shadow: 2px 2px 0 #ff69b4, 4px 4px 0 #8a2be2;
+}
+
+[data-theme="pixel"] .toolbar {
+  filter: drop-shadow(2px 2px 0 #ffd700);
+}
+
+@keyframes pixel-found {
+  0% {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+
+  50% {
+    clip-path: inset(10% 10% 10% 10%);
+    transform: scale(1.15);
+  }
+
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+
+[data-theme="pixel"] .found-temp {
+  animation-name: pixel-found !important;
+}
+
+[data-theme="pixel"] .mark.selected {
+  border: 2px dashed #ff69b4;
+  animation: pixel-rainbow 2s steps(6) infinite;
+}
+
+@keyframes pixel-rainbow {
+  0% {
+    border-color: #ff69b4;
+  }
+
+  20% {
+    border-color: #0ff;
+  }
+
+  40% {
+    border-color: #ffd700;
+  }
+
+  60% {
+    border-color: #ff6347;
+  }
+
+  80% {
+    border-color: #8a2be2;
+  }
+
+  100% {
+    border-color: #ff69b4;
+  }
+}
+
+[data-theme="pixelparadise"] {
+  --theme-name: "Paradise";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Press Start 2P", cursive;
+  --font-title-family: "Press Start 2P", cursive;
+  --font-cell-family: "VT323", monospace;
+
+  /* Colores */
+  --color-bg: #6b5b95;
+  --color-cell: #92a8d1;
+  --color-modal: rgb(107 91 149 / 0.95);
+  --color-button: #ff6f61;
+  --color-letters: #f7cac9;
+  --color-title: #f7cac9;
+  --color-selected: #88b04b;
+  --color-hover: #ff6f61;
+  --color-line: #f7cac9;
+  --color-ui: #f7cac9;
+  --color-words: #f7cac9;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-border: 2px solid #f7cac9;
+  --cell-radius: 2px;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 111 97 / 0.2);
+  --effect-color-2: rgb(136 176 75 / 0.1);
+  --glow-radius: 15px;
+  --glow-color: rgb(247 202 201 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff6f61, #88b04b);
+  --found-scale: 1.2;
+  --found-shadow: 0 0 20px rgb(247 202 201 / 0.6);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.2;
+  --confetti-colors: #ff6f61, #88b04b, #92a8d1, #f7cac9;
+}
+
+[data-theme="pixelparadise"] .board {
+  image-rendering: pixelated;
+  background: linear-gradient(
+    45deg,
+    rgb(107 91 149 / 0.8),
+    rgb(146 168 209 / 0.4)
+  );
+}
+
+[data-theme="pixelparadise"] .title {
+  text-shadow: 2px 2px 0 #ff6f61;
+  image-rendering: pixelated;
+}
+
+[data-theme="pixelparadise"] .found-temp {
+  animation: pixel-found 0.5s steps(5);
+}
+
+@keyframes pixel-found {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    background: var(--found-bg);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+[data-theme="pixelparadise"] .mark.selected {
+  animation: pixel-selected 1s steps(4) infinite;
+}
+
+@keyframes pixel-selected {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+[data-theme="retroarcade"] {
+  --theme-name: "Retro";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Press Start 2P", cursive;
+  --font-title-family: "Press Start 2P", cursive;
+  --font-cell-family: "VT323", monospace;
+
+  /* Colores */
+  --color-bg: #121212;
+  --color-cell: #1e1e1e;
+  --color-modal: rgb(30 30 30 / 0.95);
+  --color-button: #ff3d00;
+  --color-letters: #ffd600;
+  --color-title: #ffd600;
+  --color-selected: #00b0ff;
+  --color-hover: #00e676;
+  --color-line: #00b0ff;
+  --color-ui: #00e676;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-border: 2px solid rgb(0 176 255 / 0.3);
+  --cell-radius: 4px;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 61 0 / 0.1);
+  --effect-color-2: rgb(0 176 255 / 0.1);
+  --glow-radius: 20px;
+  --glow-color: rgb(0 230 118 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff3d00, #00b0ff);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 30px rgb(255 214 0 / 0.5);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.15;
+  --confetti-colors: #ff3d00, #00b0ff, #ffd600, #00e676;
+}
+
+[data-theme="retroarcade"] .board {
+  background: repeating-linear-gradient(
+    45deg,
+    #121212,
+    #121212 10px,
+    #1a1a1a 10px,
+    #1a1a1a 20px
+  );
+  box-shadow: inset 0 0 20px rgb(0 176 255 / 0.2), 0 0 30px rgb(255 61 0 / 0.3);
+}
+
+[data-theme="retroarcade"] .cell {
+  image-rendering: pixelated;
+  border: 2px solid rgb(0 176 255 / 0.3);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="retroarcade"] .title {
+  text-shadow: 3px 3px 0 #ff3d00, -3px -3px 0 #00b0ff;
+}
+
+@keyframes arcade-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    filter: brightness(1.5) hue-rotate(45deg);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="retroarcade"] .found-temp {
+  animation: arcade-found 0.6s steps(4);
+}
+
+[data-theme="retroarcade"] .mark.selected {
+  animation: arcade-selected 1s steps(2) infinite;
+}
+
+@keyframes arcade-selected {
+  0%,
+  100% {
+    background: #00b0ff;
+    transform: translateY(0);
+  }
+
+  50% {
+    background: #00e676;
+    transform: translateY(-2px);
+  }
+}
+
+[data-theme="retrorainbow"] {
+  --theme-name: "Rainbow";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Righteous", cursive;
+  --font-title-family: "Righteous", cursive;
+  --font-cell-family: "Quicksand", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(
+    135deg,
+    rgb(70 130 180 / 0.9),
+    /* Steel Blue */ rgb(138 43 226 / 0.9) /* Blue Violet */
+  );
+  --color-cell: rgb(255 99 71 / 0.15);
+  --color-modal: rgb(0 0 0 / 0.9);
+  --color-button: #ff6347;
+  --color-letters: #ffd700;
+  --color-title: #ffd700;
+  --color-selected: #32cd32;
+  --color-hover: #4682b4;
+  --color-line: #8a2be2;
+  --color-ui: #ffd700;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-radius: 8px;
+  --cell-border: 2px solid rgb(255 215 0 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(255 99 71 / 0.1);
+  --effect-color-2: rgb(50 205 50 / 0.1);
+  --glow-radius: 25px;
+  --glow-color: rgb(138 43 226 / 0.3);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff6347, #8a2be2);
+  --found-scale: 1.12;
+  --found-shadow: 0 0 25px rgb(255 215 0 / 0.5), 0 0 50px rgb(50 205 50 / 0.3);
+  --unused-scale: 0.88;
+  --unused-opacity: 0.2;
+  --confetti-colors: #ff6347, #4682b4, #ffd700, #32cd32, #8a2be2;
+}
+
+[data-theme="retrorainbow"] .board {
+  box-shadow: 0 0 40px rgb(138 43 226 / 0.2),
+    inset 0 0 25px rgb(255 215 0 / 0.1);
+}
+
+[data-theme="retrorainbow"] .cell {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgb(61 61 61 / 1) 0%,
+    rgb(61 61 61 / 0.8) 100%
+  );
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="retrorainbow"] .cell::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgb(138 43 226 / 0.05) 100%
+  );
+}
+
+[data-theme="retrorainbow"] .title {
+  text-shadow: 2px 2px 0 #ff6347, -2px -2px 0 #4682b4;
+}
+
+@keyframes rainbow-found {
+  0% {
+    filter: hue-rotate(0deg);
+    transform: scale(1);
+  }
+
+  50% {
+    filter: hue-rotate(180deg) brightness(1.3);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+    transform: scale(1);
+  }
+}
+
+[data-theme="retrorainbow"] .found-temp {
+  animation: rainbow-found 1s ease-in-out;
+}
+
+[data-theme="retrorainbow"] .mark.selected {
+  animation: rainbow-cycle 2s infinite;
+}
+
+@keyframes rainbow-cycle {
+  0% {
+    background: #ff6347;
+  }
+
+  25% {
+    background: #4682b4;
+  }
+
+  50% {
+    background: #04d0ca;
+  }
+
+  75% {
+    background: #32cd32;
+  }
+
+  100% {
+    background: #8a2be2;
+  }
+}
+
+[data-theme="solarized"] {
+  --theme-name: "Solarized";
+  --theme-category: "basic";
+
+  /* Fuentes más apropiadas para un tema tipo terminal */
+  --font-toolbar-family: "Source Code Pro", monospace;
+  --font-title-family: "Fira Code", monospace;
+  --font-cell-family: "IBM Plex Mono", monospace;
+  --color-bg: #002b36;
+  --color-cell: #073642;
+  --color-modal: rgb(0 43 54 / 0.95);
+  --color-button: #073642;
+  --color-letters: #b9c3c3;
+  --color-title: #b9c3c3;
+  --color-selected: #859900;
+  --color-hover: #687800;
+  --color-line: #cb4b16;
+  --color-ui: #2aa198;
+  --color-words: #b9c3c3;
+  --color-menu: #b9c3c3;
+
+  /* Efectos de terminal */
+  --cell-border: 1px solid #094754;
+  --cell-radius: 6px;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(133 153 0 / 0.1);
+  --effect-color-2: rgb(203 75 22 / 0.1);
+  --glow-radius: 15px;
+  --glow-color: rgb(133 153 0 / 0.2);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #859900, #2aa198);
+
+  /* green to cyan */
+  --found-scale: 1.05;
+  --unused-scale: 0.95;
+  --unused-opacity: 0.25;
+  --confetti-colors: #859900, #2aa198, #268bd2, #6c71c4;
+}
+
+[data-theme="solarized"] .board {
+  background: #001f27;
+  box-shadow: inset 0 0 20px rgb(0 0 0 / 0.3), inset 0 0 60px rgb(7 54 66 / 0.5);
+}
+
+[data-theme="solarized"] .cell {
+  background: linear-gradient(135deg, #073642, #002b36);
+  border: 1px solid #094754;
+  box-shadow: inset 0 0 10px rgb(0 0 0 / 0.2), 0 0 2px rgb(133 153 0 / 0.2);
+}
+
+[data-theme="solarized"] .title {
+  text-shadow: 0 0 10px rgb(147 161 161 / 0.3);
+}
+
+[data-theme="solarized"] .toolbar {
+  filter: drop-shadow(0 0 8px rgb(42 161 152 / 0.4));
+}
+
+@keyframes solarized-found {
+  0%,
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgb(133 153 0 / 0.4), 0 0 40px rgb(42 161 152 / 0.3);
+    filter: brightness(1.2);
+    transform: scale(1.05);
+  }
+}
+
+[data-theme="solarized"] .found-temp {
+  animation-name: solarized-found !important;
+}
+
+[data-theme="solarized"] .mark.selected {
+  animation: solarized-cursor 2s ease infinite;
+}
+
+@keyframes solarized-cursor {
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgb(133 153 0);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgb(203 75 22);
+  }
+}
+
+[data-theme="stealth"] {
+  --theme-name: "Stealth";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Roboto Mono", monospace;
+  --font-title-family: "Space Grotesk", sans-serif;
+  --font-cell-family: "Inter", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #000, #696969);
+  --color-cell: linear-gradient(145deg, #696969, #000);
+  --color-modal: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0.95),
+    rgb(169 169 169 / 0.95)
+  );
+  --color-button: linear-gradient(145deg, #696969, #a9a9a9);
+  --color-letters: #fff;
+  --color-title: #fff;
+  --color-selected: #898989;
+  --color-hover: #646464;
+  --color-line: #a9a9a9;
+  --color-ui: #c0c0c0;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-radius: 4px;
+  --cell-border: 1px solid rgb(255 255 255 / 0.1);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(169 169 169 / 0.1);
+  --effect-color-2: rgb(192 192 192 / 0.1);
+  --glow-radius: 16px;
+  --glow-color: rgb(255 255 255 / 0.15);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #646464, #898989);
+  --found-scale: 1.08;
+  --found-shadow: 0 0 20px rgb(255 255 255 / 0.3);
+  --unused-scale: 0.92;
+  --unused-opacity: 0.2;
+  --confetti-colors: #fff, #c0c0c0, #a9a9a9, #696969;
+}
+
+[data-theme="stealth"] .board {
+  background: linear-gradient(rgb(0 0 0 / 0.9), rgb(26 26 26 / 0.9));
+}
+
+[data-theme="stealth"] .cell {
+  background: linear-gradient(135deg, #696969, #000);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="stealth"] .title {
+  text-shadow: 0 0 15px rgb(255 255 255 / 0.3);
+}
+
+[data-theme="stealth"] .toolbar {
+  filter: drop-shadow(0 0 10px rgb(192 192 192 / 0.4));
+}
+
+@keyframes stealth-found {
+  0% {
+    filter: contrast(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgb(192 192 192 / 0.4), 0 0 40px rgb(169 169 169 / 0.3);
+    filter: contrast(1.3);
+    transform: scale(1.08);
+  }
+
+  100% {
+    filter: contrast(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="stealth"] .found-temp {
+  animation-name: stealth-found !important;
+}
+
+[data-theme="stealth"] .mark.selected {
+  box-shadow: 0 0 20px rgb(192 192 192 / 0.3);
+  animation: stealth-fade 2s ease-in-out infinite;
+}
+
+@keyframes stealth-fade {
+  0%,
+  100% {
+    background: #646464;
+    box-shadow: 0 0 20px rgb(169 169 169 / 0.3);
+  }
+
+  50% {
+    background: #898989;
+    box-shadow: 0 0 30px rgb(192 192 192 / 0.4);
+  }
+}
+
+[data-theme="synthwave"] {
+  --theme-name: "Synthwave";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Space Mono", monospace;
+  --font-title-family: "Space Grotesk", sans-serif;
+  --font-cell-family: "Space Mono", monospace;
+
+  /* Colores */
+  --color-bg: linear-gradient(180deg, #1a0f2e 0%, #2d1f3d 100%);
+  --color-cell: linear-gradient(135deg, #2d1f3d 0%, #1a0f2e 100%);
+  --color-modal: rgb(26 15 46 / 0.95);
+  --color-button: linear-gradient(145deg, #2d1f3d, #241831);
+  --color-letters: #ff65d4;
+  --color-title: #ff65d4;
+  --color-selected: #f700ff;
+  --color-hover: rgb(247 0 255 / 0.8);
+  --color-line: #00fff9;
+  --color-ui: #00fff9;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-radius: 12px;
+  --cell-border: 1px solid rgb(255 101 212 / 0.2);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #f700ff, #00fff9);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 20px rgb(247 0 255 / 0.4), 0 0 40px rgb(0 255 249 / 0.2);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.2;
+  --confetti-colors: #fb36ff, #ffdf36, #f667ff, #ff6565;
+}
+
+/* Efectos especiales para Synthwave */
+[data-theme="synthwave"] .board {
+  background: linear-gradient(rgb(26 15 46 / 0.7), rgb(45 31 61 / 0.7));
+}
+
+[data-theme="synthwave"] .cell {
+  border: 1px solid rgb(247 0 255 / 0.2);
+  box-shadow: inset 0 0 20px rgb(247 0 255 / 0.1), 0 0 15px rgb(0 255 249 / 0.2);
+}
+
+[data-theme="synthwave"] .title {
+  color: transparent;
+  text-shadow: 0 0 10px rgb(247 0 255 / 0.5), 0 0 20px rgb(0 255 249 / 0.3);
+  background: linear-gradient(to right, #f700ff, #00fff9);
+  background-clip: text;
+}
+
+[data-theme="synthwave"] .toolbar {
+  filter: drop-shadow(0 0 10px rgb(0 255 249 / 0.7));
+}
+
+@keyframes synthwave-found {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgb(247 0 255 / 0.6), 0 0 60px rgb(0 255 249 / 0.4);
+    filter: hue-rotate(180deg) brightness(1.8);
+    transform: scale(1.15);
+  }
+
+  100% {
+    filter: hue-rotate(360deg) brightness(1);
+    transform: scale(1);
+  }
+}
+
+[data-theme="synthwave"] .found-temp {
+  animation-name: synthwave-found !important;
+}
+
+[data-theme="synthwave"] .mark.selected {
+  animation: synthwave-glow 2s infinite;
+}
+
+@keyframes synthwave-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px #f700ff, 0 0 40px #00fff9;
+  }
+
+  50% {
+    box-shadow: 0 0 40px #f700ff, 0 0 80px #00fff9;
+  }
+}
+
+[data-theme="technovibes"] {
+  --theme-name: "Techno";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Syncopate", sans-serif;
+  --font-title-family: "Orbitron", sans-serif;
+  --font-cell-family: "Chakra Petch", sans-serif;
+
+  /* Colores */
+  --color-bg: #2d0036;
+  --color-cell: #1a1a1a;
+  --color-modal: rgb(26 26 26 / 0.95);
+  --color-button: linear-gradient(145deg, #f0f, #1e90ff);
+  --color-letters: #ffd700;
+  --color-title: #0f0;
+  --color-selected: #f0f;
+  --color-hover: rgb(255 0 255 / 0.7);
+  --color-line: #0f0;
+  --color-ui: #1e90ff;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-border: 1px solid rgb(0 255 0 / 0.3);
+  --cell-radius: 6px;
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(30 144 255 / 0.15);
+  --effect-color-2: rgb(255 99 71 / 0.15);
+  --glow-radius: 20px;
+  --glow-color: rgb(0 255 0 / 0.2);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #f0f, #1e90ff);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 35px rgb(0 255 0 / 0.5);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.2;
+  --confetti-colors: #0f0, #f0f, #1e90ff, #ffd700;
+}
+
+[data-theme="technovibes"] .cell {
+  background: linear-gradient(135deg, rgb(26 26 26 / 0.9), rgb(26 26 26 / 0.7));
+  border: 1px solid rgb(0 255 0 / 0.3);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="technovibes"] .title {
+  text-shadow: 0 0 10px rgb(0 255 0 / 0.7), 0 0 20px rgb(30 144 255 / 0.5);
+}
+
+@keyframes techno-found {
+  0% {
+    filter: hue-rotate(0deg);
+    transform: scale(1);
+  }
+
+  50% {
+    border-color: #f0f;
+    filter: hue-rotate(180deg);
+    transform: scale(1.1);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+    transform: scale(1);
+  }
+}
+
+[data-theme="technovibes"] .found-temp {
+  animation: techno-found 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="technovibes"] .mark.selected {
+  animation: techno-pulse 2s infinite;
+}
+
+@keyframes techno-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 15px #0f0, 0 0 30px #1e90ff;
+  }
+
+  50% {
+    box-shadow: 0 0 25px #f0f, 0 0 50px #ffd700;
+  }
+}
+
+[data-theme="vintagevibes"] {
+  --theme-name: "Vintage";
+  --theme-category: "basic";
+
+  /* Fuentes */
+  --font-toolbar-family: "Playfair Display", serif;
+  --font-title-family: "Playfair Display", serif;
+  --font-cell-family: "Old Standard TT", serif;
+
+  /* Colores */
+  --color-bg: #7d7d7d;
+  --color-cell: #c0c0c0;
+  --color-modal: rgb(125 125 125 / 0.95);
+  --color-button: #c5793a;
+  --color-letters: #c5793a;
+  --color-title: #f5deb3;
+  --color-selected: #854212;
+  --color-hover: #a0522d;
+  --color-line: #d2691e;
+  --color-ui: #f5deb3;
+  --color-words: #bb955c;
+  --color-menu: #f5deb3;
+
+  /* Efectos */
+  --cell-radius: 8px;
+  --cell-border: 1px solid rgb(245 222 179 / 0.3);
+
+  /* Efectos especiales */
+  --effect-color-1: rgb(160 82 45 / 0.1);
+  --effect-color-2: rgb(210 105 30 / 0.1);
+  --glow-radius: 20px;
+  --glow-color: rgb(245 222 179 / 0.2);
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #60301a, #43220b);
+  --found-scale: 1.08;
+  --found-shadow: 0 0 25px rgb(245 222 179 / 0.4);
+  --unused-scale: 0.92;
+  --unused-opacity: 0.25;
+  --confetti-colors: #c0c0c0, #a0522d, #d2691e, #f5deb3;
+}
+
+[data-theme="vintagevibes"] .board {
+  background: transparent;
+  border: 3px solid rgb(245 222 179 / 0.3);
+  box-shadow: inset 0 0 30px rgb(160 82 45 / 0.2);
+}
+
+[data-theme="vintagevibes"] .cell {
+  align-items: end;
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+}
+
+[data-theme="vintagevibes"] .title {
+  font-style: italic;
+  text-shadow: 2px 2px 4px rgb(160 82 45 / 0.4);
+}
+
+[data-theme="vintagevibes"] .toolbar {
+  filter: drop-shadow(1px 1px 2px rgb(160 82 45 / 0.3));
+}
+
+@keyframes vintage-found {
+  0% {
+    filter: sepia(0);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgb(210 105 30 / 0.6), 0 0 40px rgb(245 222 179 / 0.4);
+    filter: sepia(0.5) brightness(1.2);
+    transform: scale(var(--found-scale));
+  }
+
+  100% {
+    filter: sepia(0);
+    transform: scale(1);
+  }
+}
+
+[data-theme="vintagevibes"] .found-temp {
+  animation: vintage-found 0.8s var(--animation-timing);
+}
+
+[data-theme="vintagevibes"] .mark.selected {
+  animation: vintage-selected 2s infinite;
+}
+
+@keyframes vintage-selected {
+  0%,
+  100% {
+    background: #854212;
+    transform: scale(1);
+  }
+
+  50% {
+    background: #442111;
+    transform: scale(1.05);
+  }
+}
+
+[data-theme="vintagevibes"] .word {
+  font-family: var(--font-cell-family);
+  font-style: italic;
+}
+
+[data-theme="vintagevibes"] .word.found {
+  color: #f5deb3;
+  text-shadow: 1px 1px 2px rgb(160 82 45 / 0.4);
+  background: var(--found-bg);
+}
+
+[data-theme="bloodborne"] {
+  --theme-name: "Bloodborne";
+  --theme-category: "modern-games";
+
+  /* Fuentes */
+  --font-toolbar-family: "Cinzel", serif;
+  --font-title-family: "Cinzel", serif;
+  --font-cell-family: "Marcellus", serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #050203 0%, #1e0a0a 100%);
+  --color-cell: #2b0b0b;
+  --color-modal: #0d0404;
+  --color-button: #900;
+  --color-letters: #d4c1c1;
+  --color-title: #d4c1c1;
+  --color-selected: #c00;
+  --color-hover: #c70000;
+  --color-line: #8b0000;
+  --color-ui: #900;
+  --color-words: #d4c1c1;
+  --color-menu: #d4c1c1;
+
+  /* Efectos */
+  --cell-radius: min(10px, 2vw);
+  --cell-border: 1px solid rgb(139 0 0 / 0.3);
+
+  /* Animaciones */
+  --found-bg: radial-gradient(circle, #c00 0%, #800000 100%);
+  --found-scale: 1.12;
+  --found-shadow: 0 0 40px rgb(204 0 0 / 0.7), 0 0 70px rgb(139 0 0 / 0.5);
+  --unused-scale: 0.88;
+  --unused-opacity: 0.12;
+  --animation-duration-found: 750ms;
+  --animation-timing: cubic-bezier(0.3, 0, 0.7, 1);
+  --confetti-colors: #940004, #3c3c3c, #f00, #700000;
+}
+
+@keyframes bloodborne-found {
+  0% {
+    filter: brightness(1) blur(0);
+    transform: scale(1) rotate(0deg);
+  }
+
+  25% {
+    box-shadow: 0 0 40px #c00, 0 0 80px #800000;
+    filter: brightness(1.8) blur(2px);
+    transform: scale(1.15) rotate(2deg);
+  }
+
+  50% {
+    filter: brightness(0.7) blur(0);
+    transform: scale(0.9) rotate(-2deg);
+  }
+
+  75% {
+    filter: brightness(1.4) blur(1px);
+    transform: scale(1.1) rotate(1deg);
+  }
+
+  100% {
+    filter: brightness(1) blur(0);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+[data-theme="bloodborne"] .found-temp {
+  animation-name: bloodborne-found !important;
+}
+
+[data-theme="darksouls"] {
+  --theme-name: "Dark Souls";
+  --theme-category: "modern-games";
+
+  /* Fuentes */
+  --font-toolbar-family: "Cinzel", serif;
+  --font-title-family: "Cinzel", serif;
+  --font-cell-family: "Marcellus", serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #0c0c0c 0%, #221e1b 100%);
+  --color-cell: linear-gradient(135deg, #2b261f, #0f0b09);
+  --color-modal: rgb(13 13 13 / 0.95);
+  --color-button: #bb6f10;
+  --color-letters: #e4d6a7;
+  --color-title: #e4d6a7;
+  --color-selected: #e19038;
+  --color-hover: #ffa533;
+  --color-line: #ff4500;
+  --color-ui: #bb6f10;
+  --color-words: #e4d6a7;
+  --color-menu: #e4d6a7;
+
+  /* Efectos */
+  --cell-radius: min(8px, 2vw);
+  --cell-border: 1px solid rgb(255 140 0 / 0.3);
+
+  /* Animaciones */
+  --found-bg: radial-gradient(circle, #ff8c00 0%, #b35a00 100%);
+  --found-scale: 1.1;
+  --found-shadow: 0 0 30px rgb(255 140 0 / 0.6), 0 0 60px rgb(255 69 0 / 0.4);
+  --found-brightness: 2.2;
+  --found-blur: 4px;
+  --unused-scale: 0.9;
+  --unused-opacity: 0.15;
+  --animation-duration-found: 700ms;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --confetti-colors: #4f4f4f, #dbb82c, #9c9c9c, #000;
+}
+
+@keyframes darksouls-found {
+  0% {
+    filter: brightness(1) blur(0);
+    transform: scale(1);
+  }
+
+  40% {
+    box-shadow: 0 0 50px rgb(255 140 0 / 0.8), 0 0 100px rgb(255 69 0 / 0.6);
+    filter: brightness(2.2) blur(4px);
+    transform: scale(1.2);
+  }
+
+  70% {
+    filter: brightness(0.8) blur(0);
+    transform: scale(0.9);
+  }
+
+  100% {
+    filter: brightness(1) blur(0);
+    transform: scale(1);
+  }
+}
+
+[data-theme="darksouls"] .found-temp {
+  animation-name: darksouls-found !important;
+}
+
+[data-theme="eldenring"] {
+  --theme-name: "Elden Ring";
+  --theme-category: "modern-games";
+
+  /* Fuentes */
+  --font-toolbar-family: "Cinzel", serif;
+  --font-title-family: "Cinzel", serif;
+  --font-cell-family: "Cormorant", serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #0f0e0a 0%, #2b2615 100%);
+  --color-cell: #2a2a2a;
+  --color-modal: #1f1f1f;
+  --color-button: #a58c00;
+  --color-letters: #ffebc2;
+  --color-title: #ffebc2;
+  --color-selected: #a58c00;
+  --color-hover: #634700;
+  --color-line: #ffc125;
+  --color-ui: #dac083;
+  --color-words: #ffebc2;
+  --color-menu: #ffebc2;
+
+  /* Efectos */
+  --cell-radius: 15%;
+  --cell-border: 2px solid rgb(255 215 0 / 0.3);
+
+  /* Animaciones */
+  --found-bg: radial-gradient(circle, #ffd700 0%, #daa520 100%);
+  --found-scale: 1.12;
+  --found-shadow: 0 0 45px rgb(255 215 0 / 0.6), 0 0 80px rgb(218 165 32 / 0.5);
+  --unused-scale: 0.9;
+  --unused-opacity: 0.25;
+  --animation-duration-found: 900ms;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --confetti-colors: #c3b38e, #6e6e6e, #2f2f2f, #e1e1c4;
+}
+
+@keyframes eldenring-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+
+  20% {
+    box-shadow: 0 0 50px #ffd700, 0 0 100px #daa520;
+    filter: brightness(2.5);
+    transform: scale(1.2);
+  }
+
+  40% {
+    filter: brightness(0.8);
+    transform: scale(0.95) rotate(1deg);
+  }
+
+  60% {
+    filter: brightness(1.6);
+    transform: scale(1.1) rotate(-1deg);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+[data-theme="eldenring"] .found-temp {
+  animation-name: eldenring-found !important;
+}
+
+[data-theme="portal"] {
+  --theme-name: "Portal";
+  --theme-category: "modern-games";
+
+  /* Fuentes */
+  --font-toolbar-family: "Oswald", sans-serif;
+  --font-title-family: "Oswald", sans-serif;
+  --font-cell-family: "Oswald", sans-serif;
+  --font-cell-weight: 600;
+  --portal-blue: #27a7d8;
+  --portal-orange: #ff9a00;
+  --color-bg: linear-gradient(135deg, #e6e6e6 0%, #d1d1d1 100%);
+  --color-cell: radial-gradient(
+    circle at center,
+    #fff 30%,
+    #f2f2f2 50%,
+    #e6e6e6 70%,
+    #d1d1d1 100%
+  );
+  --color-modal: rgb(220 220 220 / 0.9);
+  --color-button: #1a1a1a;
+  --color-letters: #1a1a1a;
+  --color-title: #1a1a1a;
+  --color-selected: var(--portal-blue);
+  --color-hover: var(--portal-orange);
+  --color-line: var(--portal-orange);
+  --color-ui: var(--portal-blue);
+  --color-words: #fff;
+  --color-menu: #000;
+
+  /* Configuración de celdas */
+  --mark-size-override: calc(var(--mark-size) * 1.1);
+
+  /* Efectos y animaciones */
+  --cell-border: 1px solid rgb(0 0 0);
+  --shadow-opacity: 0.15;
+  --found-bg: var(--portal-orange);
+  --found-scale: 1.05;
+  --found-shadow: 0 0 0 1px rgb(0 0 0 / 0.2), 0 0 30px rgb(0 168 214 / 0.4),
+    0 0 60px rgb(255 68 0 / 0.3);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.2;
+  --animation-duration-found: 800ms;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --confetti-colors: var(--portal-blue), var(--portal-orange), #ffc0cb, #fff;
+  --cell-radius: 2px;
+}
+
+/* Estilizar celdas como paneles de prueba */
+[data-theme="portal"] .cell {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.9),
+    inset 0 2px 0 rgb(255 255 255 / 0.5), 0 0 0 1px rgb(0 0 0 / 0.8);
+}
+
+/* Personalización tipográfica ajustada */
+[data-theme="portal"] .title {
+  text-transform: uppercase;
+}
+
+[data-theme="portal"] .text {
+  padding-bottom: 0.1em;
+}
+
+/* Efecto de selección tipo portal */
+[data-theme="portal"] .mark {
+  top: calc(50% - var(--mark-size-override) / 2);
+  height: var(--mark-size-override);
+}
+
+[data-theme="portal"] .mark.selected {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2),
+    0 0 20px rgb(0 168 214 / 0.4);
+}
+
+[data-theme="portal"] .hitbox:hover + .mark:not(.selected) {
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2),
+    0 0 20px rgb(255 68 0 / 0.4);
+}
+
+[data-theme="portal"] .found-temp {
+  animation: portal-found 0.8s var(--animation-timing);
+}
+
+[data-theme="portal"] .menu-options {
+  color: #fff;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Vamos a usar el board como referencia */
+[data-theme="portal"] .board {
+  isolation: isolate;
+}
+
+[data-theme="portal"] .board::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: min(110%, 150vh);
+  aspect-ratio: 1;
+  pointer-events: none;
+  content: "";
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 532 532"><g id="c"><g id="b"><path id="a" fill="rgba(0,0,0,0.08)" d="M165 32C108 56 60 101 34 159l248-46"/><use xlink:href="%23a" transform="rotate(45 266 266)"/></g><use xlink:href="%23b" transform="rotate(90 266 266)"/></g><use xlink:href="%23c" transform="rotate(180 266 266)"/></svg>')
+    center / 100% no-repeat;
+  mix-blend-mode: color;
+  transform: translate(-50%, -50%);
+  animation: logo-spin 60s linear infinite;
+  will-change: transform;
+}
+
+/* Animación de encontrar palabra más dramática */
+@keyframes portal-found {
+  0% {
+    background: var(--portal-orange);
+    transform: scale(1);
+  }
+
+  50% {
+    background: var(--portal-orange);
+    transform: scale(1.1);
+  }
+
+  75% {
+    background: var(--portal-blue);
+    transform: scale(1.1);
+  }
+
+  100% {
+    background: var(--portal-blue);
+    transform: scale(1);
+  }
+}
+
+[data-theme="sekiro"] {
+  --theme-name: "Sekiro";
+  --theme-category: "modern-games";
+
+  /* Fuentes */
+  --font-toolbar-family: "Cinzel", serif;
+  --font-title-family: "Noto Serif JP", serif;
+  --font-cell-family: "Noto Sans JP", sans-serif;
+
+  /* Colores */
+  --color-bg: linear-gradient(135deg, #1e1a17 0%, #39342d 100%);
+  --color-cell: #2b2823;
+  --color-modal: #1c1c1c;
+  --color-button: #b32d0f;
+  --color-letters: #f1efe9;
+  --color-title: #f76b6b;
+  --color-selected: #d0491e;
+  --color-hover: #f76b6b;
+  --color-line: #991b1b;
+  --color-ui: #f1efe9;
+  --color-words: #f1efe9;
+  --color-menu: #f1efe9;
+
+  /* Efectos */
+  --cell-radius: 8px;
+  --cell-border: 1px solid rgb(185 28 28 / 0.3);
+
+  /* Animaciones */
+  --found-bg: radial-gradient(circle, #dc2626 0%, #991b1b 100%);
+  --found-scale: 1.2;
+  --found-shadow: 0 0 30px rgb(220 38 38 / 0.6), 0 0 60px rgb(153 27 27 / 0.4);
+  --unused-scale: 0.88;
+  --unused-opacity: 0.2;
+  --animation-duration-found: 600ms;
+  --animation-timing: cubic-bezier(0.22, 1, 0.36, 1);
+  --confetti-colors: #be5f46, #e3e2de, #6d6e71, #acbda9;
+}
+
+@keyframes sekiro-found {
+  0% {
+    filter: brightness(1) blur(0);
+    transform: scale(1) translateX(0);
+  }
+
+  10% {
+    filter: brightness(2) blur(2px);
+    transform: scale(1.25) translateX(-5%);
+  }
+
+  20% {
+    filter: brightness(0.8) blur(0);
+    transform: scale(0.9) translateX(5%);
+  }
+
+  30% {
+    filter: brightness(1.5) blur(1px);
+    transform: scale(1.15) translateX(0);
+  }
+
+  100% {
+    filter: brightness(1) blur(0);
+    transform: scale(1) translateX(0);
+  }
+}
+
+[data-theme="sekiro"] .found-temp {
+  animation-name: sekiro-found !important;
+}
+
+[data-theme="zelda-botw"] {
+  --theme-name: "Zelda BOTW";
+  --theme-category: "modern-games";
+
+  /* Fuentes */
+  --font-toolbar-family: "Cardo", serif;
+  --font-title-family: "Cardo", serif;
+  --font-cell-family: "Noto Sans", sans-serif;
+
+  /* Colores - Paleta Sheikah mejorada */
+  --color-bg: linear-gradient(135deg, #0f1922 0%, #1a2f3d 50%, #243b4d 100%);
+  --color-cell: linear-gradient(145deg, rgb(38 67 87), rgb(29 53 67));
+  --color-modal: linear-gradient(
+    180deg,
+    rgb(22 40 52 / 0.98) 0%,
+    rgb(15 25 34 / 0.95) 100%
+  );
+  --color-button: linear-gradient(to bottom right, #5ccce0, #45b7ce);
+  --color-letters: #e8f1ff;
+  --color-title: #e8f1ff;
+  --color-selected: #25a5bc;
+  --color-hover: rgb(85 145 159 / 0.8);
+  --color-line: cyan;
+  --color-ui: #7cd3e6;
+  --color-words: #e8f1ff;
+  --color-menu: #e8f1ff;
+
+  /* Efectos mejorados */
+  --cell-radius: 3px;
+  --cell-border: 1px solid rgb(92 204 224 / 0.2);
+  --shadow-opacity: 0.6;
+  --glow-effect: 0 0 20px rgb(69 183 206 / 0.2);
+
+  /* Animaciones mejoradas */
+  --found-bg: radial-gradient(
+    circle,
+    rgb(92 204 224 / 1) 0%,
+    rgb(69 183 206 / 0.9) 50%,
+    rgb(44 149 171 / 0.8) 100%
+  );
+  --found-scale: 1.15;
+  --found-shadow: 0 0 25px rgb(92 204 224 / 0.7), 0 0 45px rgb(69 183 206 / 0.5),
+    inset 0 0 20px rgb(124 211 230 / 0.4);
+  --unused-scale: 0.92;
+  --unused-opacity: 0.15;
+  --animation-duration-found: 800ms;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --confetti-colors: #45b7ce, #e2e9f3, #2c95ab, #7cd3e6;
+}
+
+/* Modificar comportamiento de mark */
+[data-theme="zelda-botw"] .mark {
+  transition: all 0.2s ease;
+}
+
+[data-theme="zelda-botw"] .cell {
+  box-shadow: var(--glow-effect), inset 0 1px 1px rgb(255 255 255 / 0.1),
+    inset 0 -1px 1px rgb(0 0 0 / 0.1);
+}
+
+/* Actualizar animación para que sea más similar a los efectos del juego */
+@keyframes zelda-found {
+  0% {
+    filter: brightness(1) blur(0);
+    transform: scale(1);
+  }
+
+  30% {
+    box-shadow: 0 0 35px rgb(92 204 224 / 0.8), 0 0 65px rgb(69 183 206 / 0.6),
+      inset 0 0 20px rgb(124 211 230 / 0.4);
+    filter: brightness(2.5) blur(2px);
+    transform: scale(1.15) rotate(1deg);
+  }
+
+  60% {
+    filter: brightness(0.95) blur(0);
+    transform: scale(0.95) rotate(-1deg);
+  }
+
+  100% {
+    filter: brightness(1) blur(0);
+    transform: scale(1) rotate(0);
+  }
+}
+
+[data-theme="zelda-botw"] .found-temp {
+  background: var(--found-bg);
+  border-color: rgb(124 211 230 / 0.4);
+  animation-name: zelda-found !important;
+}
+
+[data-theme="amongus"] {
+  --theme-name: "Among Us";
+  --theme-category: "retro-games";
+
+  /* Fuentes */
+  --font-toolbar-family: "VT323", monospace;
+  --font-title-family: "Goldman", sans-serif;
+  --font-cell-family: "Share Tech Mono", monospace;
+  --font-cell-weight: 600;
+
+  /* Colores */
+  --color-bg: linear-gradient(180deg, #0b1015 0%, #1b2a32 100%);
+  --color-cell: linear-gradient(to bottom, #1b2a32 60%, #132329 100%);
+  --color-modal: #15292f;
+  --color-button: #ff1c1c;
+  --color-letters: #fff;
+  --color-title: #fff;
+  --color-selected: #ff1c1c;
+  --color-hover: #2e5bff;
+  --color-line: #98ff4a;
+  --color-ui: #98ff4a;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-radius: min(20px, 4vw);
+  --cell-border: none;
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ff1c1c, #ff4d4d);
+  --found-scale: 1.12;
+  --found-shadow: 0 6px 0 rgb(0 0 0 / 0.3);
+  --unused-scale: 0.88;
+  --unused-opacity: 0.15;
+  --animation-duration-found: 700ms;
+  --animation-timing: cubic-bezier(0.2, 0, 0.4, 1);
+  --confetti-colors: #f00, #00f, #0f0, #ff0;
+}
+
+/* Efectos especiales Among Us */
+[data-theme="amongus"] .board {
+  background: linear-gradient(rgb(11 16 21 / 0.7), rgb(27 42 50 / 0.7));
+}
+
+[data-theme="amongus"] .cell {
+  background: linear-gradient(180deg, #1b2a32 60%, #132329 100%);
+  border-radius: var(--cell-radius) var(--cell-radius)
+    calc(var(--cell-radius) * 1.8) calc(var(--cell-radius) * 1.8);
+  box-shadow: inset 0 -4px 0 #132329, 0 4px 8px rgb(0 0 0 / 0.2);
+}
+
+[data-theme="amongus"] .hitbox:hover + .mark:not(.selected) {
+  border-radius: inherit;
+}
+
+[data-theme="amongus"] .mark.selected {
+  border-radius: inherit;
+  animation: sus-move 1s infinite;
+}
+
+[data-theme="amongus"] .title {
+  text-shadow: 0 0 3px red;
+}
+
+@keyframes sus-move {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes amongus-found {
+  0% {
+    filter: brightness(1);
+    transform: scale(1) translateY(0) rotate(0);
+  }
+
+  40% {
+    filter: brightness(1.4);
+    transform: scale(1.15) translateY(-10px) rotate(-3deg);
+  }
+
+  70% {
+    filter: brightness(0.9);
+    transform: scale(0.95) translateY(5px) rotate(3deg);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: scale(1) translateY(0) rotate(0);
+  }
+}
+
+[data-theme="amongus"] .found-temp {
+  animation-name: amongus-found !important;
+}
+
+[data-theme="amongus"] .board svg line {
+  filter: drop-shadow(0 0 8px rgb(152 255 74 / 0.4));
+}
+
+[data-theme="minecraft"] {
+  --theme-name: "Minecraft";
+  --theme-category: "retro-games";
+  --font-toolbar-family: "VT323", monospace;
+  --font-title-family: "Press Start 2P", monospace;
+  --font-cell-family: "VT323", monospace;
+
+  /* Colores */
+  --color-bg: #45523e;
+  --color-cell: #747474;
+  --color-modal: #1a1a1a;
+  --color-button: #5794df;
+  --color-letters: #fff;
+  --color-title: #fff;
+  --color-selected: #5794df;
+  --color-hover: #549551;
+  --color-line: #ffd83d;
+  --color-ui: #66bb6a;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-border: 2px solid #000;
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #5794df, #66bb6a);
+  --found-scale: 1.15;
+  --found-shadow: 3px 3px 0 #000;
+  --unused-scale: 0.85;
+  --unused-opacity: 0.2;
+  --confetti-colors: #5794df, #66bb6a, #ffd83d, #c6c6c6;
+  --cell-radius: 0px;
+}
+
+[data-theme="minecraft"] body {
+  background: var(--color-bg);
+}
+
+[data-theme="minecraft"] .board {
+  background: repeating-conic-gradient(
+    from 0deg at 0% 0%,
+    #45523e 0% 25%,
+    #3b4734 25% 50%,
+    #45523e 50% 75%,
+    #3b4734 75%
+  );
+  background-size: 32px 32px;
+}
+
+[data-theme="minecraft"] .cell {
+  image-rendering: pixelated;
+  background: repeating-conic-gradient(
+    from 0deg at 0% 0%,
+    #747474 0% 25%,
+    #656565 25% 50%,
+    #747474 50% 75%,
+    #656565 75%
+  );
+  background-size: 16px 16px;
+  border: 2px solid #000;
+  box-shadow: inset -2px -2px 0 #404040, inset 2px 2px 0 #8b8b8b;
+}
+
+[data-theme="minecraft"] .text {
+  text-shadow: 2px 2px #000;
+  transform: translateY(-1px);
+}
+
+/* Animación específica de Minecraft */
+@keyframes minecraft-found {
+  0% {
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-8px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  75% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+[data-theme="minecraft"] .found-temp {
+  background: linear-gradient(45deg, #5794df, #66bb6a);
+  box-shadow: 3px 3px 0 #000;
+  animation: minecraft-found 600ms;
+}
+
+[data-theme="pacman"] {
+  --theme-name: "Pac-Man";
+  --theme-category: "retro-games";
+  --font-toolbar-family: "Press Start 2P", monospace;
+  --font-title-family: "Press Start 2P", monospace;
+  --font-cell-family: "VT323", monospace;
+
+  /* Colores */
+  --color-bg: #000;
+  --color-cell: #2121de;
+  --color-modal: rgb(0 0 64 / 0.95);
+  --color-button: #2121de;
+  --color-letters: #ffd800;
+  --color-title: #ffd800;
+  --color-selected: #f00;
+  --color-hover: rgb(145 0 0);
+  --color-line: #0ff;
+  --color-ui: #ffb897;
+  --color-words: #ffd800;
+  --color-menu: #0ff;
+
+  /* Efectos */
+  --cell-radius: 50%;
+  --cell-border: 1px solid #2121ff;
+  --line-cap: round;
+  --line-dash: 1 15;
+  --line-animation: pacman-dots 0.5s linear infinite;
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #ffd700, #ff7f00);
+  --found-scale: 1.15;
+  --found-shadow: 0 0 20px rgb(255 215 0 / 0.6);
+  --unused-scale: 0.85;
+  --unused-opacity: 0.3;
+  --animation-duration-found: 500ms;
+  --animation-timing: cubic-bezier(0.36, 0, 0.66, 1);
+  --confetti-colors: #ffda00, #00008b, #f00, #fff;
+}
+
+[data-theme="pacman"] .cell {
+  border: 1px solid #2121ff;
+  box-shadow: 0 0 10px rgb(33 33 255 / 0.3);
+}
+
+@keyframes pacman-dots {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@keyframes pacman-found {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.2) rotate(-15deg);
+  }
+
+  50% {
+    transform: scale(0.8) rotate(15deg);
+  }
+
+  75% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+[data-theme="pacman"] .found-temp {
+  background: linear-gradient(45deg, #ffd700, #ff7f00);
+  box-shadow: 0 0 20px rgb(255 215 0 / 0.6);
+  animation: pacman-found var(--animation-duration-found)
+    var(--animation-timing);
+}
+
+[data-theme="spaceinvaders"] {
+  --theme-name: "Space Invaders";
+  --theme-category: "retro-games";
+  --font-toolbar-family: "Press Start 2P", monospace;
+  --font-title-family: "Press Start 2P", monospace;
+  --font-cell-family: "VT323", monospace;
+
+  /* Colores */
+  --color-bg: #000;
+  --color-cell: #111;
+  --color-modal: rgb(0 0 0 / 0.9);
+  --color-button: #f00;
+  --color-letters: #fff;
+  --color-title: #fff;
+  --color-selected: #f00;
+  --color-hover: #0f0;
+  --color-line: #0f0;
+  --color-ui: #0f0;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-border: 1px solid #0f0;
+  --cell-radius: 0px;
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #f00, #ff0);
+  --found-scale: 1.2;
+  --found-shadow: 0 0 20px rgb(255 0 0 / 0.7);
+  --unused-scale: 0.8;
+  --unused-opacity: 0.15;
+  --animation-duration-found: 600ms;
+  --confetti-colors: #0f0, #f00, #ff0, #fff;
+}
+
+[data-theme="spaceinvaders"] body::before {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(2px 2px at 20px 30px, #fff, transparent 70%),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent 70%),
+    radial-gradient(3px 3px at 50px 160px, #fff, transparent 70%),
+    radial-gradient(2px 2px at 80px 120px, #fff, transparent 70%);
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  opacity: 0.8;
+  animation: space-stars 12s linear infinite;
+}
+
+[data-theme="spaceinvaders"] .toolbar {
+  filter: drop-shadow(0 0 10px rgb(0 255 0 / 1));
+}
+
+[data-theme="spaceinvaders"] .cell,
+[data-theme="spaceinvaders"] .word {
+  box-shadow: inset 0 0 10px rgb(0 255 0 / 0.6);
+}
+
+@keyframes space-stars {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 200px 200px;
+  }
+}
+
+@keyframes invader-found {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  25% {
+    transform: translateY(-15px) scale(1.2);
+  }
+
+  50% {
+    transform: translateY(5px) scale(0.8);
+  }
+
+  75% {
+    transform: translateY(-5px) scale(1.1);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+[data-theme="spaceinvaders"] .found-temp {
+  background: linear-gradient(45deg, #f00, #ff0);
+  box-shadow: 0 0 20px rgb(255 0 0 / 0.7);
+  animation: invader-found var(--animation-duration-found) steps(4);
+}
+
+[data-theme="spaceinvaders"] .mark.selected {
+  animation: invader-selected 1s steps(2) infinite;
+}
+
+@keyframes invader-selected {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+[data-theme="tetris"] {
+  --theme-name: "Tetris";
+  --theme-category: "retro-games";
+  --font-toolbar-family: "Press Start 2P", monospace;
+  --font-title-family: "VT323", monospace;
+  --font-cell-family: "Press Start 2P", monospace;
+
+  /* Colores */
+  --color-bg: #000;
+  --color-cell: #0341ae;
+  --color-modal: #000;
+  --color-button: #0341ae;
+  --color-letters: #fff;
+  --color-title: #fff;
+  --color-selected: #0f0;
+  --color-hover: #40c2ff;
+  --color-line: #ffa500;
+  --color-ui: #17b2ff;
+  --color-words: #fff;
+  --color-menu: #fff;
+
+  /* Efectos */
+  --cell-border: 2px solid #17b2ff;
+  --cell-radius: 4px;
+
+  /* Animaciones */
+  --found-bg: linear-gradient(45deg, #f00, #ff8e00);
+  --found-scale: 1.2;
+  --found-shadow: 0 0 20px #17b2ff;
+  --unused-scale: 0.8;
+  --unused-opacity: 0.25;
+  --animation-duration-found: 800ms;
+  --confetti-colors: #f00, #0f0, #00f, #ff0;
+}
+
+[data-theme="tetris"] .board {
+  background: repeating-linear-gradient(
+    0deg,
+    #000,
+    #000 1px,
+    #111 1px,
+    #111 2px
+  );
+}
+
+[data-theme="tetris"] .text {
+  margin-top: calc(var(--cell-size) * 0.1);
+  margin-left: calc(var(--cell-size) * 0.07);
+}
+
+@keyframes tetris-found {
+  0% {
+    filter: brightness(1);
+    transform: rotate(0) scale(1);
+  }
+
+  50% {
+    filter: brightness(1.5);
+    transform: rotate(180deg) scale(0.8);
+  }
+
+  100% {
+    filter: brightness(1);
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+[data-theme="tetris"] .found-temp {
+  background: linear-gradient(45deg, #f00, #ff8e00);
+  box-shadow: 0 0 20px #17b2ff;
+  animation: tetris-found var(--animation-duration-found)
+    var(--animation-timing);
+}

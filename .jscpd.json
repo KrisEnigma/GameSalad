@@ -1,0 +1,20 @@
+{
+  "threshold": 0.5,
+  "reporters": ["html", "console"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/.git/**",
+    "**/android/**",
+    "**/ios/**",
+    "**/tests/**",
+    "**/public/assets/**"
+  ],
+  "absolute": true,
+  "minLines": 5,
+  "maxLines": 500,
+  "minTokens": 50,
+  "format": ["javascript", "typescript"],
+  "output": "./jscpd-report",
+  "mode": "strict"
+}

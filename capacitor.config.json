@@ -1,5 +1,35 @@
 {
-  "appId": "com.gamesalad",
-  "appName": "gamesalad",
-  "webDir": "www"
+  "appId": "com.gamesalad.app",
+  "appName": "GameSalad",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "http",
+    "hostname": "localhost",
+    "cleartext": true
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_notification",
+      "iconColor": "#488AFF"
+    },
+    "StatusBar": {
+      "backgroundColor": "#000000",
+      "style": "dark",
+      "overlaysWebView": false
+    }
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true,
+    "appendUserAgent": "GameSalad Android App",
+    "overrideUserAgent": false,
+    "initialFocus": true,
+    "useLegacyBridge": false,
+    "buildOptions": {
+      "keystoreAlias": "debug",
+      "keystorePassword": "android",
+      "storeFile": "debug.keystore"
+    }
+  }
 }

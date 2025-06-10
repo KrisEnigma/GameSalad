@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level Editor - GameSalad</title>
+    <style>
+      :root {
+        --bg-color: #1e1e1e;
+        --text-color: #e0e0e0;
+        --border-color: #404040;
+        --cell-bg: #2d2d2d;
+        --cell-hover: #3d3d3d;
+        --cell-selected: #2b3657;
+        --cell-path: #1a3b6d;
+        --button-bg: #3d3d3d;
+        --button-hover: #4d4d4d;
+        --input-bg: #2d2d2d;
+        --box-bg: #252525;
+      }
+
+      /* Reset y base */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        padding: 1rem;
+        margin: 0;
+        min-height: 100vh;
+        line-height: 1.5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Layout y componentes base */
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .box {
+        width: 100%;
+        margin: 20px auto;
+        padding: 16px;
+        background: var(--box-bg);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Tipografía */
+      h1 {
+        color: var(--text-color);
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
+        margin: 0 0 12px 0;
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        color: var(--text-color);
+        font-weight: 600;
+        text-align: center;
+        width: 100%;
+        margin: 0 0 12px 0;
+      }
+
+      /* Grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(60px, 70px));
+        gap: 8px;
+        justify-content: center;
+        position: relative;
+      }
+
+      .grid.creating-word input {
+        pointer-events: none;
+      }
+
+      /* Eliminar el pseudo-elemento */
+
+      .cell {
+        width: 100%;
+        aspect-ratio: 1;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: clamp(18px, 4vw, 24px);
+        text-transform: uppercase;
+        cursor: pointer;
+        position: relative;
+        background: var(--cell-bg);
+        transition: all 0.3s ease;
+      }
+
+      .cell:hover {
+        background: var(--cell-hover);
+        transform: translateY(-1px);
+      }
+
+      .cell-coord {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        font-size: clamp(10px, 2.5vw, 12px);
+        color: #888;
+        font-family: monospace;
+      }
+
+      /* Inputs */
+      input {
+        font-family: inherit;
+        color: var(--text-color);
+        background: var(--input-bg);
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      .cell input {
+        width: 100%;
+        height: 100%;
+        font-size: inherit;
+        text-align: center;
+        border: none;
+        background: transparent;
+        text-transform: uppercase;
+        padding: 0;
+      }
+
+      input[type="text"] {
+        border: 1px solid var(--border-color);
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        width: 100%;
+      }
+
+      input[type="text"]:focus {
+        border-color: #4d4d4d;
+      }
+
+      /* Botones */
+      button {
+        background: var(--button-bg);
+        color: var(--text-color);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: inherit;
+        transition: all 0.2s ease;
+      }
+
+      button:hover {
+        background: var(--button-hover);
+      }
+
+      .controls-bar button {
+        padding: 8px 16px;
+        font-size: 14px;
+        min-width: 80px;
+      }
+
+      .controls-bar button:hover {
+        transform: translateY(-1px);
+      }
+
+      .word-item button {
+        padding: 2px;
+        width: 24px;
+        height: 24px;
+        margin-left: auto;
+        font-size: 14px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #4d4d4d;
+      }
+
+      .copy-button {
+        display: none; /* Solo el estado inicial */
+      }
+
+      /* Controles y formularios */
+      .controls-bar {
+        display: flex;
+        gap: 8px;
+        margin: 12px 0;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .json-actions {
+        display: flex;
+        gap: 8px;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 1;
+        background: var(--box-bg);
+        padding: 4px;
+        border-radius: 4px;
+      }
+
+      .json-actions button {
+        min-width: unset;
+        padding: 4px 8px;
+        font-size: 12px;
+        background: var(--button-bg);
+      }
+
+      .json-actions button:hover {
+        background: var(--button-hover);
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        min-width: 250px;
+      }
+
+      /* Lista de palabras */
+      .word-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 2px 0;
+        padding: 4px 8px;
+        border-radius: 4px;
+        background: var(--cell-bg);
+      }
+
+      .temp-path-container {
+        text-align: center;
+        min-height: 20px;
+        margin-top: 8px;
+        font-family: monospace;
+        color: #888;
+      }
+
+      /* JSON output */
+      .json-container {
+        position: relative;
+      }
+
+      .json-output {
+        width: 100%;
+        min-height: 80px;
+        height: auto;
+        font-family: monospace;
+        resize: none;
+        font-size: 14px;
+        background: var(--cell-bg);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        padding: 12px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        overflow: hidden;
+      }
+
+      .json-output:not(:empty) {
+        padding: 40px 12px 12px;
+        white-space: pre;
+      }
+
+      .validation-status {
+        margin-top: 4px;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      /* Estados */
+      .path {
+        background-color: var(--cell-path);
+      }
+      .temp-path {
+        background-color: var(--cell-selected);
+      }
+      .cell-used {
+        border-color: rgba(45, 94, 45, 0.8);
+        background: linear-gradient(var(--cell-bg), rgba(45, 94, 45, 0.1));
+      }
+      .cell-unused {
+        border-color: rgba(94, 45, 45, 0.8);
+        background: linear-gradient(var(--cell-bg), rgba(94, 45, 45, 0.1));
+      }
+      .cell-adjacent {
+        border-color: rgba(94, 94, 45, 0.8);
+        background: linear-gradient(var(--cell-bg), rgba(94, 94, 45, 0.1));
+      }
+
+      .validation-message {
+        color: #ff6b6b;
+        font-size: 12px;
+        margin-top: 4px;
+        text-align: center;
+      }
+
+      .selection-message {
+        color: #90ee90;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 12px;
+        padding: 4px;
+        border-radius: 4px;
+        background: rgba(37, 37, 37, 0.95);
+        display: none;
+      }
+
+      .creating-word .selection-message {
+        display: block;
+      }
+
+      dialog {
+        border: none;
+        padding: 0;
+        border-radius: 8px;
+        background: transparent;
+      }
+
+      dialog select {
+        width: 100%;
+        padding: 8px;
+        background: var(--input-bg);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        font-family: inherit;
+        font-size: 14px;
+        margin: 12px 0;
+      }
+
+      dialog select:focus {
+        outline: none;
+        border-color: #4d4d4d;
+      }
+
+      dialog select option {
+        background: var(--cell-bg);
+        color: var(--text-color);
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(2px);
+      }
+
+      /* Media queries */
+      @media (max-width: 480px) {
+        body {
+          padding: 0.5rem;
+        }
+        .box {
+          padding: 8px;
+        }
+        .grid {
+          gap: 4px;
+        }
+        .word-item button {
+          width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Level Editor</h1>
+
+      <div class="controls box">
+        <div class="controls-bar">
+          <label
+            >Level Name:
+            <input
+              type="text"
+              id="levelName"
+              placeholder="Video Game Heroes"
+              required
+            />
+          </label>
+          <button onclick="clearGrid()">Clear Grid</button>
+        </div>
+      </div>
+
+      <div class="grid box" id="grid"></div>
+
+      <div class="word-list box" id="wordList">
+        <h3>Words</h3>
+        <div class="selection-message">Select cells for word...</div>
+        <div class="controls-bar">
+          <button onclick="startNewWord()" id="newWordBtn">New Word</button>
+          <button
+            onclick="acceptWord()"
+            id="acceptWordBtn"
+            style="display: none"
+          >
+            Accept Word
+          </button>
+          <button
+            onclick="cancelWord()"
+            id="cancelWordBtn"
+            style="display: none"
+          >
+            Cancel
+          </button>
+        </div>
+        <div class="temp-path-container">
+          <span id="tempPath"></span>
+        </div>
+        <div id="words"></div>
+      </div>
+
+      <h3>Generated JSON</h3>
+      <div class="json-container box">
+        <div class="json-actions">
+          <button onclick="loadFromLevels()">Load Level</button>
+          <button onclick="loadJson()">Import JSON</button>
+          <button class="copy-button" onclick="copyJson()">Copy</button>
+        </div>
+        <textarea class="json-output" id="jsonOutput" readonly></textarea>
+        <div id="validationStatus" class="validation-status"></div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { LEVELS, LEVEL_ORDER } from "./core/levels.js";
+
+      // Globals para acceso desde los event handlers
+      window.currentWord = null;
+      window.words = {};
+      window.tempPath = [];
+      window.isCreatingWord = false;
+
+      // Exportar funciones al scope global para los event handlers
+      window.handleCellClick = handleCellClick;
+      window.handleKeyNavigation = handleKeyNavigation;
+      window.startNewWord = startNewWord;
+      window.acceptWord = acceptWord;
+      window.cancelWord = cancelWord;
+      window.copyJson = copyJson;
+      window.deleteWord = deleteWord;
+      window.selectWord = selectWord;
+      window.clearGrid = clearGrid;
+      window.loadJson = loadJson;
+      window.updateUI = updateUI;
+
+      // Nueva función para cargar niveles existentes
+      window.loadFromLevels = function () {
+        const levelSelect = document.createElement("select");
+        levelSelect.innerHTML = `
+          <option value="">Select a level...</option>
+          ${LEVEL_ORDER.map(
+            (id) => `
+            <option value="${id}">${LEVELS[id].name}</option>
+          `
+          ).join("")}
+        `;
+
+        const dialog = document.createElement("dialog");
+        dialog.innerHTML = `
+          <div style="padding: 20px; background: var(--box-bg); border-radius: 8px; min-width: 300px;">
+            <h3 style="margin-top: 0;">Load Existing Level</h3>
+            ${levelSelect.outerHTML}
+            <div style="margin-top: 16px; display: flex; gap: 8px; justify-content: flex-end;">
+              <button onclick="this.closest('dialog').close()">Cancel</button>
+              <button onclick="loadSelectedLevel(this.closest('dialog'))">Load</button>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(dialog);
+        dialog.showModal();
+
+        // Focus en el select cuando se abre el modal
+        const select = dialog.querySelector("select");
+        select.focus();
+
+        // Permitir cerrar con Escape
+        dialog.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" && select.value) {
+            e.preventDefault();
+            loadSelectedLevel(dialog);
+          }
+        });
+
+        // Limpiar el DOM cuando se cierra
+        dialog.addEventListener("close", () => {
+          document.body.removeChild(dialog);
+        });
+      };
+
+      window.loadSelectedLevel = function (dialog) {
+        const levelId = dialog.querySelector("select").value;
+        if (!levelId) {
+          alert("Please select a level");
+          return;
+        }
+
+        const level = LEVELS[levelId];
+        if (!level) {
+          alert("Level not found");
+          return;
+        }
+
+        // Limpiar estado actual
+        clearGrid();
+
+        // Cargar nombre
+        document.getElementById("levelName").value = level.name;
+
+        // Cargar palabras y sus rutas
+        Object.entries(level.data).forEach(([word, path]) => {
+          // Dividir el path en coordenadas
+          const coords = path.match(/.{2}/g) || [];
+
+          // Crear la palabra
+          words[word] = {
+            name: word,
+            path: coords,
+          };
+
+          // Colocar las letras en las celdas, saltando los espacios
+          let letterIndex = 0;
+          coords.forEach((coord) => {
+            const input = document.querySelector(
+              `input[data-coord="${coord}"]`
+            );
+            if (input) {
+              // Saltarse los espacios al colocar letras
+              while (word[letterIndex] === " ") letterIndex++;
+              input.value = word[letterIndex++];
+            }
+          });
+        });
+
+        updateUI();
+        dialog.close();
+      };
+
+      // Initialize grid
+      const grid = document.getElementById("grid");
+      for (let row = 0; row < 4; row++) {
+        for (let col = 0; col < 4; col++) {
+          const cell = document.createElement("div");
+          cell.className = "cell";
+          // Cambiamos el orden: ahora la letra (a-d) representa la fila
+          const coord = `${String.fromCharCode(97 + row)}${col + 1}`;
+
+          const coordSpan = document.createElement("span");
+          coordSpan.className = "cell-coord";
+          coordSpan.textContent = coord;
+
+          const input = document.createElement("input");
+          input.maxLength = 1;
+          input.dataset.coord = coord;
+          input.dataset.row = row;
+          input.dataset.col = col;
+
+          cell.appendChild(coordSpan);
+          cell.appendChild(input);
+          grid.appendChild(cell);
+
+          cell.addEventListener("click", () => handleCellClick(coord));
+          input.addEventListener("keydown", handleKeyNavigation);
+        }
+      }
+
+      function handleCellClick(coord) {
+        const input = document.querySelector(`input[data-coord="${coord}"]`);
+
+        if (isCreatingWord) {
+          // Si la celda no tiene letra, no permitir seleccionarla
+          if (!input.value.trim()) {
+            alert("You can only select cells that contain letters");
+            return;
+          }
+
+          const lastCoord = tempPath[tempPath.length - 1];
+          if (lastCoord && !isAdjacent(lastCoord, coord)) {
+            alert(
+              "Cells must be adjacent (horizontally, vertically, or diagonally)"
+            );
+            return;
+          }
+
+          if (tempPath.includes(coord)) {
+            // Remove this coord and all coords after it
+            const index = tempPath.indexOf(coord);
+            tempPath = tempPath.slice(0, index);
+          } else {
+            tempPath.push(coord);
+          }
+          updateTempPathUI();
+          return;
+        }
+
+        // Focus y selección del input
+        setTimeout(() => {
+          input.focus();
+          if (input.value) {
+            input.select();
+          }
+        }, 0);
+
+        if (!currentWord) return;
+
+        const lastCoord = currentWord.path[currentWord.path.length - 1];
+        if (lastCoord && !isAdjacent(lastCoord, coord)) {
+          alert(
+            "Cells must be adjacent (horizontally, vertically, or diagonally)"
+          );
+          return;
+        }
+
+        if (currentWord.path.includes(coord)) {
+          // Remove this coord and all coords after it
+          const index = currentWord.path.indexOf(coord);
+          currentWord.path = currentWord.path.slice(0, index);
+        } else {
+          currentWord.path.push(coord);
+        }
+
+        updateUI();
+      }
+
+      function isAdjacent(coord1, coord2) {
+        // Actualizamos la lógica para que coincida con el nuevo sistema de coordenadas
+        const [row1, col1] = [
+          coord1.charCodeAt(0) - 97,
+          parseInt(coord1[1]) - 1,
+        ];
+        const [row2, col2] = [
+          coord2.charCodeAt(0) - 97,
+          parseInt(coord2[1]) - 1,
+        ];
+
+        const rowDiff = Math.abs(row1 - row2);
+        const colDiff = Math.abs(col1 - col2);
+
+        return (
+          rowDiff <= 1 && colDiff <= 1 && !(rowDiff === 0 && colDiff === 0)
+        );
+      }
+
+      function handleKeyNavigation(e) {
+        const currentRow = parseInt(e.target.dataset.row);
+        const currentCol = parseInt(e.target.dataset.col);
+        let nextRow = currentRow;
+        let nextCol = currentCol;
+
+        switch (e.key) {
+          case "ArrowUp":
+            nextRow = Math.max(0, currentRow - 1);
+            break;
+          case "ArrowDown":
+            nextRow = Math.min(3, currentRow + 1);
+            break;
+          case "ArrowLeft":
+            nextCol = Math.max(0, currentCol - 1);
+            break;
+          case "ArrowRight":
+            nextCol = Math.min(3, currentCol + 1);
+            break;
+          case "Tab":
+            e.preventDefault();
+            if (e.shiftKey) {
+              if (currentCol > 0) {
+                nextCol = currentCol - 1;
+              } else if (currentRow > 0) {
+                nextRow = currentRow - 1;
+                nextCol = 3;
+              }
+            } else {
+              if (currentCol < 3) {
+                nextCol = currentCol + 1;
+              } else if (currentRow < 3) {
+                nextRow = currentRow + 1;
+                nextCol = 0;
+              }
+            }
+            break;
+          default:
+            if (e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+              e.preventDefault();
+              e.target.value = e.key.toUpperCase();
+              // Auto-avanzar al siguiente input
+              if (currentCol < 3) {
+                nextCol = currentCol + 1;
+              } else if (currentRow < 3) {
+                nextRow = currentRow + 1;
+                nextCol = 0;
+              }
+            }
+            return;
+        }
+
+        const nextInput = document.querySelector(
+          `input[data-row="${nextRow}"][data-col="${nextCol}"]`
+        );
+        if (nextInput) {
+          nextInput.focus();
+          nextInput.select();
+        }
+      }
+
+      function startNewWord() {
+        isCreatingWord = true;
+        tempPath = [];
+        document.getElementById("newWordBtn").style.display = "none";
+        document.getElementById("acceptWordBtn").style.display = "inline";
+        document.getElementById("cancelWordBtn").style.display = "inline";
+        grid.classList.add("creating-word");
+        document.getElementById("wordList").classList.add("creating-word");
+        updateTempPathUI();
+      }
+
+      function acceptWord() {
+        if (tempPath.length === 0) {
+          alert("Please select cells for the word");
+          return;
+        }
+
+        // Construir la palabra a partir de las letras en las celdas
+        let hasEmptyCells = false;
+        const letters = [];
+        tempPath.forEach((coord) => {
+          const input = document.querySelector(`input[data-coord="${coord}"]`);
+          const value = input.value.trim().toUpperCase();
+          if (!value) {
+            hasEmptyCells = true;
+          } else {
+            // Si ya tenemos letras y la última no es un espacio,
+            // verificamos si necesitamos agregar un espacio
+            if (
+              letters.length > 0 &&
+              coord.charAt(1) === "1" && // Nueva columna (primer número)
+              letters[letters.length - 1] !== " "
+            ) {
+              letters.push(" ");
+            }
+            letters.push(value);
+          }
+        });
+
+        if (hasEmptyCells) {
+          alert("Please enter letters in all selected cells");
+          return;
+        }
+
+        const word = letters.join("");
+        if (!word) {
+          alert("Cannot create an empty word");
+          return;
+        }
+
+        words[word] = {
+          name: word,
+          path: [...tempPath],
+        };
+
+        cancelWord();
+        updateUI();
+      }
+
+      function cancelWord() {
+        isCreatingWord = false;
+        tempPath = [];
+        document.getElementById("newWordBtn").style.display = "inline";
+        document.getElementById("acceptWordBtn").style.display = "none";
+        document.getElementById("cancelWordBtn").style.display = "none";
+        document.getElementById("tempPath").textContent = "";
+        grid.classList.remove("creating-word");
+        document.getElementById("wordList").classList.remove("creating-word");
+        updateUI();
+      }
+
+      function updateTempPathUI() {
+        document.querySelectorAll(".cell").forEach((cell) => {
+          cell.classList.remove("temp-path", "cell-adjacent");
+        });
+
+        tempPath.forEach((coord, index) => {
+          const cell = document.querySelector(
+            `input[data-coord="${coord}"]`
+          ).parentElement;
+          cell.classList.add("temp-path");
+
+          // Resaltar celdas adyacentes si esta es la última celda
+          if (index === tempPath.length - 1) {
+            highlightAdjacentCells(coord);
+          }
+        });
+
+        document.getElementById("tempPath").textContent = tempPath.join("-");
+      }
+
+      function highlightAdjacentCells(coord) {
+        // Actualizamos la lógica para que coincida con el nuevo sistema de coordenadas
+        const [row, col] = [coord.charCodeAt(0) - 97, parseInt(coord[1]) - 1];
+
+        // Revisar todas las celdas adyacentes
+        for (let r = Math.max(0, row - 1); r <= Math.min(3, row + 1); r++) {
+          for (let c = Math.max(0, col - 1); c <= Math.min(3, col + 1); c++) {
+            if (r === row && c === col) continue;
+
+            const adjacentCoord = `${String.fromCharCode(97 + r)}${c + 1}`;
+            const adjacentInput = document.querySelector(
+              `input[data-coord="${adjacentCoord}"]`
+            );
+
+            // Solo resaltar celdas adyacentes que tengan letras y no estén ya en el path
+            if (
+              !tempPath.includes(adjacentCoord) &&
+              adjacentInput.value.trim()
+            ) {
+              const cell = adjacentInput.parentElement;
+              cell.classList.add("cell-adjacent");
+            }
+          }
+        }
+      }
+
+      function copyJson() {
+        const jsonOutput = document.getElementById("jsonOutput");
+        navigator.clipboard.writeText(jsonOutput.value).then(() => {
+          const copyBtn = document.querySelector(".copy-button");
+          const originalText = copyBtn.textContent;
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => {
+            copyBtn.textContent = originalText;
+          }, 2000);
+        });
+      }
+
+      function deleteWord(wordName) {
+        delete words[wordName];
+        if (currentWord && currentWord.name === wordName) {
+          currentWord = null;
+        }
+        updateUI();
+      }
+
+      function selectWord(wordName) {
+        if (isCreatingWord) return;
+        currentWord = words[wordName];
+        updateUI();
+      }
+
+      function generateId(name) {
+        return name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "_")
+          .replace(/^_+|_+$/g, "");
+      }
+
+      function validateTitle() {
+        const titleInput = document.getElementById("levelName");
+        return titleInput.value.trim() !== "";
+      }
+
+      function validateAllCellsUsed() {
+        const usedCells = new Set();
+
+        // Recolectar todas las celdas usadas
+        Object.values(words).forEach((word) => {
+          word.path.forEach((coord) => usedCells.add(coord));
+        });
+
+        // Verificar si falta alguna celda
+        const missingCells = [];
+        // Actualizamos el orden de iteración para coincidir con el nuevo sistema
+        for (let row = 0; row < 4; row++) {
+          for (let col = 1; col <= 4; col++) {
+            const coord = `${String.fromCharCode(97 + row)}${col}`;
+            if (!usedCells.has(coord)) {
+              missingCells.push(coord);
+            }
+          }
+        }
+
+        return missingCells;
+      }
+
+      function validateAllCellsHaveLetters() {
+        const emptyCells = [];
+        const usedCells = new Set();
+
+        // Recolectar todas las celdas usadas
+        Object.values(words).forEach((word) => {
+          word.path.forEach((coord) => usedCells.add(coord));
+        });
+
+        // Verificar que todas las celdas usadas tengan letras
+        usedCells.forEach((coord) => {
+          const input = document.querySelector(`input[data-coord="${coord}"]`);
+          if (!input.value.trim()) {
+            emptyCells.push(coord);
+          }
+        });
+
+        return emptyCells;
+      }
+
+      function validateLevel() {
+        const validations = {
+          title: validateTitle(),
+          cells: validateAllCellsUsed(),
+          letters: validateAllCellsHaveLetters(),
+          errors: [],
+        };
+
+        if (!validations.title) {
+          validations.errors.push("Level name is required");
+        }
+
+        if (validations.cells.length > 0) {
+          validations.errors.push(
+            `Unused cells: ${validations.cells.join(", ")}`
+          );
+        }
+
+        if (validations.letters.length > 0) {
+          validations.errors.push(
+            `Empty cells: ${validations.letters.join(", ")}`
+          );
+        }
+
+        return validations;
+      }
+
+      function updateUI() {
+        // Update words list
+        const wordsDiv = document.getElementById("words");
+        wordsDiv.innerHTML = "";
+
+        // Ordenar palabras alfabéticamente
+        const sortedWords = Object.values(words).sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+
+        sortedWords.forEach((word) => {
+          const div = document.createElement("div");
+          div.className = "word-item";
+          div.innerHTML = `
+            <span>${word.name}</span>
+            <span style="color: #888;">(${word.path.join("-")})</span>
+            <button onclick="deleteWord('${
+              word.name
+            }')" title="Delete word">×</button>
+          `;
+          wordsDiv.appendChild(div);
+        });
+
+        // Collect used cells
+        const usedCells = new Set();
+        Object.values(words).forEach((word) => {
+          word.path.forEach((coord) => usedCells.add(coord));
+        });
+
+        // Update cell highlighting
+        document.querySelectorAll(".cell").forEach((cell) => {
+          cell.classList.remove(
+            "selected",
+            "path",
+            "temp-path",
+            "cell-used",
+            "cell-unused"
+          );
+          const input = cell.querySelector("input");
+          const coord = input.dataset.coord;
+
+          if (usedCells.has(coord)) {
+            cell.classList.add("cell-used");
+          } else {
+            cell.classList.add("cell-unused");
+          }
+        });
+
+        if (currentWord) {
+          currentWord.path.forEach((coord) => {
+            const cell = document.querySelector(
+              `input[data-coord="${coord}"]`
+            ).parentElement;
+            if (cell) {
+              cell.classList.add("path");
+            }
+          });
+        }
+
+        // Validate level and update status
+        const validations = validateLevel();
+        const statusDiv = document.getElementById("validationStatus");
+        const copyBtn = document.querySelector(".copy-button");
+        const textarea = document.getElementById("jsonOutput");
+
+        if (validations.errors.length > 0) {
+          copyBtn.style.display = "none";
+          statusDiv.className = "validation-status error";
+          statusDiv.innerHTML = `<strong>❌ Level is not complete:</strong><br>${validations.errors.join(
+            "<br>"
+          )}`;
+          textarea.value = "";
+        } else {
+          // Generate JSON
+          const levelName = document.getElementById("levelName").value;
+          const levelId = generateId(levelName);
+
+          const levelData = {
+            id: levelId,
+            name: levelName,
+            data: {},
+          };
+
+          const sortedWords = Object.values(words).sort((a, b) =>
+            a.name.localeCompare(b.name)
+          );
+          sortedWords.forEach((word) => {
+            levelData.data[word.name] = word.path.join("");
+          });
+
+          textarea.value = JSON.stringify(levelData, null, 2);
+
+          copyBtn.style.display = "inline";
+          statusDiv.className = "validation-status success";
+          statusDiv.innerHTML = "✅ Level is complete and valid";
+        }
+
+        // Ajustar altura del textarea siempre, incluso cuando está vacío
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + 2 + "px";
+      }
+
+      function clearGrid() {
+        if (!confirm("Are you sure you want to clear all cells and words?"))
+          return;
+
+        // Limpiar título
+        document.getElementById("levelName").value = "";
+
+        // Limpiar todas las celdas
+        document.querySelectorAll(".cell input").forEach((input) => {
+          input.value = "";
+        });
+
+        // Limpiar palabras
+        words = {};
+        currentWord = null;
+        tempPath = [];
+        isCreatingWord = false;
+
+        // Resetear UI
+        document.getElementById("newWordBtn").style.display = "inline";
+        document.getElementById("acceptWordBtn").style.display = "none";
+        document.getElementById("cancelWordBtn").style.display = "none";
+        document.getElementById("tempPath").textContent = "";
+
+        updateUI();
+      }
+
+      function loadJson() {
+        try {
+          const jsonStr = prompt("Paste your level JSON here:");
+          if (!jsonStr) return;
+
+          const levelData = JSON.parse(jsonStr);
+
+          // Validar estructura básica
+          if (!levelData.id || !levelData.name || !levelData.data) {
+            throw new Error("Invalid level format");
+          }
+
+          // Limpiar estado actual
+          clearGrid();
+
+          // Cargar nombre
+          document.getElementById("levelName").value = levelData.name;
+
+          // Cargar palabras y sus rutas
+          Object.entries(levelData.data).forEach(([word, path]) => {
+            // Dividir el path en coordenadas
+            const coords = path.match(/.{2}/g) || [];
+
+            // Crear la palabra
+            words[word] = {
+              name: word,
+              path: coords,
+            };
+
+            // Colocar las letras en las celdas, saltando los espacios
+            let letterIndex = 0;
+            coords.forEach((coord) => {
+              const input = document.querySelector(
+                `input[data-coord="${coord}"]`
+              );
+              if (input) {
+                // Saltarse los espacios al colocar letras
+                while (word[letterIndex] === " ") letterIndex++;
+                input.value = word[letterIndex++];
+              }
+            });
+          });
+
+          updateUI();
+        } catch (e) {
+          alert("Error loading JSON: " + e.message);
+        }
+      }
+
+      // Add input event listener to level name
+      document.getElementById("levelName").addEventListener("input", updateUI);
+
+      // Agregar event listeners para atajos de teclado
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isCreatingWord) {
+          cancelWord();
+        } else if (
+          (e.key === "Enter" || e.key === " ") &&
+          isCreatingWord &&
+          tempPath.length > 0
+        ) {
+          e.preventDefault();
+          acceptWord();
+        }
+      });
+
+      // Initial UI update
+      updateUI();
+    </script>
+  </body>
+</html>

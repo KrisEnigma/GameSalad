@@ -6,6 +6,9 @@
 # Build
 /dist
 /build
+/backup
+/jscpd-report
+/tests
 
 # Development
 .env
