@@ -22,20 +22,29 @@ jobs:
         path: deployment
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
     - name: Build GameSalad project
       run: |
         cd GameSalad
-        npm install || true
+        npm install
         npm run build
 
-    - name: Replace gamesalad folder in deployment (force)
+    - name: Replace gamesalad folder in deployment
       run: |
         cd deployment
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git status
+        git stash push -m "Temporary stash before pull" || true
+        git pull origin main --rebase || git pull origin main
+        git stash pop || true
         rm -rf gamesalad
         mkdir -p gamesalad
         cp -r ../GameSalad/dist/* ./gamesalad/
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
         git add gamesalad
-        git commit -m "🚀 Force deploy GameSalad - $(date '+%Y-%m-%d %H:%M:%S')" || true
-        git push origin HEAD:main --force
+        git diff --staged --quiet || git commit -m "🚀 Auto-deploy GameSalad - $(date '+%Y-%m-%d %H:%M:%S')"
+        git push
