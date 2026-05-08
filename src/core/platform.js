@@ -407,9 +407,35 @@ export class NativeServices {
 
   static async sendNotification(title, body, options = {}) {
     try {
+      const isNative = Capacitor.isNativePlatform();
+
+      // En web, pedir permiso lo antes posible para no perder el contexto
+      // de interacción del usuario por awaits previos.
+      if (!isNative) {
+        if (!("Notification" in window)) {
+          throw new Error("Web Notifications no está disponible");
+        }
+
+        if (Notification.permission !== "granted") {
+          if (Notification.permission === "denied") {
+            console.warn("[GS_NOTIF] Notification permission denied");
+            return false;
+          }
+
+          console.log("[GS_NOTIF] Requesting web notification permission...");
+          const permission = await Notification.requestPermission();
+          console.log("[GS_NOTIF] Web notification permission:", permission);
+
+          if (permission !== "granted") {
+            console.warn("[GS_NOTIF] Notification permission not granted");
+            return false;
+          }
+        }
+      }
+
       await this.initialize();
 
-      if (Capacitor.isNativePlatform()) {
+      if (isNative) {
         // Usar solo LocalNotifications para plataformas nativas
         if (!Capacitor.isPluginAvailable("LocalNotifications")) {
           throw new Error("LocalNotifications no está disponible");
@@ -432,24 +458,6 @@ export class NativeServices {
         });
       } else {
         // Usar solo Web Notifications para web
-        if (!("Notification" in window)) {
-          throw new Error("Web Notifications no está disponible");
-        }
-
-        // Asegurar permiso antes de intentar mostrar la notificación
-        if (Notification.permission !== "granted") {
-          if (Notification.permission === "denied") {
-            console.warn("[GS_NOTIF] Notification permission denied");
-            return false;
-          }
-
-          const permission = await Notification.requestPermission();
-          if (permission !== "granted") {
-            console.warn("[GS_NOTIF] Notification permission not granted");
-            return false;
-          }
-        }
-
         const registration = await navigator.serviceWorker?.ready;
         if (!registration) {
           throw new Error("Service Worker no está registrado");
