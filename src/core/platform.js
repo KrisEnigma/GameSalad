@@ -436,6 +436,20 @@ export class NativeServices {
           throw new Error("Web Notifications no está disponible");
         }
 
+        // Asegurar permiso antes de intentar mostrar la notificación
+        if (Notification.permission !== "granted") {
+          if (Notification.permission === "denied") {
+            console.warn("[GS_NOTIF] Notification permission denied");
+            return false;
+          }
+
+          const permission = await Notification.requestPermission();
+          if (permission !== "granted") {
+            console.warn("[GS_NOTIF] Notification permission not granted");
+            return false;
+          }
+        }
+
         const registration = await navigator.serviceWorker?.ready;
         if (!registration) {
           throw new Error("Service Worker no está registrado");
