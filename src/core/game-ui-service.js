@@ -537,12 +537,15 @@ export class GameUIService {
     // Botón de prueba de notificación
     const notificationButton = document.getElementById(BUTTON_IDS.NOTIFICATION);
     if (notificationButton) {
-      notificationButton.addEventListener("click", async () => {
-        await NativeServices.vibrate(VibrationPatterns.LIGHT);
-        await NativeServices.sendNotification(
+      notificationButton.addEventListener("click", () => {
+        NativeServices.sendNotification(
           "¡Prueba de notificación!",
           "Las notificaciones están funcionando correctamente"
-        );
+        ).then((sent) => {
+          if (sent) {
+            void NativeServices.vibrate(VibrationPatterns.LIGHT);
+          }
+        });
       });
     }
   }
