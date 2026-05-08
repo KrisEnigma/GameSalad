@@ -544,17 +544,6 @@ export class GameUIService {
         ).then((sent) => {
           if (sent) {
             void NativeServices.vibrate(VibrationPatterns.LIGHT);
-            return;
-          }
-
-          if (
-            typeof Notification !== "undefined" &&
-            Notification.permission !== "granted"
-          ) {
-            alert(
-              "Las notificaciones están bloqueadas por el navegador.\n\n" +
-                "Actívalas manualmente en la configuración del sitio (icono del candado en la barra de direcciones > Notificaciones > Permitir) y vuelve a probar."
-            );
           }
         });
       });
